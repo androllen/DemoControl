@@ -40,41 +40,34 @@ namespace DemoControl
         /// <param name="e">有关启动请求和过程的详细信息。</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+//            Frame rootFrame = Window.Current.Content as Frame;
 
-#if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                this.DebugSettings.EnableFrameRateCounter = true;
-            }
-#endif
+//            // 不要在窗口已包含内容时重复应用程序初始化，
+//            // 只需确保窗口处于活动状态
+//            if (rootFrame == null)
+//            {
+//                // 创建要充当导航上下文的框架，并导航到第一页
+//                rootFrame = new Frame();
 
-            Frame rootFrame = Window.Current.Content as Frame;
+//                rootFrame.NavigationFailed += OnNavigationFailed;
 
-            // 不要在窗口已包含内容时重复应用程序初始化，
-            // 只需确保窗口处于活动状态
-            if (rootFrame == null)
-            {
-                // 创建要充当导航上下文的框架，并导航到第一页
-                rootFrame = new Frame();
+//                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
+//                {
+//                    //TODO: 从之前挂起的应用程序加载状态
+//                }
 
-                rootFrame.NavigationFailed += OnNavigationFailed;
+//                // 将框架放在当前窗口中
+//                Window.Current.Content = rootFrame;
+//            }
 
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
-                {
-                    //TODO: 从之前挂起的应用程序加载状态
-                }
-
-                // 将框架放在当前窗口中
-                Window.Current.Content = rootFrame;
-            }
-
-            if (rootFrame.Content == null)
-            {
-                // 当导航堆栈尚未还原时，导航到第一页，
-                // 并通过将所需信息作为导航参数传入来配置
-                // 参数
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
-            }
+//            if (rootFrame.Content == null)
+//            {
+//                // 当导航堆栈尚未还原时，导航到第一页，
+//                // 并通过将所需信息作为导航参数传入来配置
+//                // 参数
+//                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+//            }
+            Window.Current.Content=new AppShell();
             // 确保当前窗口处于活动状态
             Window.Current.Activate();
         }
