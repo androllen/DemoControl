@@ -6,9 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ctl="using:CCUWPToolkit.Controls"
-    mc:Ignorable="d" Name="page">
+    mc:Ignorable="d">
     <!---->
-    <!--<Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
@@ -36,38 +36,5 @@
                          Label="注册" FontSize="18" 
                          Foreground="Black" Click="btn_Click"
                          ButtonHeight="50" ButtonWidth="250"/>
-    </Grid>-->
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="150" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="320" />
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Canvas Name="Container" 
-                Grid.Column="0"
-                Grid.Row="1"
-                HorizontalAlignment="Center" 
-                VerticalAlignment="Center" 
-                Margin="0,0,0,0" 
-                Height="320"  Width="640">
-            <Rectangle Name="Target" 
-                       Fill="#FF0000" 
-                       Stroke="Black" 
-                       StrokeThickness="0"
-                       Height="320" Width="640" />
-        </Canvas>
-        <TextBox Name="eventLog" 
-                 Grid.Column="1"
-                 Grid.Row="0"
-                 Grid.RowSpan="3" 
-                 Background="#000000" 
-                 TextWrapping="Wrap" 
-                 Foreground="#FFFFFF" 
-                 ScrollViewer.VerticalScrollBarVisibility="Visible" 
-                 BorderThickness="0"/>
     </Grid>
 </Page>

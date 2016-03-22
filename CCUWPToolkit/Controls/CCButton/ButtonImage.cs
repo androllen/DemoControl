@@ -169,7 +169,7 @@ namespace CCUWPToolkit.Controls
             _imageStateName = (Image)GetTemplateChild(ImageStateName);
             _rectangleStateName = (Rectangle)GetTemplateChild(RectangleStateName);
             _waitForApplyTemplateTaskSource.SetResult(true);
-            
+
         }
 
         public enum DeviceFamily
@@ -208,30 +208,7 @@ namespace CCUWPToolkit.Controls
         {
             return $"Windows.{family}" == AnalyticsInfo.VersionInfo.DeviceFamily;
         }
-        private void OnPointerExited(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
-        {
-            VisualStateManager.GoToState(this, "Normal", true);
-            if (_rectangleStateName != null)
-                _rectangleStateName.Fill = new SolidColorBrush(NormalStateColors);
-        }
-        private void OnPointerPressed(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
-        {
-            if (_rectangleStateName != null)
-                _rectangleStateName.Fill = new SolidColorBrush(PressedStateColors);
-        }
-        private void OnPointerReleased(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
-        {
 
-            if (_rectangleStateName != null)
-                _rectangleStateName.Fill = new SolidColorBrush(NormalStateColors);
-        }
-        private void OnPointerEntered(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
-        {
-            VisualStateManager.GoToState(this, "PointerOver", true);
-
-            if (_rectangleStateName != null)
-                _rectangleStateName.Fill = new SolidColorBrush(HoverStateColors);
-        }
 
         #region GeneratedImageHorizontalStretch
         public HorizontalAlignment GeneratedImageHorizontalStretch
@@ -346,17 +323,43 @@ namespace CCUWPToolkit.Controls
             bool newTarget = target.IsEnableColorsStretch;
             target.OnIsEnableColorsChanged(oldtarget, newTarget);
         }
-        private void OnIsEnableColorsChanged(bool oldtarget, bool newTarget)
+        private async void OnIsEnableColorsChanged(bool oldtarget, bool newTarget)
         {
-            if (oldtarget != newTarget)
+            await _waitForApplyTemplateTaskSource.Task;
+
+            if (oldtarget != newTarget && _gridStateName != null)
             {
                 if (IsType(DeviceFamily.Mobile)) return;
-                PointerEntered += OnPointerEntered;
-                PointerExited += OnPointerExited;
-                PointerPressed += OnPointerPressed;
-                PointerReleased += OnPointerReleased;
+
+                _gridStateName.PointerEntered += OnPointerEntered;
+                _gridStateName.PointerExited += OnPointerExited;
+                _gridStateName.PointerPressed += OnPointerPressed;
+                _gridStateName.PointerReleased += OnPointerReleased;
             }
 
+        }
+        private void OnPointerExited(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
+        {
+            VisualStateManager.GoToState(this, "Normal", true);
+            if (_rectangleStateName != null)
+                _rectangleStateName.Fill = new SolidColorBrush(NormalStateColors);
+        }
+        private void OnPointerPressed(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
+        {
+            if (_rectangleStateName != null)
+                _rectangleStateName.Fill = new SolidColorBrush(PressedStateColors);
+        }
+        private void OnPointerReleased(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
+        {
+            if (_rectangleStateName != null)
+                _rectangleStateName.Fill = new SolidColorBrush(HoverStateColors);
+        }
+        private void OnPointerEntered(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
+        {
+            //VisualStateManager.GoToState(this, "PointerOver", true);
+
+            if (_rectangleStateName != null)
+                _rectangleStateName.Fill = new SolidColorBrush(HoverStateColors);
         }
         #endregion
     }
