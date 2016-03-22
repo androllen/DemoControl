@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Shapes;
 namespace CCUWPToolkit.Controls
 {
     [TemplatePart(Name = RectangleStateName, Type = typeof(Rectangle))]
+    [TemplatePart(Name = ContentPresenterName, Type = typeof(ContentPresenter))]
     [TemplatePart(Name = GridStateName, Type = typeof(Grid))]
     [TemplatePart(Name = ImageStateName, Type = typeof(Image))]
     public class ButtonImage : ButtonImageBase
@@ -23,6 +24,7 @@ namespace CCUWPToolkit.Controls
         /// 矩形控件名字
         /// </summary>
         private const string RectangleStateName = "PART_RectangleStateName";
+        private const string ContentPresenterName = "PART_ContentPresenter";
         /// <summary>
         /// Grid
         /// </summary>
@@ -36,6 +38,7 @@ namespace CCUWPToolkit.Controls
         /// 图片控件
         /// </summary>
         private Image _imageStateName;
+        private ContentPresenter _contentPresenter;
         /// <summary>
         /// 矩形控件
         /// </summary>
@@ -168,6 +171,7 @@ namespace CCUWPToolkit.Controls
             _gridStateName = (Grid)GetTemplateChild(GridStateName);
             _imageStateName = (Image)GetTemplateChild(ImageStateName);
             _rectangleStateName = (Rectangle)GetTemplateChild(RectangleStateName);
+            _contentPresenter = (ContentPresenter)GetTemplateChild(ContentPresenterName);
             _waitForApplyTemplateTaskSource.SetResult(true);
 
         }
@@ -291,12 +295,21 @@ namespace CCUWPToolkit.Controls
             bool newTarget = target.IsGeneratedImageStretch;
             target.OnIsGeneratedImageChanged(oldtarget, newTarget);
         }
-        private void OnIsGeneratedImageChanged(bool oldtarget, bool newTarget)
+        private async void OnIsGeneratedImageChanged(bool oldtarget, bool newTarget)
         {
+            await _waitForApplyTemplateTaskSource.Task;
+
             if (oldtarget != newTarget)
-                _imageStateName.Visibility = Visibility.Collapsed;
-            else
+            {
                 _imageStateName.Visibility = Visibility.Visible;
+                _contentPresenter.Visibility = Visibility.Collapsed;
+
+            }
+            else
+            {
+                _imageStateName.Visibility = Visibility.Collapsed;
+                _contentPresenter.Visibility = Visibility.Visible;
+            }
         }
         #endregion
 

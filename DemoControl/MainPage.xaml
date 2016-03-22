@@ -29,11 +29,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <ctl:ButtonImage x:Name="btn" Grid.Column="0" Grid.Row="0" 
-                         IsEnableColorsStretch="True"
                          NormalStateColors="Yellow"
-                         HoverStateColors="Blue"
-                         PressedStateColors="Green"
-                         Label="注册" FontSize="18" 
+                         IsGeneratedImageStretch="True"
+                         ImageSource="/Assets/StoreLogo.png"
+                         FontSize="18" 
                          Foreground="Black" Click="btn_Click"
                          ButtonHeight="50" ButtonWidth="250"/>
     </Grid>

@@ -89,7 +89,7 @@
                                     VerticalAlignment="{TemplateBinding GeneratedImageVerticalStretch}"
                                     HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}"/>
                             <ContentPresenter
-                                    x:Name="ContentPresenter"
+                                    x:Name="PART_ContentPresenter"
                                     FontSize="{TemplateBinding FontSize}"
                                     VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
                                     HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
