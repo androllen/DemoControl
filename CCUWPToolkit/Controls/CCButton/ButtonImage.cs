@@ -180,30 +180,8 @@ namespace CCUWPToolkit.Controls
             "GeneratedImageHorizontalStretch",
             typeof(HorizontalAlignment),
             typeof(ButtonImage),
-            new PropertyMetadata(HorizontalAlignment.Stretch));
-
-
-
-        private static void OnGeneratedImageHorizontalStretchChanged(
-            DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var target = (ButtonImage)d;
-            HorizontalAlignment oldGeneratedDisabledStateGrayscaleAmount = (HorizontalAlignment)e.OldValue;
-            HorizontalAlignment newGeneratedDisabledStateGrayscaleAmount = target.GeneratedImageHorizontalStretch;
-            target.OnGeneratedHorizontalAlignmentChanged(oldGeneratedDisabledStateGrayscaleAmount, newGeneratedDisabledStateGrayscaleAmount);
-        }
-
-        protected virtual void OnGeneratedHorizontalAlignmentChanged(
-            HorizontalAlignment oldGeneratedDisabledStateGrayscaleAmount, 
-            HorizontalAlignment newGeneratedDisabledStateGrayscaleAmount)
-        {
-            UpdateGeneratedImageHorizontalStretch();
-        }
-        private void UpdateGeneratedImageHorizontalStretch()
-        {
-
-        }
-
+            new PropertyMetadata(HorizontalAlignment.Center));
+       
         #endregion
 
         #region GeneratedImageVerticalStretch
@@ -217,26 +195,36 @@ namespace CCUWPToolkit.Controls
             "GeneratedImageVerticalStretch",
             typeof(VerticalAlignment),
             typeof(ButtonImage),
-            new PropertyMetadata(VerticalAlignment.Stretch));
+            new PropertyMetadata(VerticalAlignment.Center));
+        #endregion
 
-        private static void OnGeneratedImageVerticalStretchChanged(
-            DependencyObject d, DependencyPropertyChangedEventArgs e)
+        #region GeneratedContentHorizontalStretch
+        public HorizontalAlignment GeneratedContentHorizontalStretch
         {
-            var target = (ButtonImage)d;
-            VerticalAlignment oldGeneratedDisabledStateGrayscaleAmount = (VerticalAlignment)e.OldValue;
-            VerticalAlignment newGeneratedDisabledStateGrayscaleAmount = target.GeneratedImageVerticalStretch;
-            target.OnGeneratedVerticalAlignmentChanged(oldGeneratedDisabledStateGrayscaleAmount, newGeneratedDisabledStateGrayscaleAmount);
+            get { return (HorizontalAlignment)GetValue(GeneratedContentHorizontalStretchProperty); }
+            set { SetValue(GeneratedContentHorizontalStretchProperty, value); }
         }
-        protected virtual void OnGeneratedVerticalAlignmentChanged(
-            VerticalAlignment oldGeneratedDisabledStateGrayscaleAmount,
-            VerticalAlignment newGeneratedDisabledStateGrayscaleAmount)
-        {
-            UpdateGeneratedImageVerticalStretch();
-        }
-        private void UpdateGeneratedImageVerticalStretch()
-        {
+        public static readonly DependencyProperty GeneratedContentHorizontalStretchProperty =
+            DependencyProperty.Register(
+            "GeneratedContentHorizontalStretch",
+            typeof(HorizontalAlignment),
+            typeof(ButtonImage),
+            new PropertyMetadata(HorizontalAlignment.Center));
 
+        #endregion
+
+        #region GeneratedContentVerticalStretch
+        public VerticalAlignment GeneratedContentVerticalStretch
+        {
+            get { return (VerticalAlignment)GetValue(GeneratedContentVerticalStretchProperty); }
+            set { SetValue(GeneratedContentVerticalStretchProperty, value); }
         }
+        public static readonly DependencyProperty GeneratedContentVerticalStretchProperty =
+            DependencyProperty.Register(
+            "GeneratedContentVerticalStretch",
+            typeof(VerticalAlignment),
+            typeof(ButtonImage),
+            new PropertyMetadata(VerticalAlignment.Center));
         #endregion
 
         #region IsGeneratedImageStretch

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoControl", "DemoControl\DemoControl.csproj", "{E6C2D07C-CE85-4314-8330-8143FF573FF6}"
 EndProject
@@ -9,17 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCUWPToolkit", "CCUWPToolki
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
 		Debug|ARM = Debug|ARM
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
-		Release|Any CPU = Release|Any CPU
 		Release|ARM = Release|ARM
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E6C2D07C-CE85-4314-8330-8143FF573FF6}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{E6C2D07C-CE85-4314-8330-8143FF573FF6}.Debug|ARM.ActiveCfg = Debug|ARM
 		{E6C2D07C-CE85-4314-8330-8143FF573FF6}.Debug|ARM.Build.0 = Debug|ARM
 		{E6C2D07C-CE85-4314-8330-8143FF573FF6}.Debug|ARM.Deploy.0 = Debug|ARM
@@ -29,7 +26,6 @@ Global
 		{E6C2D07C-CE85-4314-8330-8143FF573FF6}.Debug|x86.ActiveCfg = Debug|x86
 		{E6C2D07C-CE85-4314-8330-8143FF573FF6}.Debug|x86.Build.0 = Debug|x86
 		{E6C2D07C-CE85-4314-8330-8143FF573FF6}.Debug|x86.Deploy.0 = Debug|x86
-		{E6C2D07C-CE85-4314-8330-8143FF573FF6}.Release|Any CPU.ActiveCfg = Release|x86
 		{E6C2D07C-CE85-4314-8330-8143FF573FF6}.Release|ARM.ActiveCfg = Release|ARM
 		{E6C2D07C-CE85-4314-8330-8143FF573FF6}.Release|ARM.Build.0 = Release|ARM
 		{E6C2D07C-CE85-4314-8330-8143FF573FF6}.Release|ARM.Deploy.0 = Release|ARM
@@ -39,16 +35,12 @@ Global
 		{E6C2D07C-CE85-4314-8330-8143FF573FF6}.Release|x86.ActiveCfg = Release|x86
 		{E6C2D07C-CE85-4314-8330-8143FF573FF6}.Release|x86.Build.0 = Release|x86
 		{E6C2D07C-CE85-4314-8330-8143FF573FF6}.Release|x86.Deploy.0 = Release|x86
-		{057CA838-C89F-4130-A391-AA8DF7AC1886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{057CA838-C89F-4130-A391-AA8DF7AC1886}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{057CA838-C89F-4130-A391-AA8DF7AC1886}.Debug|ARM.ActiveCfg = Debug|ARM
 		{057CA838-C89F-4130-A391-AA8DF7AC1886}.Debug|ARM.Build.0 = Debug|ARM
 		{057CA838-C89F-4130-A391-AA8DF7AC1886}.Debug|x64.ActiveCfg = Debug|x64
 		{057CA838-C89F-4130-A391-AA8DF7AC1886}.Debug|x64.Build.0 = Debug|x64
 		{057CA838-C89F-4130-A391-AA8DF7AC1886}.Debug|x86.ActiveCfg = Debug|x86
 		{057CA838-C89F-4130-A391-AA8DF7AC1886}.Debug|x86.Build.0 = Debug|x86
-		{057CA838-C89F-4130-A391-AA8DF7AC1886}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{057CA838-C89F-4130-A391-AA8DF7AC1886}.Release|Any CPU.Build.0 = Release|Any CPU
 		{057CA838-C89F-4130-A391-AA8DF7AC1886}.Release|ARM.ActiveCfg = Release|ARM
 		{057CA838-C89F-4130-A391-AA8DF7AC1886}.Release|ARM.Build.0 = Release|ARM
 		{057CA838-C89F-4130-A391-AA8DF7AC1886}.Release|x64.ActiveCfg = Release|x64

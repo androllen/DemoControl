@@ -28,7 +28,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ctl:ButtonImage x:Name="btn" Grid.Column="0" Grid.Row="0" NormalStateColors="AliceBlue"
-                         Height="50" Width="150" Label="sss" Foreground="Black" Click="btn_Click"/>
+        <ctl:ButtonImage x:Name="btn" Grid.Column="0" Grid.Row="0" NormalStateColors="Yellow"
+                          Label="sss" Foreground="Black" Click="btn_Click"/>
     </Grid>
 </Page>
