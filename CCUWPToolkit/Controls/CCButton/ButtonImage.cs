@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.System.Profile;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
 
@@ -75,7 +77,7 @@ namespace CCUWPToolkit.Controls
         /// <summary>
         /// 悬停
         /// </summary>
-        private Color HoverStateColors
+        public Color HoverStateColors
         {
             get { return (Color)GetValue(HoverStateColorsProperty); }
             set { SetValue(HoverStateColorsProperty, value); }
@@ -102,7 +104,7 @@ namespace CCUWPToolkit.Controls
         /// <summary>
         /// 按下
         /// </summary>
-        private Color PressedStateColors
+        public Color PressedStateColors
         {
             get { return (Color)GetValue(PressedStateColorsProperty); }
             set { SetValue(PressedStateColorsProperty, value); }
@@ -149,6 +151,7 @@ namespace CCUWPToolkit.Controls
             //to do
             target.UpdateRectangleState(oldtarget, newTarget);
         }
+        #endregion
         private async void UpdateRectangleState(Color oldtarget, Color newTarget)
         {
             await _waitForApplyTemplateTaskSource.Task;
@@ -156,7 +159,6 @@ namespace CCUWPToolkit.Controls
             if (_rectangleStateName != null)
                 _rectangleStateName.Fill = new SolidColorBrush(newTarget);
         }
-        #endregion
         private readonly TaskCompletionSource<bool> _waitForApplyTemplateTaskSource = new TaskCompletionSource<bool>(false);
 
 
@@ -167,6 +169,68 @@ namespace CCUWPToolkit.Controls
             _imageStateName = (Image)GetTemplateChild(ImageStateName);
             _rectangleStateName = (Rectangle)GetTemplateChild(RectangleStateName);
             _waitForApplyTemplateTaskSource.SetResult(true);
+            
+        }
+
+        public enum DeviceFamily
+        {
+            /// <summary>
+            ///     Unknown
+            /// </summary>
+            Unknown,
+
+            /// <summary>
+            ///     Desktop
+            /// </summary>
+            Desktop,
+
+            /// <summary>
+            ///     Mobile
+            /// </summary>
+            Mobile,
+
+            /// <summary>
+            ///     Team
+            /// </summary>
+            Team,
+
+            /// <summary>
+            ///     Windows IoT
+            /// </summary>
+            IoT,
+
+            /// <summary>
+            ///     Xbox
+            /// </summary>
+            Xbox
+        }
+        public static bool IsType(DeviceFamily family)
+        {
+            return $"Windows.{family}" == AnalyticsInfo.VersionInfo.DeviceFamily;
+        }
+        private void OnPointerExited(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
+        {
+            VisualStateManager.GoToState(this, "Normal", true);
+            if (_rectangleStateName != null)
+                _rectangleStateName.Fill = new SolidColorBrush(NormalStateColors);
+        }
+        private void OnPointerPressed(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
+        {
+            if (_rectangleStateName != null)
+                _rectangleStateName.Fill = new SolidColorBrush(PressedStateColors);
+        }
+        private void OnPointerReleased(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
+        {
+
+            if (_rectangleStateName != null)
+                _rectangleStateName.Fill = new SolidColorBrush(NormalStateColors);
+        }
+        private void OnPointerEntered(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
+        {
+            VisualStateManager.GoToState(this, "PointerOver", true);
+
+            if (_rectangleStateName != null)
+                _rectangleStateName.Fill = new SolidColorBrush(HoverStateColors);
         }
 
         #region GeneratedImageHorizontalStretch
@@ -181,7 +245,7 @@ namespace CCUWPToolkit.Controls
             typeof(HorizontalAlignment),
             typeof(ButtonImage),
             new PropertyMetadata(HorizontalAlignment.Center));
-       
+
         #endregion
 
         #region GeneratedImageVerticalStretch
@@ -250,7 +314,7 @@ namespace CCUWPToolkit.Controls
             bool newTarget = target.IsGeneratedImageStretch;
             target.OnIsGeneratedImageChanged(oldtarget, newTarget);
         }
-        private void OnIsGeneratedImageChanged(bool oldtarget,bool newTarget)
+        private void OnIsGeneratedImageChanged(bool oldtarget, bool newTarget)
         {
             if (oldtarget != newTarget)
                 _imageStateName.Visibility = Visibility.Collapsed;
@@ -259,5 +323,41 @@ namespace CCUWPToolkit.Controls
         }
         #endregion
 
+        #region IsEnableColorsStretch
+        /// <summary>
+        /// 是否启用三种状态
+        /// </summary>
+        public bool IsEnableColorsStretch
+        {
+            get { return (bool)GetValue(IsEnableColorsStretchProperty); }
+            set { SetValue(IsEnableColorsStretchProperty, value); }
+        }
+        public static readonly DependencyProperty IsEnableColorsStretchProperty =
+            DependencyProperty.Register(
+            "IsEnableColorsStretch",
+            typeof(bool),
+            typeof(ButtonImage),
+            new PropertyMetadata(false, OnIsEnableColorsStretchChanged));
+        private static void OnIsEnableColorsStretchChanged(
+            DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var target = (ButtonImage)d;
+            bool oldtarget = (bool)e.OldValue;
+            bool newTarget = target.IsEnableColorsStretch;
+            target.OnIsEnableColorsChanged(oldtarget, newTarget);
+        }
+        private void OnIsEnableColorsChanged(bool oldtarget, bool newTarget)
+        {
+            if (oldtarget != newTarget)
+            {
+                if (IsType(DeviceFamily.Mobile)) return;
+                PointerEntered += OnPointerEntered;
+                PointerExited += OnPointerExited;
+                PointerPressed += OnPointerPressed;
+                PointerReleased += OnPointerReleased;
+            }
+
+        }
+        #endregion
     }
 }

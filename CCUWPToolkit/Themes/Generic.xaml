@@ -22,10 +22,9 @@
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
-                                            Storyboard.TargetName="PART_RectangleStateName">
-                                            <DiscreteDoubleKeyFrame
-                                                KeyTime="0"
-                                                Value="1.0"/>
+                                            Storyboard.TargetName="PART_GridStateName">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.0"/>
                                         </DoubleAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -35,14 +34,8 @@
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
                                             Storyboard.TargetName="PART_GridStateName">
-                                            <DiscreteDoubleKeyFrame
-                                                KeyTime="0:0:0.2"
-                                                Value="0.7"/>
-                                            <!--<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="5">
-                                                <EasingDoubleKeyFrame.EasingFunction>
-                                                    <CircleEase EasingMode="EaseIn"/>
-                                                </EasingDoubleKeyFrame.EasingFunction>
-                                            </EasingDoubleKeyFrame>-->
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="1.0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
                                         </DoubleAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -52,21 +45,15 @@
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
                                             Storyboard.TargetName="PART_GridStateName">
-                                            <DiscreteDoubleKeyFrame
-                                                KeyTime="0:0:0.2"
-                                                Value="0.4" />
-                                            <!--<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="5">
-                                                <EasingDoubleKeyFrame.EasingFunction>
-                                                    <CircleEase EasingMode="EaseOut"/>
-                                                </EasingDoubleKeyFrame.EasingFunction>
-                                            </EasingDoubleKeyFrame>-->
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.3"/>
                                         </DoubleAnimationUsingKeyFrames>
-                                        <!--<DoubleAnimation Duration="0:0:0.2" To="0.9"
+                                        <DoubleAnimation Duration="0:0:0.2" To="0.95" From="1"
                                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)"
                                                          Storyboard.TargetName="PART_GridStateName" />
-                                        <DoubleAnimation Duration="0:0:0.2" To="0.9"
+                                        <DoubleAnimation Duration="0:0:0.2" To="0.95" From="1"
                                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)"
-                                                         Storyboard.TargetName="PART_GridStateName" />-->
+                                                         Storyboard.TargetName="PART_GridStateName" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState
@@ -89,11 +76,12 @@
                         </Border>-->
                         <Grid x:Name="PART_GridStateName"
                             Height="{TemplateBinding ButtonHeight}"
-                            Width="{TemplateBinding ButtonWidth}" >
+                            Width="{TemplateBinding ButtonWidth}" 
+                            RenderTransformOrigin="0.5,0.6">
                             <Grid.RenderTransform>
-                                <CompositeTransform/>
+                                <CompositeTransform />
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="PART_RectangleStateName"/>
+                            <Rectangle x:Name="PART_RectangleStateName" />
                             <Image
                                     x:Name="PART_ImageStateName"
                                     Stretch="None"
@@ -102,6 +90,7 @@
                                     HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}"/>
                             <ContentPresenter
                                     x:Name="ContentPresenter"
+                                    FontSize="{TemplateBinding FontSize}"
                                     VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
                                     HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
                                     Content="{TemplateBinding Label}" />
