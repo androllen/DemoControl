@@ -26,5 +26,10 @@ namespace DemoControl
         {
             this.InitializeComponent();
         }
+
+        private void btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

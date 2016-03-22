@@ -113,7 +113,16 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\Button\ButtonColors.cs" />
+    <Compile Include="Controls\CCButton\ButtonBase.cs" />
+    <Compile Include="Controls\CCButton\ButtonColors.cs" />
+    <Compile Include="Controls\CCButton\ButtonColorsBase.cs" />
+    <Compile Include="Controls\CCButton\ButtonImage.cs" />
+    <Compile Include="Controls\CCButton\ButtonImageBase.cs" />
+    <Compile Include="Controls\CCButton\IButtonBase.cs" />
+    <Compile Include="Controls\CCButton\IButtonEnabled.cs" />
+    <Compile Include="Controls\CCButton\IButtonSize.cs" />
+    <Compile Include="Controls\CCButton\IColorsSource.cs" />
+    <Compile Include="Controls\CCButton\IImageSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Properties\CCUWPToolkit.rd.xml" />
   </ItemGroup>

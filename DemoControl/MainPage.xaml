@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ctl="using:CCUWPToolkit.Controls"
     mc:Ignorable="d">
-
+    <!---->
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -28,7 +28,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ctl:ButtonColors x:Name="btn" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
-                         Height="50" Width="150" Background="Red" Content="aaaaaa"/>
+        <ctl:ButtonImage x:Name="btn" Grid.Column="0" Grid.Row="0" NormalStateColors="AliceBlue"
+                         Height="50" Width="150" Label="sss" Foreground="Black" Click="btn_Click"/>
     </Grid>
 </Page>
