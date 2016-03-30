@@ -313,7 +313,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -333,9 +333,12 @@
                          FontSize="18" 
                          Foreground="Black" Click="btn_Click"
                          ButtonHeight="50" ButtonWidth="250"/>
-      <ctl:WYTextBox BorderBrush="Red" BorderThickness="0" Background="AliceBlue"
-                Grid.Column="0" Grid.Row="1" NormalStateColors="Black" PressedStateColors="Brown"
-                PlaceholderText="Name" FontSize="25"/>
+        <ctl:WYTextBox BorderBrush="Black" BorderThickness="1" Background="Transparent"
+                Grid.Column="0" Grid.Row="1" NormalStateColors="Black" PressedStateColors="Brown" 
+                PlaceholderText="请输入手机号码" />
+        <ctl:WYTextBox BorderBrush="Black" BorderThickness="1" Background="Transparent"
+            Grid.Column="1" Grid.Row="1" NormalStateColors="Black" PressedStateColors="Brown" 
+            PlaceholderText="请输入手机号码" />
         <PasswordBox Background="AliceBlue" Grid.Column="1" Grid.Row="0" 
                      PlaceholderText="Name" FontSize="28"/>
     </Grid>

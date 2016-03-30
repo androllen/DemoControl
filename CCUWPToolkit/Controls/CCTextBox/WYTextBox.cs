@@ -38,6 +38,7 @@ namespace CCUWPToolkit.Controls
             _waitForApplyTemplateTaskSource.SetResult(true);
             _gridStateName = (Grid)GetTemplateChild(GridStateName);
             _placeholderTextContentPresenter = (ContentControl)GetTemplateChild(PlaceholderTextStateName);
+         
             if (_gridStateName != null)
             {
                 this.TextChanging += WYTextBox_TextChanging;
