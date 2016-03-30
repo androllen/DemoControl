@@ -38,14 +38,23 @@ namespace CCUWPToolkit.Controls
             _waitForApplyTemplateTaskSource.SetResult(true);
             _gridStateName = (Grid)GetTemplateChild(GridStateName);
             _placeholderTextContentPresenter = (ContentControl)GetTemplateChild(PlaceholderTextStateName);
-
             if (_gridStateName != null)
             {
+                this.TextChanging += WYTextBox_TextChanging;
+                _gridStateName.PointerEntered += OnPointerEntered;
                 _gridStateName.PointerExited += OnPointerExited;
                 _gridStateName.PointerPressed += OnPointerPressed;
                 _gridStateName.PointerReleased += OnPointerReleased;
             }
             base.OnApplyTemplate();
+        }
+
+        private void WYTextBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            if (string.IsNullOrEmpty(sender.Text))
+                _placeholderTextContentPresenter.Visibility = Visibility.Visible;
+            else
+                _placeholderTextContentPresenter.Visibility = Visibility.Collapsed;
         }
 
         private void OnPointerExited(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
@@ -65,7 +74,11 @@ namespace CCUWPToolkit.Controls
                 _placeholderTextContentPresenter.Foreground = new SolidColorBrush(NormalStateColors);
         }
 
-
+        private void OnPointerEntered(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
+        {
+            if (_placeholderTextContentPresenter != null)
+                _placeholderTextContentPresenter.Foreground = new SolidColorBrush(PressedStateColors);
+        }
         #region NormalStateColors
         /// <summary>
         /// 正常
