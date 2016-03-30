@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ctl="using:CCUWPToolkit.Controls"
     mc:Ignorable="d">
+
     <!---->
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
@@ -35,5 +36,10 @@
                          FontSize="18" 
                          Foreground="Black" Click="btn_Click"
                          ButtonHeight="50" ButtonWidth="250"/>
+       <ctl:WYTextBox BorderBrush="Red" BorderThickness="0" Background="AliceBlue"
+                Grid.Column="0" Grid.Row="1" NormalStateColors="Black" PressedStateColors="Brown"
+                PlaceholderText="Name" FontSize="25"/>
+        <PasswordBox Background="AliceBlue" Grid.Column="1" Grid.Row="0" 
+                     PlaceholderText="Name" FontSize="28" />
     </Grid>
 </Page>

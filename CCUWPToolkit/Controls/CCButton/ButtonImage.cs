@@ -49,7 +49,7 @@ namespace CCUWPToolkit.Controls
             DefaultStyleKey = typeof(ButtonImage);
         }
 
-        #region NormalStateImage
+        #region NormalStateColors
         /// <summary>
         /// 正常
         /// </summary>

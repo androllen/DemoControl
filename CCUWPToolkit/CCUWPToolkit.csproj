@@ -104,6 +104,7 @@
     <Compile Include="Controls\CCButton\IButtonSize.cs" />
     <Compile Include="Controls\CCButton\IColorsSource.cs" />
     <Compile Include="Controls\CCButton\IImageSource.cs" />
+    <Compile Include="Controls\CCTextBox\WYTextBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Properties\CCUWPToolkit.rd.xml" />
   </ItemGroup>
