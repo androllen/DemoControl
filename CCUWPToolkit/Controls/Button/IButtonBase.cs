@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CCUWPToolkit.Controls.CCButton
+namespace CCUWPToolkit.Controls
 {
-    interface IButtonEnabled
+    public interface IButtonBase
     {
-        bool IsEnabled { get; set; }
+        object Label { get; set; }
     }
 }

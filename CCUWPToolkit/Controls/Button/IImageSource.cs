@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Media;
 
-namespace CCUWPToolkit.Controls.CCButton
+namespace CCUWPToolkit.Controls
 {
-    interface IImageSource : IButtonSize
+    interface IImageSource
     {
         Stretch Stretch { get; set; }
         ImageSource ImageSource { get; set; }

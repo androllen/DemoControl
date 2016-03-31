@@ -42,16 +42,8 @@ namespace CCUWPToolkit.Controls
             _gridStateName = (Grid)GetTemplateChild(GridStateName);
             _placeholderTextContentPresenter = (ContentControl)GetTemplateChild(PlaceholderTextStateName);
             _borderElementStateName = (Border)GetTemplateChild(BorderElementStateName);
+            this.TextChanging += WYTextBox_TextChanging;
 
-            if (_gridStateName != null)
-            {
-                this.TextChanging += WYTextBox_TextChanging;
-                _gridStateName.PointerEntered += OnPointerEntered;
-                _gridStateName.PointerExited += OnPointerExited;
-                _gridStateName.PointerPressed += OnPointerPressed;
-                _gridStateName.PointerReleased += OnPointerReleased;
-
-            }
             base.OnApplyTemplate();
         }
 
@@ -63,37 +55,6 @@ namespace CCUWPToolkit.Controls
                 _placeholderTextContentPresenter.Visibility = Visibility.Collapsed;
         }
 
-        private void OnPointerExited(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
-        {
-            VisualStateManager.GoToState(this, "Normal", true);
-            if (_placeholderTextContentPresenter != null)
-                _placeholderTextContentPresenter.Foreground = new SolidColorBrush(NormalStateColors);
-            if (_borderElementStateName != null)
-                _borderElementStateName.BorderBrush = new SolidColorBrush(NormalStateColors);
-        }
-        private void OnPointerPressed(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
-        {
-            if (_placeholderTextContentPresenter != null)
-                _placeholderTextContentPresenter.Foreground = new SolidColorBrush(PressedStateColors);
-            if (_borderElementStateName != null)
-                _borderElementStateName.BorderBrush = new SolidColorBrush(PressedStateColors);
-        }
-        private void OnPointerReleased(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
-        {
-            if (_placeholderTextContentPresenter != null)
-                _placeholderTextContentPresenter.Foreground = new SolidColorBrush(NormalStateColors);
-
-            if (_borderElementStateName != null)
-                _borderElementStateName.BorderBrush = new SolidColorBrush(NormalStateColors);
-        }
-
-        private void OnPointerEntered(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
-        {
-            if (_placeholderTextContentPresenter != null)
-                _placeholderTextContentPresenter.Foreground = new SolidColorBrush(PressedStateColors);
-            if (_borderElementStateName != null)
-                _borderElementStateName.BorderBrush = new SolidColorBrush(PressedStateColors);
-        }
         #region NormalStateColors
         /// <summary>
         /// 正常
@@ -153,6 +114,7 @@ namespace CCUWPToolkit.Controls
             //    _rectangleStateName.Fill = new SolidColorBrush(newTarget);
         }
 
+
          public HorizontalAlignment DelHorAligStretch
         {
             get { return (HorizontalAlignment)GetValue(DelHorAligStretchProperty); }
@@ -163,7 +125,7 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register("DelHorAligStretch",
                 typeof(HorizontalAlignment),
                 typeof(WYTextBox),
-                new PropertyMetadata(HorizontalAlignment.Center));
+                new PropertyMetadata(HorizontalAlignment.Left));
 
         public VerticalAlignment DelVerAligStretch
         {
@@ -176,5 +138,104 @@ namespace CCUWPToolkit.Controls
                 typeof(VerticalAlignment),
                 typeof(WYTextBox),
                 new PropertyMetadata(VerticalAlignment.Center));
+
+        public Thickness DelBorderThicknessPadding
+        {
+            get { return (Thickness)GetValue(DelBorderThicknessPaddingProperty); }
+            set { SetValue(DelBorderThicknessPaddingProperty, value); }
+        }
+
+        private static readonly DependencyProperty DelBorderThicknessPaddingProperty =
+            DependencyProperty.Register("DelBorderThicknessPadding",
+                typeof(Thickness),
+                typeof(WYTextBox),
+                new PropertyMetadata(new Thickness(1)));
+
+        //
+        private Thickness HelperThicknessPadding
+        {
+            get { return (Thickness)GetValue(HelperThicknessPaddingProperty); }
+            set { SetValue(HelperThicknessPaddingProperty, value); }
+        }
+
+        private static readonly DependencyProperty HelperThicknessPaddingProperty =
+            DependencyProperty.Register("HelperThicknessPadding",
+                typeof(Thickness),
+                typeof(WYTextBox),
+                new PropertyMetadata(new Thickness(10,5,5,5)));
+
+        #region IsEnableColorsStretch
+        /// <summary>
+        /// 是否启用2种状态
+        /// 不可用时使用系统 Foreground
+        /// </summary>
+        public bool IsEnableColorsStretch
+        {
+            get { return (bool)GetValue(IsEnableColorsStretchProperty); }
+            set { SetValue(IsEnableColorsStretchProperty, value); }
+        }
+        public static readonly DependencyProperty IsEnableColorsStretchProperty =
+            DependencyProperty.Register(
+            "IsEnableColorsStretch",
+            typeof(bool),
+            typeof(WYTextBox),
+            new PropertyMetadata(false, OnIsEnableColorsStretchChanged));
+
+        private static void OnIsEnableColorsStretchChanged(
+            DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var target = (WYTextBox)d;
+            bool oldtarget = (bool)e.OldValue;
+            bool newTarget = target.IsEnableColorsStretch;
+            target.OnIsEnableColorsChanged(oldtarget, newTarget);
+        }
+        private async void OnIsEnableColorsChanged(bool oldtarget, bool newTarget)
+        {
+            await _waitForApplyTemplateTaskSource.Task;
+
+            if (oldtarget != newTarget && _gridStateName != null)
+            {
+                _gridStateName.PointerEntered += OnPointerEntered;
+                _gridStateName.PointerExited += OnPointerExited;
+                _gridStateName.PointerPressed += OnPointerPressed;
+                _gridStateName.PointerReleased += OnPointerReleased;
+            }
+        }
+
+        private void OnPointerExited(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
+        {
+            VisualStateManager.GoToState(this, "Normal", true);
+            if (_placeholderTextContentPresenter != null)
+            {
+                _placeholderTextContentPresenter.Foreground = new SolidColorBrush(NormalStateColors);
+                _placeholderTextContentPresenter.Opacity = 1;
+            }
+        }
+        private void OnPointerPressed(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
+        {
+            if (_placeholderTextContentPresenter != null)
+            {
+                _placeholderTextContentPresenter.Foreground = new SolidColorBrush(PressedStateColors);
+                _placeholderTextContentPresenter.Opacity = 0.6;
+            }
+        }
+        private void OnPointerReleased(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
+        {
+            if (_placeholderTextContentPresenter != null)
+            {
+                _placeholderTextContentPresenter.Foreground = new SolidColorBrush(NormalStateColors);
+                _placeholderTextContentPresenter.Opacity = 0.6;
+            }
+        }
+
+        private void OnPointerEntered(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
+        {
+            if (_placeholderTextContentPresenter != null)
+            {
+                _placeholderTextContentPresenter.Foreground = new SolidColorBrush(PressedStateColors);
+                _placeholderTextContentPresenter.Opacity = 0.6;
+            }
+        }
+        #endregion
     }
 }
