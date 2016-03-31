@@ -17,6 +17,7 @@ namespace CCUWPToolkit.Controls
 {
     [TemplatePart(Name = GridStateName, Type = typeof(Grid))]
     [TemplatePart(Name = PlaceholderTextStateName, Type = typeof(ContentControl))]
+    [TemplatePart(Name = BorderElementStateName,Type =typeof(Border))]
     public class WYTextBox : TextBox
     {
         private readonly TaskCompletionSource<bool> _waitForApplyTemplateTaskSource = new TaskCompletionSource<bool>(false);
@@ -25,9 +26,11 @@ namespace CCUWPToolkit.Controls
         /// </summary>
         private const string GridStateName = "PART_GridRootStateName";
         private const string PlaceholderTextStateName = "PART_PlaceholderTextContentPresenter";
+        private const string BorderElementStateName = "PART_BorderElement";
 
         private Grid _gridStateName;
         private ContentControl _placeholderTextContentPresenter;
+        private Border _borderElementStateName;
         public WYTextBox()
         {
             DefaultStyleKey = typeof(WYTextBox);
@@ -38,7 +41,8 @@ namespace CCUWPToolkit.Controls
             _waitForApplyTemplateTaskSource.SetResult(true);
             _gridStateName = (Grid)GetTemplateChild(GridStateName);
             _placeholderTextContentPresenter = (ContentControl)GetTemplateChild(PlaceholderTextStateName);
-         
+            _borderElementStateName = (Border)GetTemplateChild(BorderElementStateName);
+
             if (_gridStateName != null)
             {
                 this.TextChanging += WYTextBox_TextChanging;
@@ -46,6 +50,7 @@ namespace CCUWPToolkit.Controls
                 _gridStateName.PointerExited += OnPointerExited;
                 _gridStateName.PointerPressed += OnPointerPressed;
                 _gridStateName.PointerReleased += OnPointerReleased;
+
             }
             base.OnApplyTemplate();
         }
@@ -63,22 +68,31 @@ namespace CCUWPToolkit.Controls
             VisualStateManager.GoToState(this, "Normal", true);
             if (_placeholderTextContentPresenter != null)
                 _placeholderTextContentPresenter.Foreground = new SolidColorBrush(NormalStateColors);
+            if (_borderElementStateName != null)
+                _borderElementStateName.BorderBrush = new SolidColorBrush(NormalStateColors);
         }
         private void OnPointerPressed(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
         {
             if (_placeholderTextContentPresenter != null)
                 _placeholderTextContentPresenter.Foreground = new SolidColorBrush(PressedStateColors);
+            if (_borderElementStateName != null)
+                _borderElementStateName.BorderBrush = new SolidColorBrush(PressedStateColors);
         }
         private void OnPointerReleased(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
         {
             if (_placeholderTextContentPresenter != null)
                 _placeholderTextContentPresenter.Foreground = new SolidColorBrush(NormalStateColors);
+
+            if (_borderElementStateName != null)
+                _borderElementStateName.BorderBrush = new SolidColorBrush(NormalStateColors);
         }
 
         private void OnPointerEntered(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
         {
             if (_placeholderTextContentPresenter != null)
                 _placeholderTextContentPresenter.Foreground = new SolidColorBrush(PressedStateColors);
+            if (_borderElementStateName != null)
+                _borderElementStateName.BorderBrush = new SolidColorBrush(PressedStateColors);
         }
         #region NormalStateColors
         /// <summary>
@@ -103,7 +117,6 @@ namespace CCUWPToolkit.Controls
             Color newTarget = target.NormalStateColors;
             //to do
             target.UpdateRectangleState(oldtarget, newTarget);
-
         }
         #endregion
         #region PressedStateColors
@@ -139,5 +152,29 @@ namespace CCUWPToolkit.Controls
             //if (_rectangleStateName != null)
             //    _rectangleStateName.Fill = new SolidColorBrush(newTarget);
         }
+
+         public HorizontalAlignment DelHorAligStretch
+        {
+            get { return (HorizontalAlignment)GetValue(DelHorAligStretchProperty); }
+            set { SetValue(DelHorAligStretchProperty, value); }
+        }
+
+        private static readonly DependencyProperty DelHorAligStretchProperty =
+            DependencyProperty.Register("DelHorAligStretch",
+                typeof(HorizontalAlignment),
+                typeof(WYTextBox),
+                new PropertyMetadata(HorizontalAlignment.Center));
+
+        public VerticalAlignment DelVerAligStretch
+        {
+            get { return (VerticalAlignment)GetValue(DelVerAligStretchProperty); }
+            set { SetValue(DelVerAligStretchProperty, value); }
+        }
+
+        private static readonly DependencyProperty DelVerAligStretchProperty =
+            DependencyProperty.Register("DelVerAligStretch",
+                typeof(VerticalAlignment),
+                typeof(WYTextBox),
+                new PropertyMetadata(VerticalAlignment.Center));
     }
 }
