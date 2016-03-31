@@ -152,14 +152,14 @@ namespace CCUWPToolkit.Controls
                 new PropertyMetadata(new Thickness(1)));
 
         //
-        private Thickness HelperThicknessPadding
+        public Thickness AlignmentThicknessPadding
         {
-            get { return (Thickness)GetValue(HelperThicknessPaddingProperty); }
-            set { SetValue(HelperThicknessPaddingProperty, value); }
+            get { return (Thickness)GetValue(AlignmentThicknessPaddingProperty); }
+            set { SetValue(AlignmentThicknessPaddingProperty, value); }
         }
 
-        private static readonly DependencyProperty HelperThicknessPaddingProperty =
-            DependencyProperty.Register("HelperThicknessPadding",
+        private static readonly DependencyProperty AlignmentThicknessPaddingProperty =
+            DependencyProperty.Register("AlignmentThicknessPadding",
                 typeof(Thickness),
                 typeof(WYTextBox),
                 new PropertyMetadata(new Thickness(10,5,5,5)));

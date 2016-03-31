@@ -116,7 +116,7 @@
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
-                                            Storyboard.TargetName="PART_BorderStateName">
+                                            Storyboard.TargetName="PART_GridStateName">
                                             <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundHoverOpacity}"/>
                                             <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundFocusedOpacity}"/>
                                         </DoubleAnimationUsingKeyFrames>
@@ -127,7 +127,7 @@
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
-                                            Storyboard.TargetName="PART_BorderStateName">
+                                            Storyboard.TargetName="PART_GridStateName">
                                             <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundFocusedOpacity}"/>
                                             <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundHoverOpacity}"/>
                                         </DoubleAnimationUsingKeyFrames>
@@ -138,16 +138,16 @@
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
-                                            Storyboard.TargetName="PART_BorderStateName">
+                                            Storyboard.TargetName="PART_GridStateName">
                                             <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundHoverOpacity}"/>
                                             <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundRestOpacity}"/>
                                         </DoubleAnimationUsingKeyFrames>
                                         <DoubleAnimation Duration="0:0:0.2" To="0.98" From="1"
                                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)"
-                                                         Storyboard.TargetName="PART_BorderStateName" />
+                                                         Storyboard.TargetName="PART_GridStateName" />
                                         <DoubleAnimation Duration="0:0:0.2" To="0.98" From="1"
                                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)"
-                                                         Storyboard.TargetName="PART_BorderStateName" />
+                                                         Storyboard.TargetName="PART_GridStateName" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState
@@ -164,20 +164,26 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Border x:Name="PART_BorderStateName"
+                        <Grid x:Name="PART_GridStateName"
                             RenderTransformOrigin="0.5,0.5" 
                             CornerRadius="{TemplateBinding CornerSource}"
                             Background="{TemplateBinding ColorsSource}">
-                            <Border.RenderTransform>
+                            <Grid.RenderTransform>
                                 <CompositeTransform />
-                            </Border.RenderTransform>
+                            </Grid.RenderTransform>
+                            <Image
+                                    x:Name="PART_ImageStateName"
+                                    Stretch="None"
+                                    Source="{TemplateBinding ImageSource}"
+                                    VerticalAlignment="{TemplateBinding GeneratedImageVerticalStretch}"
+                                    HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}"/>
                             <ContentPresenter
                                     x:Name="PART_ContentPresenter"
                                     FontSize="{TemplateBinding FontSize}"
                                     VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
                                     HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
                                     Content="{TemplateBinding Label}" />
-                        </Border>
+                        </Grid>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -340,7 +346,7 @@
                         <ContentControl x:Name="ContentElement" 
                                       AutomationProperties.AccessibilityView="Raw" 
                                       Margin="{TemplateBinding BorderThickness}" 
-                                      Padding="{TemplateBinding HelperThicknessPadding}" 
+                                      Padding="{TemplateBinding AlignmentThicknessPadding}" 
                                       Grid.Row="1" IsTabStop="False" 
                                       MinWidth="{TemplateBinding MaxWidth}"
                                       VerticalAlignment="{TemplateBinding DelVerAligStretch}"
@@ -352,7 +358,7 @@
                                         Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" 
                                         IsHitTestVisible="False" IsTabStop="False" 
                                         Margin="{TemplateBinding BorderThickness}" 
-                                        Padding="{TemplateBinding HelperThicknessPadding}" 
+                                        Padding="{TemplateBinding AlignmentThicknessPadding}" 
                                         HorizontalAlignment="Left" 
                                         VerticalAlignment="Center"/>
                         <Button x:Name="DeleteButton" 
@@ -361,7 +367,7 @@
                                 BorderThickness="{TemplateBinding DelBorderThicknessPadding}" 
                                 FontSize="{TemplateBinding FontSize}" 
                                 IsTabStop="False" 
-                                Margin="{TemplateBinding HelperThicknessPadding}" 
+                                Margin="{TemplateBinding AlignmentThicknessPadding}" 
                                 MinWidth="34" MinHeight="34"
                                 Style="{StaticResource DeleteButtonStyle}" 
                                 Visibility="Collapsed" 

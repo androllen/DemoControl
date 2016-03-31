@@ -96,11 +96,8 @@
   <ItemGroup>
     <Compile Include="Controls\Button\ButtonBase.cs" />
     <Compile Include="Controls\Button\ButtonColors.cs" />
-    <Compile Include="Controls\Button\ButtonColorsBase.cs" />
     <Compile Include="Controls\Button\ButtonImage.cs" />
-    <Compile Include="Controls\Button\ButtonImageBase.cs" />
     <Compile Include="Controls\Button\IButtonBase.cs" />
-    <Compile Include="Controls\Button\IColorsSource.cs" />
     <Compile Include="Controls\Button\IImageSource.cs" />
     <Compile Include="Controls\TextBox\WYTextBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

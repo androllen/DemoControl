@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Shapes;
 namespace CCUWPToolkit.Controls
 {
 
-    public class ButtonImage : ButtonImageBase
+    public class ButtonImage : ButtonBase
     {
 
     }

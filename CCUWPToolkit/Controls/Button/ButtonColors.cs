@@ -14,10 +14,11 @@ using Windows.UI.Xaml.Input;
 namespace CCUWPToolkit.Controls
 {
     [TemplatePart(Name = ContentPresenterName, Type = typeof(ContentPresenter))]
-    [TemplatePart(Name = BorderStateName, Type = typeof(Border))]
+    [TemplatePart(Name = GridStateName, Type = typeof(Grid))]
     [TemplatePart(Name = ImageStateName, Type = typeof(Image))]
-    public class ButtonColors : ButtonColorsBase
+    public class ButtonColors : ButtonBase
     {
+        #region Property
         /// <summary>
         /// 矩形控件名字
         /// </summary>
@@ -26,7 +27,7 @@ namespace CCUWPToolkit.Controls
         /// <summary>
         /// Grid
         /// </summary>
-        private const string BorderStateName = "PART_BorderStateName";
+        private const string GridStateName = "PART_GridStateName";
         /// <summary>
         /// 图片控件名字
         /// </summary>
@@ -41,7 +42,9 @@ namespace CCUWPToolkit.Controls
         /// </summary>
         private Rectangle _rectangleStateName;
 
-        private Border _borderStateName;
+        private Grid _gridStateName;
+
+        #endregion
 
         public ButtonColors()
         {
@@ -167,7 +170,7 @@ namespace CCUWPToolkit.Controls
         protected override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            _borderStateName = (Border)GetTemplateChild(BorderStateName);
+            _gridStateName = (Grid)GetTemplateChild(GridStateName);
             _imageStateName = (Image)GetTemplateChild(ImageStateName);
             _rectangleStateName = (Rectangle)GetTemplateChild(RectangleStateName);
             _contentPresenter = (ContentPresenter)GetTemplateChild(ContentPresenterName);
@@ -343,14 +346,14 @@ namespace CCUWPToolkit.Controls
         {
             await _waitForApplyTemplateTaskSource.Task;
 
-            if (oldtarget != newTarget && _borderStateName != null)
+            if (oldtarget != newTarget && _gridStateName != null)
             {
                 if (IsType(DeviceFamily.Mobile)) return;
 
-                _borderStateName.PointerEntered += OnPointerEntered;
-                _borderStateName.PointerExited += OnPointerExited;
-                _borderStateName.PointerPressed += OnPointerPressed;
-                _borderStateName.PointerReleased += OnPointerReleased;
+                _gridStateName.PointerEntered += OnPointerEntered;
+                _gridStateName.PointerExited += OnPointerExited;
+                _gridStateName.PointerPressed += OnPointerPressed;
+                _gridStateName.PointerReleased += OnPointerReleased;
             }
 
         }

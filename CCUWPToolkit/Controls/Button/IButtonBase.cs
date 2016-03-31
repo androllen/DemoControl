@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 namespace CCUWPToolkit.Controls
 {
@@ -13,6 +14,6 @@ namespace CCUWPToolkit.Controls
         object Label { get; set; }
         CornerRadius CornerSource { get; set; }
         Border ShapeSource { get; set; }
-
+        Brush ColorsSource { get; set; }
     }
 }
