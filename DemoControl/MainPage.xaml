@@ -29,7 +29,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-       <ctl:ButtonColors NormalStateColors="Green" Label="请输入手机号码" />
+       <ctl:ButtonColors ColorsSource="Green" Label="请输入手机号码" />
         <ctl:WYTextBox BorderBrush="Black" BorderThickness="1,1,0,1" Background="Transparent"
                 Grid.Column="0" Grid.Row="1" Foreground="Gray" FontFamily="{ThemeResource PhoneFontFamilySemiLight}"
                 PlaceholderText="请输入手机号码" DelBorderThicknessPadding="1"/>

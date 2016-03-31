@@ -16,28 +16,20 @@ namespace CCUWPToolkit.Controls
         private void ApplyingTemplate()
         {
         }
-        public Colors ColorsSource
+
+        /// <summary>
+        /// 背景色
+        /// </summary>
+        public Brush ColorsSource
         {
-            get { return (Colors)GetValue(ColorsSourceProperty); }
+            get { return (Brush)GetValue(ColorsSourceProperty); }
             set { SetValue(ColorsSourceProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Stretch.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorsSourceProperty =
-            DependencyProperty.Register("ColorsSource", typeof(Colors), typeof(ButtonColorsBase),
-                new PropertyMetadata(Colors.AliceBlue));
+            DependencyProperty.Register("ColorsSource", typeof(Brush), typeof(ButtonColorsBase),
+                new PropertyMetadata(new SolidColorBrush(Colors.Transparent)));
 
-        /// <summary>
-        /// 按钮图标
-        /// </summary>
-        public Border ShapeSource
-    {
-            get { return (Border)GetValue(ShapeSourceProperty); }
-            set { SetValue(ShapeSourceProperty, value); }
-        }
-        // Using a DependencyProperty as the backing store for ImageSource.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ShapeSourceProperty =
-            DependencyProperty.Register("ShapeSource", typeof(Border), typeof(ButtonColorsBase),
-            new PropertyMetadata(null));
+
     }
 }

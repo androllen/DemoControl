@@ -74,15 +74,13 @@
                             x:Name="Border"
                             Margin="{TemplateBinding Padding}">
                         </Border>-->
-                        <Grid x:Name="PART_GridStateName"
-                            Height="{TemplateBinding ButtonHeight}"
-                            Width="{TemplateBinding ButtonWidth}" 
+                        <Grid x:Name="PART_GridStateName" 
                             RenderTransformOrigin="0.5,0.6">
                             <Grid.RenderTransform>
                                 <CompositeTransform />
                             </Grid.RenderTransform>
                             <Rectangle x:Name="PART_RectangleStateName" />
-                            <Image
+                            <!--<Image
                                     x:Name="PART_ImageStateName"
                                     Stretch="None"
                                     Source="{TemplateBinding ImageSource}"
@@ -93,7 +91,7 @@
                                     FontSize="{TemplateBinding FontSize}"
                                     VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
                                     HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
-                                    Content="{TemplateBinding Label}" />
+                                    Content="{TemplateBinding Label}" />-->
                         </Grid>
                     </Grid>
                 </ControlTemplate>
@@ -118,7 +116,7 @@
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
-                                            Storyboard.TargetName="PART_GridStateName">
+                                            Storyboard.TargetName="PART_BorderStateName">
                                             <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundHoverOpacity}"/>
                                             <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundFocusedOpacity}"/>
                                         </DoubleAnimationUsingKeyFrames>
@@ -129,7 +127,7 @@
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
-                                            Storyboard.TargetName="PART_GridStateName">
+                                            Storyboard.TargetName="PART_BorderStateName">
                                             <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundFocusedOpacity}"/>
                                             <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundHoverOpacity}"/>
                                         </DoubleAnimationUsingKeyFrames>
@@ -140,16 +138,16 @@
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
-                                            Storyboard.TargetName="PART_GridStateName">
+                                            Storyboard.TargetName="PART_BorderStateName">
                                             <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundHoverOpacity}"/>
                                             <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundRestOpacity}"/>
                                         </DoubleAnimationUsingKeyFrames>
-                                        <DoubleAnimation Duration="0:0:0.2" To="0.95" From="1"
+                                        <DoubleAnimation Duration="0:0:0.2" To="0.98" From="1"
                                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)"
-                                                         Storyboard.TargetName="PART_GridStateName" />
-                                        <DoubleAnimation Duration="0:0:0.2" To="0.95" From="1"
+                                                         Storyboard.TargetName="PART_BorderStateName" />
+                                        <DoubleAnimation Duration="0:0:0.2" To="0.98" From="1"
                                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)"
-                                                         Storyboard.TargetName="PART_GridStateName" />
+                                                         Storyboard.TargetName="PART_BorderStateName" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState
@@ -166,24 +164,20 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <!--<Border
-                            x:Name="Border"
-                            Margin="{TemplateBinding Padding}">
-                        </Border>-->
-                        <Grid x:Name="PART_GridStateName"
-                            RenderTransformOrigin="0.5,0.6" 
-                            CornerRadius="12">
-                            <Grid.RenderTransform>
+                        <Border x:Name="PART_BorderStateName"
+                            RenderTransformOrigin="0.5,0.5" 
+                            CornerRadius="{TemplateBinding CornerSource}"
+                            Background="{TemplateBinding ColorsSource}">
+                            <Border.RenderTransform>
                                 <CompositeTransform />
-                            </Grid.RenderTransform>
-                            <Rectangle x:Name="PART_RectangleStateName" />
+                            </Border.RenderTransform>
                             <ContentPresenter
                                     x:Name="PART_ContentPresenter"
                                     FontSize="{TemplateBinding FontSize}"
                                     VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
                                     HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
                                     Content="{TemplateBinding Label}" />
-                        </Grid>
+                        </Border>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

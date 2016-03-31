@@ -16,6 +16,10 @@ namespace CCUWPToolkit.Controls
             base.OnApplyTemplate();
         }
 
+
+        /// <summary>
+        /// 图片的扩展
+        /// </summary>
         public Stretch Stretch
         {
             get { return (Stretch)GetValue(StretchProperty); }
