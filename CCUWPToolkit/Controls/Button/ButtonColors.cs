@@ -316,6 +316,45 @@ namespace CCUWPToolkit.Controls
         }
         #endregion
 
+        #region IsEnableComponentStretch
+        public bool IsEnableComponentStretch
+        {
+            get { return (bool)GetValue(IsEnableComponentStretchProperty); }
+            set { SetValue(IsEnableComponentStretchProperty, value); }
+        }
+        public static readonly DependencyProperty IsEnableComponentStretchProperty =
+            DependencyProperty.Register(
+            "IsEnableComponentStretch",
+            typeof(bool),
+            typeof(ButtonColors),
+            new PropertyMetadata(false, OnIsEnableComponentStretchChanged));
+
+        private static void OnIsEnableComponentStretchChanged(
+            DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var target = (ButtonColors)d;
+            bool oldtarget = (bool)e.OldValue;
+            bool newTarget = target.IsEnableComponentStretch;
+            target.OnIsEnableComponentChanged(oldtarget, newTarget);
+        }
+        private async void OnIsEnableComponentChanged(bool oldtarget, bool newTarget)
+        {
+            await _waitForApplyTemplateTaskSource.Task;
+
+            if (oldtarget != newTarget)
+            {
+                _imageStateName.Visibility = Visibility.Visible;
+                _contentPresenter.Visibility = Visibility.Visible;
+
+            }
+            else
+            {
+                _imageStateName.Visibility = Visibility.Collapsed;
+                _contentPresenter.Visibility = Visibility.Collapsed;
+            }
+        }
+        #endregion
+
         #region IsEnableColorsStretch
         /// <summary>
         /// 是否启用三种状态
