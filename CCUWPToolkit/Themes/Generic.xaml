@@ -171,24 +171,18 @@
                             <Grid.RenderTransform>
                                 <CompositeTransform />
                             </Grid.RenderTransform>
-                            <RelativePanel 
-                                                                        VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
-                                        HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}">
-                                <Image
+                            <Image
                                         x:Name="PART_ImageStateName"
                                         Stretch="None"
                                         Source="{TemplateBinding ImageSource}"
                                         VerticalAlignment="{TemplateBinding GeneratedImageVerticalStretch}"
                                         HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}"/>
-                                <ContentPresenter
+                            <ContentPresenter
                                         x:Name="PART_ContentPresenter"
                                         FontSize="{TemplateBinding FontSize}"
-                                        RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.RightOf="PART_ImageStateName"
-                                        Margin="10,0,0,0"
                                         VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
                                         HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
                                         Content="{TemplateBinding Label}" />
-                            </RelativePanel>
                         </Grid>
                     </Grid>
                 </ControlTemplate>
