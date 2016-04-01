@@ -11,7 +11,7 @@ namespace CCUWPToolkit.Controls
 {
     interface IImageSource : IButtonBase
     {
-        Stretch Stretch { get; set; }
+        Stretch StretchSource { get; set; }
         ImageSource ImageSource { get; set; }
     }
 }

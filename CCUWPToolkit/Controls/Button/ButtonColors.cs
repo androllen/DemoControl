@@ -22,7 +22,6 @@ namespace CCUWPToolkit.Controls
         /// <summary>
         /// 矩形控件名字
         /// </summary>
-        private const string RectangleStateName = "PART_RectangleStateName";
         private const string ContentPresenterName = "PART_ContentPresenter";
         /// <summary>
         /// Grid
@@ -37,13 +36,8 @@ namespace CCUWPToolkit.Controls
         /// </summary>
         private Image _imageStateName;
         private ContentPresenter _contentPresenter;
-        /// <summary>
-        /// 矩形控件
-        /// </summary>
-        private Rectangle _rectangleStateName;
-
         private Grid _gridStateName;
-
+        private readonly TaskCompletionSource<bool> _waitForApplyTemplateTaskSource = new TaskCompletionSource<bool>(false);
         #endregion
 
         public ButtonColors()
@@ -157,14 +151,18 @@ namespace CCUWPToolkit.Controls
             target.UpdateRectangleState(oldtarget, newTarget);
         }
         #endregion
+        /// <summary>
+        /// 更新三种状态
+        /// </summary>
+        /// <param name="oldtarget"></param>
+        /// <param name="newTarget"></param>
         private async void UpdateRectangleState(Color oldtarget, Color newTarget)
         {
             await _waitForApplyTemplateTaskSource.Task;
 
-            if (_rectangleStateName != null)
-                _rectangleStateName.Fill = new SolidColorBrush(newTarget);
+            if (_gridStateName != null)
+                _gridStateName.Background = new SolidColorBrush(newTarget);
         }
-        private readonly TaskCompletionSource<bool> _waitForApplyTemplateTaskSource = new TaskCompletionSource<bool>(false);
 
 
         protected override void OnApplyTemplate()
@@ -172,10 +170,8 @@ namespace CCUWPToolkit.Controls
             base.OnApplyTemplate();
             _gridStateName = (Grid)GetTemplateChild(GridStateName);
             _imageStateName = (Image)GetTemplateChild(ImageStateName);
-            _rectangleStateName = (Rectangle)GetTemplateChild(RectangleStateName);
             _contentPresenter = (ContentPresenter)GetTemplateChild(ContentPresenterName);
             _waitForApplyTemplateTaskSource.SetResult(true);
-
         }
 
         public enum DeviceFamily
@@ -345,12 +341,6 @@ namespace CCUWPToolkit.Controls
             {
                 _imageStateName.Visibility = Visibility.Visible;
                 _contentPresenter.Visibility = Visibility.Visible;
-
-            }
-            else
-            {
-                _imageStateName.Visibility = Visibility.Collapsed;
-                _contentPresenter.Visibility = Visibility.Collapsed;
             }
         }
         #endregion
@@ -399,25 +389,25 @@ namespace CCUWPToolkit.Controls
         private void OnPointerExited(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
         {
             VisualStateManager.GoToState(this, "Normal", true);
-            if (_rectangleStateName != null)
-                _rectangleStateName.Fill = new SolidColorBrush(NormalStateColors);
+            if (_gridStateName != null)
+                _gridStateName.Background = new SolidColorBrush(NormalStateColors);
         }
         private void OnPointerPressed(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
         {
-            if (_rectangleStateName != null)
-                _rectangleStateName.Fill = new SolidColorBrush(PressedStateColors);
+            if (_gridStateName != null)
+                _gridStateName.Background = new SolidColorBrush(PressedStateColors);
         }
         private void OnPointerReleased(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
         {
-            if (_rectangleStateName != null)
-                _rectangleStateName.Fill = new SolidColorBrush(HoverStateColors);
+            if (_gridStateName != null)
+                _gridStateName.Background = new SolidColorBrush(HoverStateColors);
         }
         private void OnPointerEntered(object sender, PointerRoutedEventArgs pointerRoutedEventArgs)
         {
             //VisualStateManager.GoToState(this, "PointerOver", true);
 
-            if (_rectangleStateName != null)
-                _rectangleStateName.Fill = new SolidColorBrush(HoverStateColors);
+            if (_gridStateName != null)
+                _gridStateName.Background = new SolidColorBrush(HoverStateColors);
         }
         #endregion
 

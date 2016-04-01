@@ -7,7 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ctl="using:CCUWPToolkit.Controls"
     mc:Ignorable="d">
+    <Page.Resources>
 
+    </Page.Resources>
     <!---->
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
@@ -18,8 +20,8 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="200"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -37,9 +39,34 @@
         <ctl:WYTextBox BorderBrush="Black" BorderThickness="1" Background="Transparent"
             Grid.Column="1" Grid.Row="1" NormalStateColors="Black" PressedStateColors="Brown" 
             PlaceholderText="请输入手机号码" />
-     <ctl:ButtonColors ColorsSource="Green" Label="请输入手机号码" Grid.Column="0" Grid.Row="2" 
-                       IsEnableComponentStretch="True" ImageSource="/Assets/StoreLogo.png" 
-                       GeneratedImageHorizontalStretch="Left" GeneratedImageVerticalStretch="Center"/>
-        
+        <ctl:ButtonColors ColorsSource="Green" Label="请输入手机号码" Grid.Column="0" Grid.Row="2" 
+                       IsEnableComponentStretch="True" ImageSource="/Assets/StoreLogo.png" />
+        <ctl:ButtonColors ColorsSource="Transparent" Label="请输入手机号码" 
+                          Grid.Column="0" Grid.Row="3" />        
+           <Grid x:Name="PART_GridStateName"  Grid.Column="1" Grid.Row="3">
+            <RelativePanel >
+                <Ellipse  x:Name="PART_ImageStateName"      Height="50" Width="50" 
+                          RelativePanel.AlignVerticalCenterWithPanel="True" >
+                    <Ellipse.Fill>
+                        <ImageBrush Stretch="UniformToFill">
+                            <ImageBrush.ImageSource >
+                                <BitmapImage DecodePixelHeight="200" DecodePixelWidth="200"
+                                                    UriSource="/Assets/StoreLogo.png"/>
+                            </ImageBrush.ImageSource>
+                        </ImageBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <ContentPresenter 
+                                        x:Name="PART_ContentPresenter"
+                                        RelativePanel.AlignVerticalCenterWithPanel="True"
+                                        RelativePanel.Below="PART_ImageStateName"
+                                        Content="123456" />
+            </RelativePanel>
+        </Grid> 
+        <ctl:ButtonImage Label="请输入手机号码" IsEnableComponentStretch="True"
+            ImageSource="/Assets/StoreLogo.png" StretchSource="UniformToFill"
+                          Grid.Column="0" Grid.Row="4"
+                         Width="100" Height="100"/>
+        <PasswordBox Foreground="Gray" PlaceholderText="请输入手机号码" BorderThickness="1" Grid.Column="1" Grid.Row="2" />
     </Grid>
 </Page>

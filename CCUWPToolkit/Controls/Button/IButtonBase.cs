@@ -13,7 +13,6 @@ namespace CCUWPToolkit.Controls
     {
         object Label { get; set; }
         CornerRadius CornerSource { get; set; }
-        Border ShapeSource { get; set; }
         Brush ColorsSource { get; set; }
     }
 }

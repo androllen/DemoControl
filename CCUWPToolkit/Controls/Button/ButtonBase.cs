@@ -43,32 +43,18 @@ namespace CCUWPToolkit.Controls
             typeof(object),
             typeof(ButtonBase), 
             new PropertyMetadata(string.Empty));
-
-        /// <summary>
-        /// 背景图形
-        /// </summary>
-        public Border ShapeSource
-        {
-            get { return (Border)GetValue(ShapeSourceProperty); }
-            set { SetValue(ShapeSourceProperty, value); }
-        }
-        public static readonly DependencyProperty ShapeSourceProperty =
-            DependencyProperty.Register("ShapeSource", typeof(Border), typeof(ButtonBase),
-            new PropertyMetadata(null));
-
-
         /// <summary>
         /// 图片的扩展
         /// </summary>
-        public Stretch Stretch
+        public Stretch StretchSource
         {
-            get { return (Stretch)GetValue(StretchProperty); }
-            set { SetValue(StretchProperty, value); }
+            get { return (Stretch)GetValue(StretchSourceProperty); }
+            set { SetValue(StretchSourceProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for Stretch.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty StretchProperty =
-            DependencyProperty.Register("Stretch", typeof(Stretch), typeof(ButtonBase),
+        public static readonly DependencyProperty StretchSourceProperty =
+            DependencyProperty.Register("StretchSource", typeof(Stretch), typeof(ButtonBase),
                 new PropertyMetadata(Stretch.None));
 
         /// <summary>
@@ -79,6 +65,7 @@ namespace CCUWPToolkit.Controls
             get { return (ImageSource)GetValue(ImageSourceProperty); }
             set { SetValue(ImageSourceProperty, value); }
         }
+
         // Using a DependencyProperty as the backing store for ImageSource.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ImageSourceProperty =
             DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(ButtonBase),
