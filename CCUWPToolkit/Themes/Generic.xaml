@@ -4,7 +4,7 @@
     xmlns:controls="using:CCUWPToolkit.Controls">
 
 
-    <!-- ImageButton default style -->
+    <!-- ImageButton default style TextControlBorderThemeOpacity-->
     <Style
         TargetType="controls:ButtonImage">
         <Setter Property="Padding" Value="0" />
@@ -22,7 +22,7 @@
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
                                             Storyboard.TargetName="PART_GridStateName">
-                                            <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundHoverOpacity}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundThemeOpacity}"/>
                                             <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundFocusedOpacity}"/>
                                         </DoubleAnimationUsingKeyFrames>
                                     </Storyboard>
@@ -34,7 +34,7 @@
                                             Storyboard.TargetProperty="Opacity"
                                             Storyboard.TargetName="PART_GridStateName">
                                             <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundFocusedOpacity}"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundHoverOpacity}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundThemeOpacity}"/>
                                         </DoubleAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -44,13 +44,13 @@
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
                                             Storyboard.TargetName="PART_GridStateName">
-                                            <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundHoverOpacity}"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundRestOpacity}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundThemeOpacity}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundHoverOpacity}"/>
                                         </DoubleAnimationUsingKeyFrames>
-                                        <DoubleAnimation Duration="0:0:0.2" To="0.98" From="1"
+                                        <DoubleAnimation Duration="0:0:0.2" To="0.99" From="1"
                                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)"
                                                          Storyboard.TargetName="PART_GridStateName" />
-                                        <DoubleAnimation Duration="0:0:0.2" To="0.98" From="1"
+                                        <DoubleAnimation Duration="0:0:0.2" To="0.99" From="1"
                                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)"
                                                          Storyboard.TargetName="PART_GridStateName" />
                                     </Storyboard>
@@ -76,17 +76,23 @@
                             <Grid.RenderTransform>
                                 <CompositeTransform />
                             </Grid.RenderTransform>
-                            <Ellipse x:Name="PART_EllipseStateName" Fill="Beige"
-                                     Width="{TemplateBinding Width}" Height="{TemplateBinding Width}"
-                                     VerticalAlignment="{TemplateBinding GeneratedImageVerticalStretch}"
-                                     HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}"/>
-                            <ContentPresenter
-                                            x:Name="PART_ContentPresenter"  Visibility="Collapsed"
-                                            FontSize="{TemplateBinding FontSize}"
-                                            Foreground="{TemplateBinding Foreground}"
-                                            VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
-                                            HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
-                                            Content="{TemplateBinding Label}" />
+                            <RelativePanel>
+                                <Ellipse x:Name="PART_EllipseStateName" Fill="Beige"
+                                         Width="{TemplateBinding Width}" Height="{TemplateBinding Width}"
+                                         VerticalAlignment="{TemplateBinding GeneratedImageVerticalStretch}"
+                                         HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}"
+                                         RelativePanel.AlignTopWithPanel="True"
+                                         RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+                                <ContentPresenter
+                                                x:Name="PART_ContentPresenter"  Visibility="Collapsed"
+                                                FontSize="{TemplateBinding FontSize}"
+                                                Foreground="{TemplateBinding Foreground}"
+                                                VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
+                                                HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
+                                                Content="{TemplateBinding Label}"
+                                                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                RelativePanel.AlignBottomWithPanel="True"/>                                    
+                            </RelativePanel>
                         </Grid>
                     </Grid>
                 </ControlTemplate>
@@ -112,7 +118,7 @@
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
                                             Storyboard.TargetName="PART_GridStateName">
-                                            <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundHoverOpacity}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundThemeOpacity}"/>
                                             <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundFocusedOpacity}"/>
                                         </DoubleAnimationUsingKeyFrames>
                                     </Storyboard>
@@ -124,7 +130,7 @@
                                             Storyboard.TargetProperty="Opacity"
                                             Storyboard.TargetName="PART_GridStateName">
                                             <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundFocusedOpacity}"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundHoverOpacity}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundThemeOpacity}"/>
                                         </DoubleAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -134,13 +140,13 @@
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
                                             Storyboard.TargetName="PART_GridStateName">
-                                            <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundHoverOpacity}"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundRestOpacity}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundThemeOpacity}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundHoverOpacity}"/>
                                         </DoubleAnimationUsingKeyFrames>
-                                        <DoubleAnimation Duration="0:0:0.2" To="0.98" From="1"
+                                        <DoubleAnimation Duration="0:0:0.2" To="0.99" From="1"
                                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)"
                                                          Storyboard.TargetName="PART_GridStateName" />
-                                        <DoubleAnimation Duration="0:0:0.2" To="0.98" From="1"
+                                        <DoubleAnimation Duration="0:0:0.2" To="0.99" From="1"
                                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)"
                                                          Storyboard.TargetName="PART_GridStateName" />
                                     </Storyboard>
@@ -307,7 +313,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundChromeWhiteBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="BackgroundElement">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundFocusedOpacity}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlPointerOverBorderThemeBrushOpacity}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentElement">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlForegroundChromeBlackHighBrush}"/>

@@ -45,39 +45,17 @@
                        IsEnableComponentStretch="True" IconSource="/Assets/StoreLogo.png" />
         <ctl:ButtonColors ColorsSource="Transparent" Label="请输入手机号码" 
                           Grid.Column="0" Grid.Row="3" />        
-           <Grid x:Name="PART_GridStateName"  Grid.Column="1" Grid.Row="3">
-            <RelativePanel >
-                <Ellipse  x:Name="PART_ImageStateName"      Height="50" Width="50" 
-                          RelativePanel.AlignVerticalCenterWithPanel="True">
-                    <Ellipse.Fill>
-                        <ImageBrush Stretch="UniformToFill">
-                            <ImageBrush.ImageSource >
-                                <BitmapImage DecodePixelHeight="200" DecodePixelWidth="200"
-                                                    UriSource="/Assets/StoreLogo.png"/>
-                            </ImageBrush.ImageSource>
-                        </ImageBrush>
-                    </Ellipse.Fill>
-                </Ellipse>
-                <ContentPresenter 
-                                        x:Name="PART_ContentPresenter"
-                                        RelativePanel.AlignVerticalCenterWithPanel="True"
-                                        RelativePanel.Below="PART_ImageStateName"
-                                        Content="123456" />
-            </RelativePanel>
-        </Grid> 
-        <ctl:ButtonImage Label="手机号码" ColorsSource="Transparent" 
-            ImageUri="ms-appx:///Assets/test.jpg" StretchSource="None"
-                          Grid.Column="0" Grid.Row="4" IsEnableComponentStretch="True"
-                         Width="100" Height="120" 
-                         GeneratedContentVerticalStretch="Bottom" GeneratedContentHorizontalStretch="Center"
-                         GeneratedImageHorizontalStretch="Center" GeneratedImageVerticalStretch="Top"/>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
+                <ctl:ButtonImage Label="手机号码" ColorsSource="Transparent" FontSize="10"
+                    ImageUri="ms-appx:///Assets/test.jpg" StretchSource="UniformToFill"
+                                   IsEnableComponentStretch="True"
+                                 Width="80" Height="100" Foreground="Orange"/>
         
-        <ctl:ButtonImage ColorsSource="Transparent" 
-            ImageUri="ms-appx:///Assets/test.jpg" StretchSource="None"
-                         Grid.Column="1" Grid.Row="4"
-                         Width="100" Height="100" 
-                         GeneratedContentVerticalStretch="Bottom" GeneratedContentHorizontalStretch="Center"
-                         GeneratedImageHorizontalStretch="Center" GeneratedImageVerticalStretch="Top"/>
+                <ctl:ButtonImage ColorsSource="Transparent" 
+                    ImageUri="ms-appx:///Assets/test.jpg" StretchSource="UniformToFill"
+                                 Grid.Column="1" Grid.Row="4"
+                                 Width="100" Height="100"/>
+        </StackPanel>
         
         <!--<Ellipse Grid.Column="0" Grid.Row="4" Fill="Green" Width="100" Height="100"/>-->
         <PasswordBox Foreground="Gray" PlaceholderText="请输入手机号码" BorderThickness="1" Grid.Column="1" Grid.Row="2" />
