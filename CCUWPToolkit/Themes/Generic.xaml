@@ -76,24 +76,14 @@
                             <Grid.RenderTransform>
                                 <CompositeTransform />
                             </Grid.RenderTransform>
-                            <Ellipse x:Name="PART_EllipseStateName" Width="100" Height="100"
+                            <Ellipse x:Name="PART_EllipseStateName" Fill="Beige"
+                                     Width="{TemplateBinding Width}" Height="{TemplateBinding Width}"
                                      VerticalAlignment="{TemplateBinding GeneratedImageVerticalStretch}"
-                                     HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}">
-                                <Ellipse.Fill>
-                                    <ImageBrush Stretch="UniformToFill">
-                                        <ImageBrush.ImageSource >
-                                            <BitmapImage DecodePixelHeight="200" DecodePixelWidth="200"
-                                                    UriSource="{TemplateBinding ImageUri}"/>
-                                        </ImageBrush.ImageSource>
-                                    </ImageBrush>
-                                </Ellipse.Fill>
-                            </Ellipse>
-
+                                     HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}"/>
                             <ContentPresenter
-                                            x:Name="PART_ContentPresenter"
+                                            x:Name="PART_ContentPresenter"  Visibility="Collapsed"
                                             FontSize="{TemplateBinding FontSize}"
                                             Foreground="{TemplateBinding Foreground}"
-                                        
                                             VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
                                             HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
                                             Content="{TemplateBinding Label}" />

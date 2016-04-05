@@ -54,39 +54,40 @@ namespace CCUWPToolkit.Controls
             _contentPresenter = (ContentPresenter)GetTemplateChild(ContentPresenterName);
             _waitForApplyTemplateTaskSource.SetResult(true);
         }
-
-        public Uri ImageUri
+        #region ImageUri
+        public string ImageUri
         {
-            get { return (Uri)GetValue(ImageUriProperty); }
+            get { return (string)GetValue(ImageUriProperty); }
             set { SetValue(ImageUriProperty, value); }
         }
         public static readonly DependencyProperty ImageUriProperty = DependencyProperty.Register(
              "ImageUri",
-             typeof(Uri),
+             typeof(string),
              typeof(ButtonImage),
-             new PropertyMetadata(string.Empty));
+             new PropertyMetadata(string.Empty, ImageUriChanged));
 
         private static void ImageUriChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((ButtonImage)d).ImageUri = (Uri)e.NewValue;
+            ((ButtonImage)d).ImageUri = (string)e.NewValue;
             ((ButtonImage)d).SetImageImgSource();
         }
         private async void SetImageImgSource()
         {
             await _waitForApplyTemplateTaskSource.Task;
 
-            //if (!String.IsNullOrEmpty(ImageUri))
-            //{
-            //    Uri uri = new Uri(ImageUri);
+            if (!String.IsNullOrEmpty(ImageUri))
+            {
+                Uri uri = new Uri(ImageUri);
 
-            //}
                 if (_ellipseStateName != null)
                 {
                     var ib = new ImageBrush();
-                    ib.ImageSource = new BitmapImage(ImageUri) { DecodePixelHeight =200,DecodePixelWidth=200};
+                    ib.ImageSource = new BitmapImage(uri) { DecodePixelHeight =200,DecodePixelWidth=200};
+                    ib.Stretch = StretchSource;
                     ib.ImageFailed += Img_ImageFailed;
                     _ellipseStateName.Fill = ib;
                 }
+            }
         }
         private void Img_ImageFailed(object sender, ExceptionRoutedEventArgs e)
         {
@@ -94,8 +95,10 @@ namespace CCUWPToolkit.Controls
             {
                 ((ImageBrush)_ellipseStateName.Fill).ImageFailed -= Img_ImageFailed;
             }
-
         }
+
+        #endregion
+
         #region IsEnableComponentStretch
         public bool IsEnableComponentStretch
         {
@@ -123,12 +126,10 @@ namespace CCUWPToolkit.Controls
 
             if (oldtarget != newTarget)
             {
-                _ellipseStateName.Visibility = Visibility.Visible;
                 _contentPresenter.Visibility = Visibility.Visible;
             }
         }
         #endregion
-
 
         #region GeneratedImageHorizontalStretch
         public HorizontalAlignment GeneratedImageHorizontalStretch

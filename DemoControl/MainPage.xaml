@@ -66,9 +66,16 @@
             </RelativePanel>
         </Grid> 
         <ctl:ButtonImage Label="手机号码" ColorsSource="Transparent" 
-            ImageUri="ms-appx:///Assets/test.jpg" StretchSource="Uniform"
-                          Grid.Column="0" Grid.Row="4"
+            ImageUri="ms-appx:///Assets/test.jpg" StretchSource="None"
+                          Grid.Column="0" Grid.Row="4" IsEnableComponentStretch="True"
                          Width="100" Height="120" 
+                         GeneratedContentVerticalStretch="Bottom" GeneratedContentHorizontalStretch="Center"
+                         GeneratedImageHorizontalStretch="Center" GeneratedImageVerticalStretch="Top"/>
+        
+        <ctl:ButtonImage ColorsSource="Transparent" 
+            ImageUri="ms-appx:///Assets/test.jpg" StretchSource="None"
+                         Grid.Column="1" Grid.Row="4"
+                         Width="100" Height="100" 
                          GeneratedContentVerticalStretch="Bottom" GeneratedContentHorizontalStretch="Center"
                          GeneratedImageHorizontalStretch="Center" GeneratedImageVerticalStretch="Top"/>
         
