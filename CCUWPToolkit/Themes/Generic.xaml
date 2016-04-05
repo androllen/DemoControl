@@ -8,8 +8,7 @@
     <Style
         TargetType="controls:ButtonImage">
         <Setter Property="Padding" Value="0" />
-        <Setter
-            Property="Template">
+        <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate
                     TargetType="controls:ButtonImage">
@@ -77,33 +76,27 @@
                             <Grid.RenderTransform>
                                 <CompositeTransform />
                             </Grid.RenderTransform>
-                            <RelativePanel 
-                                        VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
-                                        HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}">
-                                <Ellipse  x:Name="PART_ImageStateName" 
-                                          Height="100" Width="100" 
-                                          RelativePanel.AlignVerticalCenterWithPanel="True"
-                                          VerticalAlignment="{TemplateBinding GeneratedImageVerticalStretch}"
-                                          HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}">
-                                    <Ellipse.Fill>
-                                        <ImageBrush Stretch="UniformToFill">
-                                            <ImageBrush.ImageSource >
-                                                <BitmapImage DecodePixelHeight="200" DecodePixelWidth="200"
-                                                    UriSource="{TemplateBinding ImageSource}"/>
-                                            </ImageBrush.ImageSource>
-                                        </ImageBrush>
-                                    </Ellipse.Fill>
-                                </Ellipse>
-                                <ContentPresenter
-                                        x:Name="PART_ContentPresenter"
-                                        FontSize="{TemplateBinding FontSize}"
-                                        Foreground="{TemplateBinding Foreground}"
-                                        RelativePanel.AlignVerticalCenterWithPanel="True"
-                                        RelativePanel.Below="PART_ImageStateName"
-                                        VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
-                                        HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
-                                        Content="{TemplateBinding Label}" />
-                            </RelativePanel>
+                            <Ellipse x:Name="PART_EllipseStateName" Width="100" Height="100"
+                                     VerticalAlignment="{TemplateBinding GeneratedImageVerticalStretch}"
+                                     HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}">
+                                <Ellipse.Fill>
+                                    <ImageBrush Stretch="UniformToFill">
+                                        <ImageBrush.ImageSource >
+                                            <BitmapImage DecodePixelHeight="200" DecodePixelWidth="200"
+                                                    UriSource="{TemplateBinding ImageUri}"/>
+                                        </ImageBrush.ImageSource>
+                                    </ImageBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <ContentPresenter
+                                            x:Name="PART_ContentPresenter"
+                                            FontSize="{TemplateBinding FontSize}"
+                                            Foreground="{TemplateBinding Foreground}"
+                                        
+                                            VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
+                                            HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
+                                            Content="{TemplateBinding Label}" />
                         </Grid>
                     </Grid>
                 </ControlTemplate>
@@ -189,7 +182,7 @@
                                 <Image
                                         x:Name="PART_ImageStateName"
                                         Stretch="None"
-                                        Source="{TemplateBinding ImageSource}"
+                                        Source="{TemplateBinding IconSource}"
                                         VerticalAlignment="{TemplateBinding GeneratedImageVerticalStretch}"
                                         HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}"/>
                                 <ContentPresenter

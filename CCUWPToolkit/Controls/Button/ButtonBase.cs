@@ -60,7 +60,7 @@ namespace CCUWPToolkit.Controls
         /// <summary>
         /// 按钮图标
         /// </summary>
-        public ImageSource ImageSource
+        public ImageSource IconSource
         {
             get { return (ImageSource)GetValue(ImageSourceProperty); }
             set { SetValue(ImageSourceProperty, value); }
@@ -68,7 +68,7 @@ namespace CCUWPToolkit.Controls
 
         // Using a DependencyProperty as the backing store for ImageSource.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ImageSourceProperty =
-            DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(ButtonBase),
+            DependencyProperty.Register("IconSource", typeof(ImageSource), typeof(ButtonBase),
             new PropertyMetadata(null));
 
 

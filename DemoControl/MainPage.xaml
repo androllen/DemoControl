@@ -9,6 +9,8 @@
     mc:Ignorable="d">
     <Page.Resources>
 
+
+
     </Page.Resources>
     <!---->
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
@@ -32,7 +34,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
        <ctl:ButtonColors ColorsSource="Green" Label="请输入手机号码" />
-       <ctl:ButtonColors ColorsSource="Green" IsGeneratedImageStretch="True" ImageSource="/Assets/StoreLogo.png" Grid.Column="1" Grid.Row="0" />
+       <ctl:ButtonColors ColorsSource="Green" IsGeneratedImageStretch="True" IconSource="/Assets/StoreLogo.png" Grid.Column="1" Grid.Row="0" />
         <ctl:WYTextBox BorderBrush="Black" BorderThickness="1,1,0,1" Background="Transparent"
                 Grid.Column="0" Grid.Row="1" Foreground="Gray" FontFamily="{ThemeResource PhoneFontFamilySemiLight}"
                 PlaceholderText="请输入手机号码" DelBorderThicknessPadding="1"/>
@@ -40,13 +42,13 @@
             Grid.Column="1" Grid.Row="1" NormalStateColors="Black" PressedStateColors="Brown" 
             PlaceholderText="请输入手机号码" />
         <ctl:ButtonColors ColorsSource="Green" Label="请输入手机号码" Grid.Column="0" Grid.Row="2" 
-                       IsEnableComponentStretch="True" ImageSource="/Assets/StoreLogo.png" />
+                       IsEnableComponentStretch="True" IconSource="/Assets/StoreLogo.png" />
         <ctl:ButtonColors ColorsSource="Transparent" Label="请输入手机号码" 
                           Grid.Column="0" Grid.Row="3" />        
            <Grid x:Name="PART_GridStateName"  Grid.Column="1" Grid.Row="3">
             <RelativePanel >
                 <Ellipse  x:Name="PART_ImageStateName"      Height="50" Width="50" 
-                          RelativePanel.AlignVerticalCenterWithPanel="True" >
+                          RelativePanel.AlignVerticalCenterWithPanel="True">
                     <Ellipse.Fill>
                         <ImageBrush Stretch="UniformToFill">
                             <ImageBrush.ImageSource >
@@ -63,10 +65,14 @@
                                         Content="123456" />
             </RelativePanel>
         </Grid> 
-        <ctl:ButtonImage Label="请输入手机号码" IsEnableComponentStretch="True"
-            ImageSource="/Assets/StoreLogo.png" StretchSource="UniformToFill"
+        <ctl:ButtonImage Label="手机号码" ColorsSource="Transparent" 
+            ImageUri="ms-appx:///Assets/test.jpg" StretchSource="Uniform"
                           Grid.Column="0" Grid.Row="4"
-                         Width="100" Height="100"/>
+                         Width="100" Height="120" 
+                         GeneratedContentVerticalStretch="Bottom" GeneratedContentHorizontalStretch="Center"
+                         GeneratedImageHorizontalStretch="Center" GeneratedImageVerticalStretch="Top"/>
+        
+        <!--<Ellipse Grid.Column="0" Grid.Row="4" Fill="Green" Width="100" Height="100"/>-->
         <PasswordBox Foreground="Gray" PlaceholderText="请输入手机号码" BorderThickness="1" Grid.Column="1" Grid.Row="2" />
     </Grid>
 </Page>
