@@ -99,6 +99,10 @@
     <Compile Include="Controls\Button\ButtonImage.cs" />
     <Compile Include="Controls\Button\IButtonBase.cs" />
     <Compile Include="Controls\Button\IImageSource.cs" />
+    <Compile Include="Controls\Dialog\BaseDialog.cs" />
+    <Compile Include="Controls\Dialog\IBaseDialog.cs" />
+    <Compile Include="Controls\Dialog\WYConfirmDialog.cs" />
+    <Compile Include="Controls\Dialog\WYInputDialog.cs" />
     <Compile Include="Controls\TextBox\WYTextBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Properties\CCUWPToolkit.rd.xml" />

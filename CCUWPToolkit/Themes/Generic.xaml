@@ -196,7 +196,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <!--输入框-->
     <Style TargetType="controls:WYTextBox">
         <Setter Property="MinWidth" Value="{ThemeResource TextControlThemeMinWidth}"/>
         <Setter Property="MinHeight" Value="{ThemeResource TextControlThemeMinHeight}"/>
@@ -389,5 +389,124 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <!--对话框-->
+    <Style TargetType="controls:WYInputDialog">
+        <Setter Property="BackgroundScreenBrush" Value="Black" />
+        <Setter Property="BackgroundStripeBrush" Value="Black" />
+        <Setter Property="TitleStyle">
+            <Setter.Value>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontFamily" Value="Segoe UI" />
+                    <Setter Property="FontSize" Value="26.67" />
+                    <Setter Property="Margin" Value="3,0" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TextStyle">
+            <Setter.Value>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontFamily" Value="Segoe UI Semilight" />
+                    <Setter Property="FontSize" Value="14.67" />
+                    <Setter Property="Margin" Value="3,25,3,5" />
+                    <Setter Property="TextWrapping" Value="Wrap" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="InputTextStyle">
+            <Setter.Value>
+                <Style TargetType="TextBox">
+                    <Setter Property="Margin" Value="3,0,3,10" />
+                    <Setter Property="TextWrapping" Value="Wrap" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ButtonStyle">
+            <Setter.Value>
+                <Style TargetType="ButtonBase">
+                    <Setter Property="Background" Value="#10A151" />
+                    <Setter Property="FontSize" Value="14.67" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:WYInputDialog">
+                    <Grid x:Name="LayoutRoot"
+                          Opacity="{StaticResource TextControlBackgroundThemeOpacity}"
+                          Background="{TemplateBinding BackgroundScreenBrush}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="PopupStates">
+                                <VisualState x:Name="OpenPopupState">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetProperty="Opacity"
+                                            Storyboard.TargetName="LayoutRoot">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundFocusedOpacity}">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <PowerEase EasingMode="EaseOut" Power="3" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="{ThemeResource TextControlBackgroundThemeOpacity}">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <PowerEase EasingMode="EaseOut" Power="3" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimation Duration="0:0:0.4" To="0.75" From="1"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         Storyboard.TargetName="ContentBorderTranslation" >
+                                            <DoubleAnimation.EasingFunction>
+                                                <PowerEase EasingMode="EaseOut" Power="3" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Duration="0:0:0.4" To="0.75" From="1"
+                                                         Storyboard.TargetProperty="ScaleY"
+                                                         Storyboard.TargetName="ContentBorderTranslation" >
+                                            <DoubleAnimation.EasingFunction>
+                                                <PowerEase EasingMode="EaseOut" Power="3" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="ClosedPopupState">
+                                    <Storyboard>
+                           
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Border
+                                x:Name="ContentBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                      VerticalAlignment="Center"
+                                HorizontalAlignment="Center">
+                            <Border.RenderTransform>
+                                <ScaleTransform x:Name="ContentBorderTranslation"  ScaleX="1.0" ScaleY="1.0"/>
+                            </Border.RenderTransform>
+                            <StackPanel
+                                    x:Name="ContentPanel"
+                                    Margin="{TemplateBinding Padding}"
+                                    MinWidth="200">
+                                <TextBlock
+                                        x:Name="TitleTextBlock"
+                                        Style="{TemplateBinding TitleStyle}" />
+                                <TextBlock
+                                        x:Name="TextTextBlock"
+                                        Style="{TemplateBinding TextStyle}" />
+                                <TextBox
+                                        x:Name="InputTextBox"
+                                        Style="{TemplateBinding InputTextStyle}" />
+                                <StackPanel
+                                        x:Name="ButtonsPanel"
+                                        Orientation="{TemplateBinding ButtonsPanelOrientation}"
+                                        HorizontalAlignment="Right" />
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>    
 </ResourceDictionary>
