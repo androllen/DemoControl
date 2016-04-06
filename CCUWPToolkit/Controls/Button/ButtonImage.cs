@@ -17,7 +17,7 @@ namespace CCUWPToolkit.Controls
     [TemplatePart(Name = ContentPresenterName, Type = typeof(ContentPresenter))]
     [TemplatePart(Name = GridStateName, Type = typeof(Grid))]
     [TemplatePart(Name = EllipseStateName, Type = typeof(Ellipse))]
-    public class ButtonImage : ButtonBase
+    public class ButtonImage : BaseButton
     {
         #region Property
         /// <summary>

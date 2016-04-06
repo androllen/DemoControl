@@ -9,25 +9,32 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace CCUWPToolkit.Controls
 {
-    public abstract class ButtonBase : Button, IImageSource
+    public abstract class BaseButton : Button, IBaseButton
     {
         protected override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
         }
+        #region 按钮图标
         /// <summary>
-        /// 背景圆角度
+        /// 按钮图标
         /// </summary>
-        public CornerRadius CornerSource
+        public ImageSource IconSource
         {
-            get { return (CornerRadius)GetValue(CornerSourceProperty); }
-            set { SetValue(CornerSourceProperty, value); }
+            get { return (ImageSource)GetValue(IconSourceProperty); }
+            set { SetValue(IconSourceProperty, value); }
         }
 
-        public static readonly DependencyProperty CornerSourceProperty =
-            DependencyProperty.Register("CornerSource", typeof(CornerRadius), typeof(ButtonBase),
-                new PropertyMetadata(new CornerRadius(0)));
+        // Using a DependencyProperty as the backing store for ImageSource.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IconSourceProperty =
+                DependencyProperty.Register(
+                "IconSource",
+                typeof(ImageSource),
+                typeof(BaseButton),
+                new PropertyMetadata(null));
+        #endregion
 
+        #region 按钮文字
         /// <summary>
         /// 按钮文字
         /// </summary>
@@ -39,10 +46,13 @@ namespace CCUWPToolkit.Controls
 
         public static readonly DependencyProperty LabelProperty =
             DependencyProperty.Register(
-            "Label", 
+            "Label",
             typeof(object),
-            typeof(ButtonBase), 
+            typeof(BaseButton),
             new PropertyMetadata(string.Empty));
+        #endregion
+
+        #region 图片的扩展
         /// <summary>
         /// 图片的扩展
         /// </summary>
@@ -54,24 +64,11 @@ namespace CCUWPToolkit.Controls
 
         // Using a DependencyProperty as the backing store for Stretch.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty StretchSourceProperty =
-            DependencyProperty.Register("StretchSource", typeof(Stretch), typeof(ButtonBase),
+            DependencyProperty.Register("StretchSource", typeof(Stretch), typeof(BaseButton),
                 new PropertyMetadata(Stretch.None));
+        #endregion
 
-        /// <summary>
-        /// 按钮图标
-        /// </summary>
-        public ImageSource IconSource
-        {
-            get { return (ImageSource)GetValue(ImageSourceProperty); }
-            set { SetValue(ImageSourceProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for ImageSource.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ImageSourceProperty =
-            DependencyProperty.Register("IconSource", typeof(ImageSource), typeof(ButtonBase),
-            new PropertyMetadata(null));
-
-
+        #region 背景色
         /// <summary>
         /// 背景色
         /// </summary>
@@ -82,7 +79,23 @@ namespace CCUWPToolkit.Controls
         }
 
         public static readonly DependencyProperty ColorsSourceProperty =
-            DependencyProperty.Register("ColorsSource", typeof(Brush), typeof(ButtonBase),
+            DependencyProperty.Register("ColorsSource", typeof(Brush), typeof(BaseButton),
                 new PropertyMetadata(new SolidColorBrush(Colors.Transparent)));
+        #endregion
+
+        #region 背景圆角度
+        /// <summary>
+        /// 背景圆角度
+        /// </summary>
+        public CornerRadius CornerSource
+        {
+            get { return (CornerRadius)GetValue(CornerSourceProperty); }
+            set { SetValue(CornerSourceProperty, value); }
+        }
+
+        public static readonly DependencyProperty CornerSourceProperty =
+            DependencyProperty.Register("CornerSource", typeof(CornerRadius), typeof(BaseButton),
+                new PropertyMetadata(new CornerRadius(0)));
+        #endregion
     }
 }

@@ -33,7 +33,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-       <ctl:ButtonColors ColorsSource="Green" Label="请输入手机号码" />
+       <ctl:ButtonColors ColorsSource="Green" Label="请输入手机号码" Click="btn_Click"/>
        <ctl:ButtonColors ColorsSource="Green" IsGeneratedImageStretch="True" IconSource="/Assets/StoreLogo.png" Grid.Column="1" Grid.Row="0" />
         <ctl:WYTextBox BorderBrush="Black" BorderThickness="1,1,0,1" Background="Transparent"
                 Grid.Column="0" Grid.Row="1" Foreground="Gray" FontFamily="{ThemeResource PhoneFontFamilySemiLight}"

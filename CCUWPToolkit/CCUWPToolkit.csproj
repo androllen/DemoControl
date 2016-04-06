@@ -94,15 +94,22 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\Button\ButtonBase.cs" />
+    <Compile Include="Controls\BaseControl.cs" />
+    <Compile Include="Controls\Button\BaseButton.cs" />
     <Compile Include="Controls\Button\ButtonColors.cs" />
     <Compile Include="Controls\Button\ButtonImage.cs" />
-    <Compile Include="Controls\Button\IButtonBase.cs" />
+    <Compile Include="Controls\Button\IBaseButton.cs" />
     <Compile Include="Controls\Button\IImageSource.cs" />
     <Compile Include="Controls\Dialog\BaseDialog.cs" />
     <Compile Include="Controls\Dialog\IBaseDialog.cs" />
-    <Compile Include="Controls\Dialog\WYConfirmDialog.cs" />
-    <Compile Include="Controls\Dialog\WYInputDialog.cs" />
+    <Compile Include="Controls\Dialog\WYDialog.cs" />
+    <Compile Include="Controls\Events\EventAsync.cs" />
+    <Compile Include="Controls\Extensions\BitmapImageExtensions.cs" />
+    <Compile Include="Controls\Extensions\ControlExtensions.cs" />
+    <Compile Include="Controls\Extensions\FrameworkElementExtensions.cs" />
+    <Compile Include="Controls\Extensions\VisualTreeHelperExtensions.cs" />
+    <Compile Include="Controls\Extensions\WriteableBitmapExtensions.cs" />
+    <Compile Include="Controls\IBaseControl.cs" />
     <Compile Include="Controls\TextBox\WYTextBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Properties\CCUWPToolkit.rd.xml" />

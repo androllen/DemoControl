@@ -9,7 +9,7 @@ using Windows.UI.Xaml.Media;
 
 namespace CCUWPToolkit.Controls
 {
-    interface IImageSource : IButtonBase
+    public interface IImageSource
     {
         Stretch StretchSource { get; set; }
         ImageSource IconSource { get; set; }

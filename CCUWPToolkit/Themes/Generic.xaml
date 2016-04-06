@@ -4,14 +4,12 @@
     xmlns:controls="using:CCUWPToolkit.Controls">
 
 
-    <!-- ImageButton default style TextControlBorderThemeOpacity-->
-    <Style
-        TargetType="controls:ButtonImage">
+    <!-- ImageButton default style -->
+    <Style TargetType="controls:ButtonImage">
         <Setter Property="Padding" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate
-                    TargetType="controls:ButtonImage">
+                <ControlTemplate TargetType="controls:ButtonImage">
                     <Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup
@@ -99,15 +97,12 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <Style
-        TargetType="controls:ButtonColors">
+    <!--ImageColors default style-->
+    <Style TargetType="controls:ButtonColors">
         <Setter Property="Padding" Value="0" />
-        <Setter
-            Property="Template">
+        <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate
-                    TargetType="controls:ButtonColors">
+                <ControlTemplate TargetType="controls:ButtonColors">
                     <Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup
@@ -390,18 +385,20 @@
         </Setter>
     </Style>
     <!--对话框-->
-    <Style TargetType="controls:WYInputDialog">
-        <Setter Property="BackgroundScreenBrush" Value="Black" />
-        <Setter Property="BackgroundStripeBrush" Value="Black" />
+    <Style TargetType="controls:WYDialog">
+        <Setter Property="ColorsSource" Value="Black" />
+        <!-- 标题 默认样式 -->
         <Setter Property="TitleStyle">
             <Setter.Value>
                 <Style TargetType="TextBlock">
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
                     <Setter Property="FontFamily" Value="Segoe UI" />
                     <Setter Property="FontSize" Value="26.67" />
                     <Setter Property="Margin" Value="3,0" />
                 </Style>
             </Setter.Value>
         </Setter>
+        <!-- 文本 默认样式 -->
         <Setter Property="TextStyle">
             <Setter.Value>
                 <Style TargetType="TextBlock">
@@ -412,6 +409,7 @@
                 </Style>
             </Setter.Value>
         </Setter>
+        <!-- 输入框 默认样式 -->        
         <Setter Property="InputTextStyle">
             <Setter.Value>
                 <Style TargetType="TextBox">
@@ -420,20 +418,22 @@
                 </Style>
             </Setter.Value>
         </Setter>
+        <!-- 按钮 默认样式 -->        
         <Setter Property="ButtonStyle">
             <Setter.Value>
-                <Style TargetType="ButtonBase">
-                    <Setter Property="Background" Value="#10A151" />
-                    <Setter Property="FontSize" Value="14.67" />
+                <Style TargetType="controls:ButtonColors">
+                    <Setter Property="Background" Value="Gray" />
+                    <Setter Property="FontSize" Value="14" />
                 </Style>
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="controls:WYInputDialog">
+                <ControlTemplate TargetType="controls:WYDialog">
+                    <!-- 遮罩图层 -->
                     <Grid x:Name="LayoutRoot"
-                          Opacity="{StaticResource TextControlBackgroundThemeOpacity}"
-                          Background="{TemplateBinding BackgroundScreenBrush}">
+                            Opacity="{StaticResource TextControlBackgroundThemeOpacity}"
+                            Background="{TemplateBinding ColorsSource}">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="PopupStates">
                                 <VisualState x:Name="OpenPopupState">
@@ -441,11 +441,7 @@
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
                                             Storyboard.TargetName="LayoutRoot">
-                                            <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundFocusedOpacity}">
-                                                <EasingDoubleKeyFrame.EasingFunction>
-                                                    <PowerEase EasingMode="EaseOut" Power="3" />
-                                                </EasingDoubleKeyFrame.EasingFunction>
-                                            </EasingDoubleKeyFrame>
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundFocusedOpacity}"/>
                                             <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="{ThemeResource TextControlBackgroundThemeOpacity}">
                                                 <EasingDoubleKeyFrame.EasingFunction>
                                                     <PowerEase EasingMode="EaseOut" Power="3" />
@@ -470,17 +466,44 @@
                                 </VisualState>
                                 <VisualState x:Name="ClosedPopupState">
                                     <Storyboard>
-                           
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetProperty="Opacity"
+                                            Storyboard.TargetName="LayoutRoot">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundThemeOpacity}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="{ThemeResource TextControlBackgroundFocusedOpacity}">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <PowerEase EasingMode="EaseIn" Power="3" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimation Duration="0:0:0.4" To="1.0" From="0.75"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         Storyboard.TargetName="ContentBorderTranslation" >
+                                            <DoubleAnimation.EasingFunction>
+                                                <PowerEase EasingMode="EaseIn" Power="3" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Duration="0:0:0.4" To="1.0" From="0.75"
+                                                         Storyboard.TargetProperty="ScaleY"
+                                                         Storyboard.TargetName="ContentBorderTranslation" >
+                                            <DoubleAnimation.EasingFunction>
+                                                <PowerEase EasingMode="EaseIn" Power="3" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>                           
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <!-- 对话框面板 -->
                         <Border
                                 x:Name="ContentBorder"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                      VerticalAlignment="Center"
+                                CornerRadius="{TemplateBinding CornerSource}"
+                                VerticalAlignment="Center"
                                 HorizontalAlignment="Center">
                             <Border.RenderTransform>
                                 <ScaleTransform x:Name="ContentBorderTranslation"  ScaleX="1.0" ScaleY="1.0"/>
