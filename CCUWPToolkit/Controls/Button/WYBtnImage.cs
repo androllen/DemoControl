@@ -17,7 +17,7 @@ namespace CCUWPToolkit.Controls
     [TemplatePart(Name = ContentPresenterName, Type = typeof(ContentPresenter))]
     [TemplatePart(Name = GridStateName, Type = typeof(Grid))]
     [TemplatePart(Name = EllipseStateName, Type = typeof(Ellipse))]
-    public class ButtonImage : BaseButton
+    public class WYBtnImage : BaseButton
     {
         #region Property
         /// <summary>
@@ -41,9 +41,9 @@ namespace CCUWPToolkit.Controls
         private readonly TaskCompletionSource<bool> _waitForApplyTemplateTaskSource = new TaskCompletionSource<bool>(false);
         #endregion
 
-        public ButtonImage()
+        public WYBtnImage()
         {
-            DefaultStyleKey = typeof(ButtonImage);
+            DefaultStyleKey = typeof(WYBtnImage);
         }
 
         protected override void OnApplyTemplate()
@@ -63,13 +63,13 @@ namespace CCUWPToolkit.Controls
         public static readonly DependencyProperty ImageUriProperty = DependencyProperty.Register(
              "ImageUri",
              typeof(string),
-             typeof(ButtonImage),
+             typeof(WYBtnImage),
              new PropertyMetadata(string.Empty, ImageUriChanged));
 
         private static void ImageUriChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((ButtonImage)d).ImageUri = (string)e.NewValue;
-            ((ButtonImage)d).SetImageImgSource();
+            ((WYBtnImage)d).ImageUri = (string)e.NewValue;
+            ((WYBtnImage)d).SetImageImgSource();
         }
         private async void SetImageImgSource()
         {
@@ -109,13 +109,13 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
             "IsEnableComponentStretch",
             typeof(bool),
-            typeof(ButtonImage),
+            typeof(WYBtnImage),
             new PropertyMetadata(false, OnIsEnableComponentStretchChanged));
 
         private static void OnIsEnableComponentStretchChanged(
             DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var target = (ButtonImage)d;
+            var target = (WYBtnImage)d;
             bool oldtarget = (bool)e.OldValue;
             bool newTarget = target.IsEnableComponentStretch;
             target.OnIsEnableComponentChanged(oldtarget, newTarget);
@@ -141,7 +141,7 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
             "GeneratedImageHorizontalStretch",
             typeof(HorizontalAlignment),
-            typeof(ButtonImage),
+            typeof(WYBtnImage),
             new PropertyMetadata(HorizontalAlignment.Center));
 
         #endregion
@@ -156,7 +156,7 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
             "GeneratedImageVerticalStretch",
             typeof(VerticalAlignment),
-            typeof(ButtonImage),
+            typeof(WYBtnImage),
             new PropertyMetadata(VerticalAlignment.Center));
         #endregion
 
@@ -170,7 +170,7 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
             "GeneratedContentHorizontalStretch",
             typeof(HorizontalAlignment),
-            typeof(ButtonImage),
+            typeof(WYBtnImage),
             new PropertyMetadata(HorizontalAlignment.Center));
 
         #endregion
@@ -185,7 +185,7 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
             "GeneratedContentVerticalStretch",
             typeof(VerticalAlignment),
-            typeof(ButtonImage),
+            typeof(WYBtnImage),
             new PropertyMetadata(VerticalAlignment.Center));
         #endregion
     }

@@ -33,28 +33,28 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-       <ctl:ButtonColors ColorsSource="Green" Label="请输入手机号码" Click="btn_Click"/>
-       <ctl:ButtonColors ColorsSource="Green" IsGeneratedImageStretch="True" IconSource="/Assets/StoreLogo.png" Grid.Column="1" Grid.Row="0" />
+       <ctl:WYBtnColors ColorsSource="Green" Label="请输入手机号码" Click="btn_Click"/>
+       <ctl:WYBtnColors ColorsSource="Green" IsGeneratedImageStretch="True" IconSource="/Assets/StoreLogo.png" Grid.Column="1" Grid.Row="0" />
         <ctl:WYTextBox BorderBrush="Black" BorderThickness="1,1,0,1" Background="Transparent"
                 Grid.Column="0" Grid.Row="1" Foreground="Gray" FontFamily="{ThemeResource PhoneFontFamilySemiLight}"
                 PlaceholderText="请输入手机号码" DelBorderThicknessPadding="1"/>
         <ctl:WYTextBox BorderBrush="Black" BorderThickness="1" Background="Transparent"
             Grid.Column="1" Grid.Row="1" NormalStateColors="Black" PressedStateColors="Brown" 
             PlaceholderText="请输入手机号码" />
-        <ctl:ButtonColors ColorsSource="Green" Label="请输入手机号码" Grid.Column="0" Grid.Row="2" 
+        <ctl:WYBtnColors ColorsSource="Green" Label="请输入手机号码" Grid.Column="0" Grid.Row="2" 
                        IsEnableComponentStretch="True" IconSource="/Assets/StoreLogo.png" />
-        <ctl:ButtonColors ColorsSource="Transparent" Label="请输入手机号码" 
+        <ctl:WYBtnColors ColorsSource="Transparent" Label="请输入手机号码" 
                           Grid.Column="0" Grid.Row="3" />        
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
-                <ctl:ButtonImage Label="手机号码" ColorsSource="Transparent" FontSize="10"
-                    ImageUri="ms-appx:///Assets/test.jpg" StretchSource="UniformToFill"
-                                   IsEnableComponentStretch="True"
-                                 Width="80" Height="100" Foreground="Orange"/>
+            <ctl:WYBtnImage Label="手机号码" ColorsSource="Transparent" FontSize="10"
+                ImageUri="ms-appx:///Assets/test.jpg" StretchSource="UniformToFill"
+                                IsEnableComponentStretch="True"
+                                Width="80" Height="100" Foreground="Orange"/>
         
-                <ctl:ButtonImage ColorsSource="Transparent" 
-                    ImageUri="ms-appx:///Assets/test.jpg" StretchSource="UniformToFill"
-                                 Grid.Column="1" Grid.Row="4"
-                                 Width="100" Height="100"/>
+            <ctl:WYBtnImage ColorsSource="Transparent" 
+                ImageUri="ms-appx:///Assets/test.jpg" StretchSource="UniformToFill"
+                                Grid.Column="1" Grid.Row="4"
+                                Width="100" Height="100"/>
         </StackPanel>
         
         <!--<Ellipse Grid.Column="0" Grid.Row="4" Fill="Green" Width="100" Height="100"/>-->

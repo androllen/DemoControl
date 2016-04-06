@@ -16,7 +16,7 @@ namespace CCUWPToolkit.Controls
     [TemplatePart(Name = ContentPresenterName, Type = typeof(ContentPresenter))]
     [TemplatePart(Name = GridStateName, Type = typeof(Grid))]
     [TemplatePart(Name = ImageStateName, Type = typeof(Image))]
-    public class ButtonColors : BaseButton
+    public class WYBtnColors : BaseButton
     {
         #region Property
         /// <summary>
@@ -40,9 +40,9 @@ namespace CCUWPToolkit.Controls
         private readonly TaskCompletionSource<bool> _waitForApplyTemplateTaskSource = new TaskCompletionSource<bool>(false);
         #endregion
 
-        public ButtonColors()
+        public WYBtnColors()
         {
-            DefaultStyleKey = typeof(ButtonColors);
+            DefaultStyleKey = typeof(WYBtnColors);
         }
 
         #region NormalStateColors
@@ -58,12 +58,12 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
             "NormalStateColors",
             typeof(Color),
-            typeof(ButtonColors),
+            typeof(WYBtnColors),
             new PropertyMetadata(Colors.Transparent, OnNormalStateColorsChanged));
 
         private static void OnNormalStateColorsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var target = (ButtonColors)d;
+            var target = (WYBtnColors)d;
             Color oldtarget = (Color)e.OldValue;
             Color newTarget = target.NormalStateColors;
             //to do
@@ -85,12 +85,12 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
             "HoverStateColors",
             typeof(Color),
-            typeof(ButtonColors),
+            typeof(WYBtnColors),
             new PropertyMetadata(Colors.Transparent, OnHoverStateColorsChanged));
 
         private static void OnHoverStateColorsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var target = (ButtonColors)d;
+            var target = (WYBtnColors)d;
             Color oldtarget = (Color)e.OldValue;
             Color newTarget = target.NormalStateColors;
             //to do
@@ -112,12 +112,12 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
             "PressedStateColors",
             typeof(Color),
-            typeof(ButtonColors),
+            typeof(WYBtnColors),
             new PropertyMetadata(Colors.Transparent, OnPressedStateColorsChanged));
 
         private static void OnPressedStateColorsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var target = (ButtonColors)d;
+            var target = (WYBtnColors)d;
             Color oldtarget = (Color)e.OldValue;
             Color newTarget = target.NormalStateColors;
             //to do
@@ -139,12 +139,12 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
             "DisabledStateColors",
             typeof(Color),
-            typeof(ButtonColors),
+            typeof(WYBtnColors),
             new PropertyMetadata(Colors.Transparent, OnDisabledStateColorsChanged));
 
         private static void OnDisabledStateColorsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var target = (ButtonColors)d;
+            var target = (WYBtnColors)d;
             Color oldtarget = (Color)e.OldValue;
             Color newTarget = target.NormalStateColors;
             //to do
@@ -222,7 +222,7 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
             "GeneratedImageHorizontalStretch",
             typeof(HorizontalAlignment),
-            typeof(ButtonColors),
+            typeof(WYBtnColors),
             new PropertyMetadata(HorizontalAlignment.Center));
 
         #endregion
@@ -237,7 +237,7 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
             "GeneratedImageVerticalStretch",
             typeof(VerticalAlignment),
-            typeof(ButtonColors),
+            typeof(WYBtnColors),
             new PropertyMetadata(VerticalAlignment.Center));
         #endregion
 
@@ -251,7 +251,7 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
             "GeneratedContentHorizontalStretch",
             typeof(HorizontalAlignment),
-            typeof(ButtonColors),
+            typeof(WYBtnColors),
             new PropertyMetadata(HorizontalAlignment.Center));
 
         #endregion
@@ -266,7 +266,7 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
             "GeneratedContentVerticalStretch",
             typeof(VerticalAlignment),
-            typeof(ButtonColors),
+            typeof(WYBtnColors),
             new PropertyMetadata(VerticalAlignment.Center));
         #endregion
 
@@ -283,13 +283,13 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
             "IsGeneratedImageStretch",
             typeof(bool),
-            typeof(ButtonColors),
+            typeof(WYBtnColors),
             new PropertyMetadata(false, OnIsGeneratedImageStretchChanged));
 
         private static void OnIsGeneratedImageStretchChanged(
             DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var target = (ButtonColors)d;
+            var target = (WYBtnColors)d;
             bool oldtarget = (bool)e.OldValue;
             bool newTarget = target.IsGeneratedImageStretch;
             target.OnIsGeneratedImageChanged(oldtarget, newTarget);
@@ -322,13 +322,13 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
             "IsEnableComponentStretch",
             typeof(bool),
-            typeof(ButtonColors),
+            typeof(WYBtnColors),
             new PropertyMetadata(false, OnIsEnableComponentStretchChanged));
 
         private static void OnIsEnableComponentStretchChanged(
             DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var target = (ButtonColors)d;
+            var target = (WYBtnColors)d;
             bool oldtarget = (bool)e.OldValue;
             bool newTarget = target.IsEnableComponentStretch;
             target.OnIsEnableComponentChanged(oldtarget, newTarget);
@@ -359,13 +359,13 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
             "IsEnableColorsStretch",
             typeof(bool),
-            typeof(ButtonColors),
+            typeof(WYBtnColors),
             new PropertyMetadata(false, OnIsEnableColorsStretchChanged));
 
         private static void OnIsEnableColorsStretchChanged(
             DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var target = (ButtonColors)d;
+            var target = (WYBtnColors)d;
             bool oldtarget = (bool)e.OldValue;
             bool newTarget = target.IsEnableColorsStretch;
             target.OnIsEnableColorsChanged(oldtarget, newTarget);

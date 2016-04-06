@@ -32,13 +32,10 @@ namespace DemoControl
         private async void btn_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new WYDialog();
-            dialog.Background = new SolidColorBrush(Colors.Orange);
+            dialog.CornerSource = new CornerRadius(5);
+            dialog.Background = new SolidColorBrush(Colors.White);
             var result = await dialog.ShowAsync("This is the title", "This is the content/message", "取消", "确定");
-            var content =
-                string.Format(
-                    "Text: {0}, Button: {1}",
-                    dialog.InputText ?? "",
-                    result ?? "");
+            var content = string.Format( "Text: {0}", result);
             System.Diagnostics.Debug.WriteLine(content);
         }
     }

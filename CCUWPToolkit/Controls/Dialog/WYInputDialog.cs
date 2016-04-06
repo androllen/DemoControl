@@ -1,6 +1,6 @@
 ﻿/********************************************************************************
 ** 作者： androllen
-** 日期： 16/4/6 10:18:38
+** 日期： 16/4/6 14:59:50
 *********************************************************************************/
 using CCUWPToolkit.Controls.Extensions;
 using System;
@@ -18,14 +18,15 @@ using Windows.UI.Xaml.Media;
 
 namespace CCUWPToolkit.Controls
 {
-    [TemplatePart(Name = LayoutRootPanelName, Type = typeof(Border))]
+    [TemplatePart(Name = LayoutRootPanelName, Type = typeof(Panel))]
     [TemplatePart(Name = ContentBorderName, Type = typeof(Border))]
+    [TemplatePart(Name = InputTextBoxName, Type = typeof(TextBox))]
     [TemplatePart(Name = TitleTextBlockName, Type = typeof(TextBlock))]
     [TemplatePart(Name = TextTextBlockName, Type = typeof(TextBlock))]
     [TemplatePart(Name = ButtonsPanelName, Type = typeof(Panel))]
     [TemplateVisualState(GroupName = PopupStatesGroupName, Name = OpenPopupStateName)]
     [TemplateVisualState(GroupName = PopupStatesGroupName, Name = ClosedPopupStateName)]
-    public class WYDialog : BaseDialog
+    public class WYInputDialog : BaseDialog
     {
         /// <summary>
         /// Template Part Names
@@ -36,6 +37,7 @@ namespace CCUWPToolkit.Controls
 
         private const string LayoutRootPanelName = "LayoutRoot";
         private const string ContentBorderName = "ContentBorder";
+        private const string InputTextBoxName = "InputTextBox";
         private const string TitleTextBlockName = "TitleTextBlock";
         private const string TextTextBlockName = "TextTextBlock";
         private const string ButtonsPanelName = "ButtonsPanel";
@@ -43,8 +45,9 @@ namespace CCUWPToolkit.Controls
         /// Template Part Fields
         /// </summary>
         private Popup _dialogPopup;
-        private Border _layoutRoot;
+        private Panel _layoutRoot;
         private Border _contentBorder;
+        private TextBox _inputTextBox;
         private TextBlock _titleTextBlock;
         private TextBlock _textTextBlock;
         private Panel _buttonsPanel;
@@ -55,23 +58,85 @@ namespace CCUWPToolkit.Controls
         private TaskCompletionSource<string> _dismissTaskSource;
         private List<BaseButton> _buttons;
 
-        public WYDialog()
+        public WYInputDialog()
         {
-            DefaultStyleKey = typeof(WYDialog);
+            DefaultStyleKey = typeof(WYInputDialog);
         }
 
         protected override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            _layoutRoot = GetTemplateChild(LayoutRootPanelName) as Border;
+            _layoutRoot = GetTemplateChild(LayoutRootPanelName) as Panel;
             _contentBorder = GetTemplateChild(ContentBorderName) as Border;
+            _inputTextBox = GetTemplateChild(InputTextBoxName) as TextBox;
             _titleTextBlock = GetTemplateChild(TitleTextBlockName) as TextBlock;
             _textTextBlock = GetTemplateChild(TextTextBlockName) as TextBlock;
             _buttonsPanel = GetTemplateChild(ButtonsPanelName) as Panel;
 
             _layoutRoot.Tapped += OnLayoutRootTapped;
+            _inputTextBox.Text = this.InputText;
+            _inputTextBox.TextChanged += OnInputTextBoxTextChanged;
+            _inputTextBox.KeyUp += OnInputTextBoxKeyUp;
             _contentBorder.Tapped += OnContentBorderTapped;
         }
+
+
+        #region InputText
+        /// <summary>
+        /// InputText Dependency Property
+        /// </summary>
+        public static readonly DependencyProperty InputTextProperty =
+            DependencyProperty.Register(
+                "InputText",
+                typeof(string),
+                typeof(WYInputDialog),
+                new PropertyMetadata("", OnInputTextChanged));
+
+        /// <summary>
+        /// Gets or sets the InputText property. This dependency property 
+        /// indicates the text in the input box.
+        /// </summary>
+        public string InputText
+        {
+            get { return (string)GetValue(InputTextProperty); }
+            set { SetValue(InputTextProperty, value); }
+        }
+
+        /// <summary>
+        /// Handles changes to the InputText property.
+        /// </summary>
+        /// <param name="d">
+        /// The <see cref="DependencyObject"/> on which
+        /// the property has changed value.
+        /// </param>
+        /// <param name="e">
+        /// Event data that is issued by any event that
+        /// tracks changes to the effective value of this property.
+        /// </param>
+        private static void OnInputTextChanged(
+            DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var target = (WYInputDialog)d;
+            string oldInputText = (string)e.OldValue;
+            string newInputText = target.InputText;
+            target.OnInputTextChanged(oldInputText, newInputText);
+        }
+
+        /// <summary>
+        /// Provides derived classes an opportunity to handle changes
+        /// to the InputText property.
+        /// </summary>
+        /// <param name="oldInputText">The old InputText value</param>
+        /// <param name="newInputText">The new InputText value</param>
+        protected virtual void OnInputTextChanged(
+            string oldInputText, string newInputText)
+        {
+            if (_inputTextBox != null)
+            {
+                _inputTextBox.Text = newInputText;
+            }
+        }
+        #endregion
 
         #region IsLightDismissEnabled
         /// <summary>
@@ -81,7 +146,7 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
                 "IsLightDismissEnabled",
                 typeof(bool),
-                typeof(WYDialog),
+                typeof(WYInputDialog),
                 new PropertyMetadata(false));
 
         /// <summary>
@@ -103,7 +168,7 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
                 "AwaitsCloseTransition",
                 typeof(bool),
-                typeof(WYDialog),
+                typeof(WYInputDialog),
                 new PropertyMetadata(true));
 
         /// <summary>
@@ -158,7 +223,7 @@ namespace CCUWPToolkit.Controls
 
             if (AcceptButton != null && (button = _buttons.FirstOrDefault(b => string.Equals(b.Content, buttonContent))) != null)
             {
-                button.Focus(FocusState.Programmatic);
+                button.Focus(Windows.UI.Xaml.FocusState.Programmatic);
                 return;
             }
 
@@ -167,6 +232,11 @@ namespace CCUWPToolkit.Controls
                 button = (WYBtnColors)_buttons[0];
                 button.Focus(Windows.UI.Xaml.FocusState.Programmatic);
             }
+        }
+
+        private void OnInputTextBoxTextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.InputText = _inputTextBox.Text;
         }
 
         private FrameworkElement RootFrameworkElement
@@ -184,9 +254,8 @@ namespace CCUWPToolkit.Controls
                 throw new InvalidOperationException();
             }
 
-            //注册自适应
-            RootFrameworkElement.SizeChanged += WYDialog_SizeChanged;
             _shown = true;
+            RootFrameworkElement.SizeChanged += WYDialog_SizeChanged;
             Window.Current.Content.KeyUp += OnGlobalKeyUp;
             _dismissTaskSource = new TaskCompletionSource<string>();
             _dialogPopup = new Popup();
@@ -213,6 +282,8 @@ namespace CCUWPToolkit.Controls
                 _buttons.Add(button);
                 _buttonsPanel.Children.Add(button);
             }
+
+            _inputTextBox.Focus(Windows.UI.Xaml.FocusState.Programmatic);
 
             ResizeLayoutRoot();
 
@@ -296,6 +367,25 @@ namespace CCUWPToolkit.Controls
             _layoutRoot.Width = root.ActualWidth;
             _layoutRoot.Height = root.ActualHeight;
         }
+
+        private void OnInputTextBoxKeyUp(object sender, KeyRoutedEventArgs e)
+        {
+            this.InputText = _inputTextBox.Text;
+
+            if (e.Key == VirtualKey.Enter)
+            {
+                FocusOnButton(AcceptButton);
+                e.Handled = true;
+                return;
+            }
+
+            if (e.Key == VirtualKey.Escape)
+            {
+                FocusOnButton(CancelButton);
+                e.Handled = true;
+                return;
+            }
+        }
         /// <summary>
         /// 撤销对话框组件
         /// </summary>
@@ -309,9 +399,8 @@ namespace CCUWPToolkit.Controls
             if (_buttons.Count > 0)
             {
                 var button = (WYBtnColors)_buttons[0];
-                button.Focus(FocusState.Programmatic);
+                button.Focus(Windows.UI.Xaml.FocusState.Programmatic);
             }
         }
-
     }
 }
