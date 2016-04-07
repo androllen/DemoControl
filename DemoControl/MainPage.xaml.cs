@@ -34,7 +34,7 @@ namespace DemoControl
             var dialog = new WYDialog();
             dialog.CornerSource = new CornerRadius(5);
             dialog.Background = new SolidColorBrush(Colors.White);
-            var result = await dialog.ShowAsync("This is the title", "This is the content/message", "取消", "确定");
+            var result = await dialog.ShowAsync("黄油小伙伴", "快来注册和TA一起互动!", "取消", "确定");
             var content = string.Format( "Text: {0}", result);
             System.Diagnostics.Debug.WriteLine(content);
         }

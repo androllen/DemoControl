@@ -18,7 +18,8 @@ using Windows.UI.Xaml.Media;
 
 namespace CCUWPToolkit.Controls
 {
-    [TemplatePart(Name = LayoutRootPanelName, Type = typeof(Border))]
+    [TemplatePart(Name = LayoutRootPanelName, Type = typeof(Grid))]
+    [TemplatePart(Name = LayoutBorderName, Type = typeof(Border))]
     [TemplatePart(Name = ContentBorderName, Type = typeof(Border))]
     [TemplatePart(Name = TitleTextBlockName, Type = typeof(TextBlock))]
     [TemplatePart(Name = TextTextBlockName, Type = typeof(TextBlock))]
@@ -34,7 +35,8 @@ namespace CCUWPToolkit.Controls
         private const string OpenPopupStateName = "OpenPopupState";
         private const string ClosedPopupStateName = "ClosedPopupState";
 
-        private const string LayoutRootPanelName = "LayoutRoot";
+        private const string LayoutRootPanelName = "LayoutRoot"; 
+        private const string LayoutBorderName = "LayoutBorder"; 
         private const string ContentBorderName = "ContentBorder";
         private const string TitleTextBlockName = "TitleTextBlock";
         private const string TextTextBlockName = "TextTextBlock";
@@ -43,7 +45,8 @@ namespace CCUWPToolkit.Controls
         /// Template Part Fields
         /// </summary>
         private Popup _dialogPopup;
-        private Border _layoutRoot;
+        private Grid _layoutRoot;
+        private Border _layoutBorder;
         private Border _contentBorder;
         private TextBlock _titleTextBlock;
         private TextBlock _textTextBlock;
@@ -63,8 +66,11 @@ namespace CCUWPToolkit.Controls
         protected override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            _layoutRoot = GetTemplateChild(LayoutRootPanelName) as Border;
+            _layoutRoot = GetTemplateChild(LayoutRootPanelName) as Grid;
+
+            _layoutBorder = GetTemplateChild(LayoutBorderName) as Border;
             _contentBorder = GetTemplateChild(ContentBorderName) as Border;
+
             _titleTextBlock = GetTemplateChild(TitleTextBlockName) as TextBlock;
             _textTextBlock = GetTemplateChild(TextTextBlockName) as TextBlock;
             _buttonsPanel = GetTemplateChild(ButtonsPanelName) as Panel;
