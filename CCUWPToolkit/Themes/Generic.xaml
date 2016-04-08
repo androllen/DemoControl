@@ -3,17 +3,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:CCUWPToolkit.Controls">
 
-    <x:Double x:Key="WYDialogStoryboardTranslationScaleXY">1.05</x:Double>
-    <x:Double x:Key="RegularDefaultDouble">1.0</x:Double>
+    <x:Double x:Key="WYDialogStoryboardTranslationScaleXY">1.15</x:Double>
+    <x:Double x:Key="RegularDefaultDoubleZero">0</x:Double>
+    <x:Double x:Key="RegularDefaultDoubleOne">1</x:Double>
     <!--<x:Double x:Key="TextControlThemeMinHeight">32</x:Double>
-            <FontFamily x:Key="ContentControlThemeFontFamily">XamlAutoFontFamily</FontFamily>
-            <FontFamily x:Key='MTCMediaFontFamily'>XamlAutoFontFamily</FontFamily>
-            <FontFamily x:Key="PhoneFontFamilyNormal">Segoe WP</FontFamily>
-            <FontFamily x:Key="PhoneFontFamilySemiLight">Segoe WP SemiLight</FontFamily>
-            <FontFamily x:Key="PivotHeaderItemFontFamily">XamlAutoFontFamily</FontFamily>
-            <FontFamily x:Key="PivotTitleFontFamily">XamlAutoFontFamily</FontFamily>
-            <FontFamily x:Key="SettingsFlyoutHeaderThemeFontFamily">XamlAutoFontFamily</FontFamily>
-            <FontFamily x:Key="SymbolThemeFontFamily">Segoe MDL2 Assets</FontFamily>    
+    <FontFamily x:Key="ContentControlThemeFontFamily">XamlAutoFontFamily</FontFamily>
+    <FontFamily x:Key='MTCMediaFontFamily'>XamlAutoFontFamily</FontFamily>
+    <FontFamily x:Key="PhoneFontFamilyNormal">Segoe WP</FontFamily>
+    <FontFamily x:Key="PhoneFontFamilySemiLight">Segoe WP SemiLight</FontFamily>
+    <FontFamily x:Key="PivotHeaderItemFontFamily">XamlAutoFontFamily</FontFamily>
+    <FontFamily x:Key="PivotTitleFontFamily">XamlAutoFontFamily</FontFamily>
+    <FontFamily x:Key="SettingsFlyoutHeaderThemeFontFamily">XamlAutoFontFamily</FontFamily>
+    <FontFamily x:Key="SymbolThemeFontFamily">Segoe MDL2 Assets</FontFamily>    
     <x:Double x:Key="TextControlThemeMinWidth">64</x:Double>
     <x:Double x:Key="TextControlBackgroundRestOpacity">0.4</x:Double>
     <x:Double x:Key="TextControlBackgroundHoverOpacity">0.6</x:Double>
@@ -404,6 +405,7 @@
     <!--常规对话框-->
     <Style TargetType="controls:WYDialog">
         <Setter Property="ColorsSource" Value="Black" />
+        <Setter Property="IsLightDismissEnabled" Value="True" />
         <!-- 标题 默认样式 -->
         <Setter Property="TitleStyle">
             <Setter.Value>
@@ -445,47 +447,47 @@
             <Setter.Value>
                 <ControlTemplate TargetType="controls:WYDialog">
                     <!-- 遮罩图层 -->
-                    <Grid x:Name="LayoutRoot">
+                    <Grid x:Name="LayoutRoot" Background="#80000000">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="PopupStates">
                                 <VisualState x:Name="OpenPopupState">
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
-                                            Storyboard.TargetName="LayoutBoder">
-                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.6"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.8">
+                                            Storyboard.TargetName="LayoutRoot">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="{StaticResource RegularDefaultDoubleZero}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{StaticResource RegularDefaultDoubleOne}">
                                                 <EasingDoubleKeyFrame.EasingFunction>
-                                                    <BackEase EasingMode="EaseOut"/>
+                                                    <PowerEase EasingMode="EaseOut" Power="3"/>
                                                 </EasingDoubleKeyFrame.EasingFunction>
                                             </EasingDoubleKeyFrame>
                                         </DoubleAnimationUsingKeyFrames>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
                                             Storyboard.TargetName="ContentBorder">
-                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.8"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="{StaticResource RegularDefaultDouble}">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{StaticResource RegularDefaultDoubleOne}">
                                                 <EasingDoubleKeyFrame.EasingFunction>
-                                                    <BackEase EasingMode="EaseOut"/>
+                                                    <PowerEase EasingMode="EaseOut" Power="3"/>
                                                 </EasingDoubleKeyFrame.EasingFunction>
                                             </EasingDoubleKeyFrame>
                                         </DoubleAnimationUsingKeyFrames>
-                                        <DoubleAnimation Duration="0:0:0.3" 
-                                                         To="{StaticResource RegularDefaultDouble}"
+                                        <DoubleAnimation Duration="0:0:0.2" 
+                                                         To="{StaticResource RegularDefaultDoubleOne}"
                                                          From="{StaticResource WYDialogStoryboardTranslationScaleXY}"
                                                          Storyboard.TargetProperty="ScaleX"
                                                          Storyboard.TargetName="ContentBorderTranslation" >
                                             <DoubleAnimation.EasingFunction>
-                                                <CircleEase EasingMode="EaseOut" />
+                                                <PowerEase EasingMode="EaseOut" Power="3"/>
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-                                        <DoubleAnimation Duration="0:0:0.3" 
-                                                         To="{StaticResource RegularDefaultDouble}"
+                                        <DoubleAnimation Duration="0:0:0.2" 
+                                                         To="{StaticResource RegularDefaultDoubleOne}"
                                                          From="{StaticResource WYDialogStoryboardTranslationScaleXY}"
                                                          Storyboard.TargetProperty="ScaleY"
                                                          Storyboard.TargetName="ContentBorderTranslation" >
                                             <DoubleAnimation.EasingFunction>
-                                                <CircleEase EasingMode="EaseOut"/>
+                                                <PowerEase EasingMode="EaseOut" Power="3"/>
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
                                     </Storyboard>
@@ -494,40 +496,40 @@
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
-                                            Storyboard.TargetName="LayoutBoder">
-                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.8"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.6">
+                                            Storyboard.TargetName="LayoutRoot">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="{StaticResource RegularDefaultDoubleOne}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{StaticResource RegularDefaultDoubleZero}">
                                                 <EasingDoubleKeyFrame.EasingFunction>
-                                                    <PowerEase EasingMode="EaseInOut" Power="2" />
+                                                    <PowerEase EasingMode="EaseIn" Power="3" />
                                                 </EasingDoubleKeyFrame.EasingFunction>
                                             </EasingDoubleKeyFrame>
                                         </DoubleAnimationUsingKeyFrames>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
                                             Storyboard.TargetName="ContentBorder">
-                                            <EasingDoubleKeyFrame KeyTime="0" Value="{StaticResource RegularDefaultDouble}"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.8">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="{StaticResource RegularDefaultDoubleOne}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.1">
                                                 <EasingDoubleKeyFrame.EasingFunction>
-                                                    <PowerEase EasingMode="EaseInOut" Power="2" />
+                                                    <PowerEase EasingMode="EaseIn" Power="3" />
                                                 </EasingDoubleKeyFrame.EasingFunction>
                                             </EasingDoubleKeyFrame>
                                         </DoubleAnimationUsingKeyFrames>
-                                        <DoubleAnimation Duration="0:0:0.3" 
+                                        <DoubleAnimation Duration="0:0:0.2" 
                                                          To="{StaticResource WYDialogStoryboardTranslationScaleXY}" 
-                                                         From="{StaticResource RegularDefaultDouble}"
+                                                         From="{StaticResource RegularDefaultDoubleOne}"
                                                          Storyboard.TargetProperty="ScaleX"
                                                          Storyboard.TargetName="ContentBorderTranslation" >
                                             <DoubleAnimation.EasingFunction>
-                                                <CircleEase EasingMode="EaseIn" />
+                                                <PowerEase EasingMode="EaseIn" Power="3" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-                                        <DoubleAnimation Duration="0:0:0.3" 
+                                        <DoubleAnimation Duration="0:0:0.2" 
                                                          To="{StaticResource WYDialogStoryboardTranslationScaleXY}" 
-                                                         From="{StaticResource RegularDefaultDouble}"
+                                                         From="{StaticResource RegularDefaultDoubleOne}"
                                                          Storyboard.TargetProperty="ScaleY"
                                                          Storyboard.TargetName="ContentBorderTranslation" >
                                             <DoubleAnimation.EasingFunction>
-                                                <CircleEase EasingMode="EaseIn"/>
+                                                <PowerEase EasingMode="EaseIn" Power="3" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>                           
                                     </Storyboard>
@@ -535,10 +537,6 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <!-- 对话框面板 -->
-                        <Border  x:Name="LayoutBoder"
-                            Opacity="{StaticResource TextControlBackgroundThemeOpacity}"
-                            Background="{TemplateBinding ColorsSource}">
-                        </Border>
                         <Border
                                 x:Name="ContentBorder"
                                 Width="350"
@@ -551,7 +549,9 @@
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center">
                             <Border.RenderTransform>
-                                <ScaleTransform x:Name="ContentBorderTranslation" ScaleX="1.0" ScaleY="1.0"/>
+                                <ScaleTransform x:Name="ContentBorderTranslation" 
+                                                ScaleX="{StaticResource WYDialogStoryboardTranslationScaleXY}" 
+                                                ScaleY="{StaticResource WYDialogStoryboardTranslationScaleXY}"/>
                             </Border.RenderTransform>
                             <StackPanel
                                     x:Name="ContentPanel"
@@ -566,7 +566,8 @@
                                 <StackPanel
                                         x:Name="ButtonsPanel"
                                         Orientation="{TemplateBinding ButtonsPanelOrientation}"
-                                        HorizontalAlignment="Right" Margin="0,0,20,15"/>
+                                        HorizontalAlignment="Right" 
+                                        Margin="0,0,20,15"/>
                             </StackPanel>
                         </Border>
                     </Grid>
