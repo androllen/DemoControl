@@ -197,7 +197,8 @@
                                 <ContentPresenter
                                         x:Name="PART_ContentPresenter"
                                         FontSize="{TemplateBinding FontSize}"
-                                        RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.RightOf="PART_ImageStateName"
+                                        RelativePanel.AlignVerticalCenterWithPanel="True" 
+                                        RelativePanel.RightOf="PART_ImageStateName"
                                         Margin="10,0,0,0"
                                         VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
                                         HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
@@ -406,6 +407,7 @@
     <Style TargetType="controls:WYDialog">
         <Setter Property="ColorsSource" Value="Black" />
         <Setter Property="IsLightDismissEnabled" Value="True" />
+        <Setter Property="Background" Value="White"/>
         <!-- 标题 默认样式 -->
         <Setter Property="TitleStyle">
             <Setter.Value>
@@ -540,7 +542,6 @@
                         <Border
                                 x:Name="ContentBorder"
                                 Width="350"
-                                Height="150"
                                 RenderTransformOrigin="0.5,0.5"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
@@ -567,7 +568,7 @@
                                         x:Name="ButtonsPanel"
                                         Orientation="{TemplateBinding ButtonsPanelOrientation}"
                                         HorizontalAlignment="Right" 
-                                        Margin="0,0,20,15"/>
+                                        Margin="0,0,20,0"/>
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -575,7 +576,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <!--吐死对话框-->
+    <!--吐司对话框-->
     <Style TargetType="controls:WYToastDialog">
         <Setter Property="ColorsSource" Value="Yellow" />
         <!-- 文本 默认样式 -->
@@ -636,7 +637,7 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Grid x:Name="GridRoot"
-                            Width="200" Height="45" 
+                            MinWidth="200" Height="45" 
                             CornerRadius="{TemplateBinding CornerSource}"
                             Background="{TemplateBinding ColorsSource}" 
                             RenderTransformOrigin="0.5,0.5" 
@@ -655,24 +656,32 @@
     </Style>
     <!--输入对话框-->
     <Style TargetType="controls:WYInputDialog">
+        <Setter Property="Background" Value="White"/>
         <Setter Property="ColorsSource" Value="Black" />
+        <Setter Property="IsLightDismissEnabled" Value="True" />
+        <Setter Property="PlaceholderText" Value="输入对话"/>
         <!-- 标题 默认样式 -->
         <Setter Property="TitleStyle">
             <Setter.Value>
                 <Style TargetType="TextBlock">
-                    <Setter Property="HorizontalAlignment" Value="Center"/>
-                    <Setter Property="FontFamily" Value="Segoe UI" />
-                    <Setter Property="FontSize" Value="26.67" />
-                    <Setter Property="Margin" Value="3,0" />
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontFamily" Value="Segoe UI Semilight" />
+                    <Setter Property="FontSize" Value="23" />
+                    <Setter Property="Margin" Value="15,20,15,20" />
                 </Style>
             </Setter.Value>
         </Setter>
         <!-- 输入框 默认样式 -->
         <Setter Property="InputTextStyle">
             <Setter.Value>
-                <Style TargetType="TextBox">
-                    <Setter Property="Margin" Value="3,0,3,10" />
-                    <Setter Property="TextWrapping" Value="Wrap" />
+                <Style TargetType="controls:WYTextBox">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Margin" Value="15,0" />
+                    <Setter Property="Height" Value="45" />
                 </Style>
             </Setter.Value>
         </Setter>
@@ -680,8 +689,10 @@
         <Setter Property="ButtonStyle">
             <Setter.Value>
                 <Style TargetType="controls:WYBtnColors">
-                    <Setter Property="ColorsSource" Value="Gray" />
-                    <Setter Property="FontSize" Value="14" />
+                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                    <Setter Property="VerticalAlignment" Value="Bottom"/>
+                    <Setter Property="Width" Value="65"/>
+                    <Setter Property="Height" Value="45"/>
                 </Style>
             </Setter.Value>
         </Setter>
@@ -689,9 +700,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="controls:WYInputDialog">
                     <!-- 遮罩图层 -->
-                    <Grid x:Name="LayoutRoot"
-                            Opacity="{StaticResource TextControlBackgroundThemeOpacity}"
-                            Background="{TemplateBinding ColorsSource}">
+                    <Grid x:Name="LayoutRoot" Background="#80000000">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="PopupStates">
                                 <VisualState x:Name="OpenPopupState">
@@ -699,25 +708,39 @@
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
                                             Storyboard.TargetName="LayoutRoot">
-                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.8"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.5">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="{StaticResource RegularDefaultDoubleZero}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{StaticResource RegularDefaultDoubleOne}">
                                                 <EasingDoubleKeyFrame.EasingFunction>
-                                                    <PowerEase EasingMode="EaseOut" Power="3" />
+                                                    <PowerEase EasingMode="EaseOut" Power="3"/>
                                                 </EasingDoubleKeyFrame.EasingFunction>
                                             </EasingDoubleKeyFrame>
                                         </DoubleAnimationUsingKeyFrames>
-                                        <DoubleAnimation Duration="0:0:0.4" To="0.75" From="1"
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetProperty="Opacity"
+                                            Storyboard.TargetName="ContentBorder">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{StaticResource RegularDefaultDoubleOne}">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <PowerEase EasingMode="EaseOut" Power="3"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimation Duration="0:0:0.2" 
+                                                         To="{StaticResource RegularDefaultDoubleOne}"
+                                                         From="{StaticResource WYDialogStoryboardTranslationScaleXY}"
                                                          Storyboard.TargetProperty="ScaleX"
                                                          Storyboard.TargetName="ContentBorderTranslation" >
                                             <DoubleAnimation.EasingFunction>
-                                                <PowerEase EasingMode="EaseOut" Power="3" />
+                                                <PowerEase EasingMode="EaseOut" Power="3"/>
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-                                        <DoubleAnimation Duration="0:0:0.4" To="0.75" From="1"
+                                        <DoubleAnimation Duration="0:0:0.2" 
+                                                         To="{StaticResource RegularDefaultDoubleOne}"
+                                                         From="{StaticResource WYDialogStoryboardTranslationScaleXY}"
                                                          Storyboard.TargetProperty="ScaleY"
                                                          Storyboard.TargetName="ContentBorderTranslation" >
                                             <DoubleAnimation.EasingFunction>
-                                                <PowerEase EasingMode="EaseOut" Power="3" />
+                                                <PowerEase EasingMode="EaseOut" Power="3"/>
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
                                     </Storyboard>
@@ -727,21 +750,35 @@
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
                                             Storyboard.TargetName="LayoutRoot">
-                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.8">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="{StaticResource RegularDefaultDoubleOne}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{StaticResource RegularDefaultDoubleZero}">
                                                 <EasingDoubleKeyFrame.EasingFunction>
                                                     <PowerEase EasingMode="EaseIn" Power="3" />
                                                 </EasingDoubleKeyFrame.EasingFunction>
                                             </EasingDoubleKeyFrame>
                                         </DoubleAnimationUsingKeyFrames>
-                                        <DoubleAnimation Duration="0:0:0.4" To="1.0" From="0.75"
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetProperty="Opacity"
+                                            Storyboard.TargetName="ContentBorder">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="{StaticResource RegularDefaultDoubleOne}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <PowerEase EasingMode="EaseIn" Power="3" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimation Duration="0:0:0.2" 
+                                                         To="{StaticResource WYDialogStoryboardTranslationScaleXY}" 
+                                                         From="{StaticResource RegularDefaultDoubleOne}"
                                                          Storyboard.TargetProperty="ScaleX"
                                                          Storyboard.TargetName="ContentBorderTranslation" >
                                             <DoubleAnimation.EasingFunction>
                                                 <PowerEase EasingMode="EaseIn" Power="3" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-                                        <DoubleAnimation Duration="0:0:0.4" To="1.0" From="0.75"
+                                        <DoubleAnimation Duration="0:0:0.2" 
+                                                         To="{StaticResource WYDialogStoryboardTranslationScaleXY}" 
+                                                         From="{StaticResource RegularDefaultDoubleOne}"
                                                          Storyboard.TargetProperty="ScaleY"
                                                          Storyboard.TargetName="ContentBorderTranslation" >
                                             <DoubleAnimation.EasingFunction>
@@ -755,8 +792,8 @@
                         <!-- 对话框面板 -->
                         <Border
                                 x:Name="ContentBorder"
-                                Width="{TemplateBinding Width}"
-                                Height="{TemplateBinding Height}"
+                                Width="350"
+                                RenderTransformOrigin="0.5,0.5"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
@@ -764,7 +801,9 @@
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center">
                             <Border.RenderTransform>
-                                <ScaleTransform x:Name="ContentBorderTranslation"  ScaleX="1.0" ScaleY="1.0"/>
+                                <ScaleTransform x:Name="ContentBorderTranslation" 
+                                                ScaleX="{StaticResource WYDialogStoryboardTranslationScaleXY}" 
+                                                ScaleY="{StaticResource WYDialogStoryboardTranslationScaleXY}"/>
                             </Border.RenderTransform>
                             <StackPanel
                                     x:Name="ContentPanel"
@@ -772,13 +811,14 @@
                                 <TextBlock
                                         x:Name="TitleTextBlock"
                                         Style="{TemplateBinding TitleStyle}" />
-                                <TextBox
+                                <controls:WYTextBox
                                         x:Name="InputTextBox"
                                         Style="{TemplateBinding InputTextStyle}" />
                                 <StackPanel
                                         x:Name="ButtonsPanel"
                                         Orientation="{TemplateBinding ButtonsPanelOrientation}"
-                                        HorizontalAlignment="Right" />
+                                        HorizontalAlignment="Right" 
+                                        Margin="0,0,20,0"/>
                             </StackPanel>
                         </Border>
                     </Grid>

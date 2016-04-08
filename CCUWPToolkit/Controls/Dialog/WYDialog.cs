@@ -44,7 +44,6 @@ namespace CCUWPToolkit.Controls
         /// </summary>
         private Popup _dialogPopup;
         private Panel _layoutRoot;
-        private Border _layoutBorder;
         private Border _contentBorder;
         private TextBlock _titleTextBlock;
         private TextBlock _textTextBlock;

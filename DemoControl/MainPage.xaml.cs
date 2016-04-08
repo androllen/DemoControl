@@ -31,19 +31,39 @@ namespace DemoControl
 
         private async void btn_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new WYDialog();
-            dialog.CornerSource = new CornerRadius(5);
-            dialog.Background = new SolidColorBrush(Colors.White);
-            var result = await dialog.ShowAsync("黄油小伙伴", "快来注册和TA一起互动!", "取消", "确定");
-            var content = string.Format( "Text: {0}", result);
-            System.Diagnostics.Debug.WriteLine(content);
-        }
+            WYBtnColors button = sender as WYBtnColors;
+            int tag = Convert.ToInt32(button.Tag);
+            switch (tag)
+            {
+                case 0:
+                    var toast = new WYToastDialog();
+                    toast.CornerSource = new CornerRadius(5);
+                    toast.ShowAsync("你 是 我 的 黄 油 小 伙 伴 对 吗？");
+                    break;
+                case 1:
+                    {
+                        var dialog = new WYDialog();
+                        dialog.CornerSource = new CornerRadius(5);
+                        var result = await dialog.ShowAsync("黄油小伙伴", "快来注册和TA一起互动!", "取消", "确定");
+                        var content = string.Format("Text: {0}", result);
+                        System.Diagnostics.Debug.WriteLine(content);
+                        break;
+                    }
+                case 2:
+                    {
+                        var dialog = new WYInputDialog();
+                        dialog.CornerSource = new CornerRadius(5);
+                        var result = await dialog.ShowAsync("黄油小伙伴", "快来注册和TA一起互动!", "取消", "确定");
+                        var content = string.Format("Text: {0}", result);
+                        System.Diagnostics.Debug.WriteLine(content);
+                        break;
+                    }
+            }
 
-        private void btn_Toast_Click(object sender, RoutedEventArgs e)
-        {
-            var dialog = new WYToastDialog();
-            dialog.CornerSource = new CornerRadius(5);
-            dialog.ShowAsync("黄油小伙伴");
+
+
+
+
         }
 
     }

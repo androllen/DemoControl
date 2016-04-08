@@ -20,9 +20,8 @@ namespace CCUWPToolkit.Controls
 {
     [TemplatePart(Name = LayoutRootPanelName, Type = typeof(Panel))]
     [TemplatePart(Name = ContentBorderName, Type = typeof(Border))]
-    [TemplatePart(Name = InputTextBoxName, Type = typeof(TextBox))]
     [TemplatePart(Name = TitleTextBlockName, Type = typeof(TextBlock))]
-    [TemplatePart(Name = TextTextBlockName, Type = typeof(TextBlock))]
+    [TemplatePart(Name = InputTextBoxName, Type = typeof(WYTextBox))]
     [TemplatePart(Name = ButtonsPanelName, Type = typeof(Panel))]
     [TemplateVisualState(GroupName = PopupStatesGroupName, Name = OpenPopupStateName)]
     [TemplateVisualState(GroupName = PopupStatesGroupName, Name = ClosedPopupStateName)]
@@ -39,7 +38,6 @@ namespace CCUWPToolkit.Controls
         private const string ContentBorderName = "ContentBorder";
         private const string InputTextBoxName = "InputTextBox";
         private const string TitleTextBlockName = "TitleTextBlock";
-        private const string TextTextBlockName = "TextTextBlock";
         private const string ButtonsPanelName = "ButtonsPanel";
         /// <summary>
         /// Template Part Fields
@@ -47,9 +45,8 @@ namespace CCUWPToolkit.Controls
         private Popup _dialogPopup;
         private Panel _layoutRoot;
         private Border _contentBorder;
-        private TextBox _inputTextBox;
+        private WYTextBox _inputTextBox;
         private TextBlock _titleTextBlock;
-        private TextBlock _textTextBlock;
         private Panel _buttonsPanel;
         /// <summary>
         /// Flag for preventing reentrancy in the Show() method.
@@ -68,73 +65,37 @@ namespace CCUWPToolkit.Controls
             base.OnApplyTemplate();
             _layoutRoot = GetTemplateChild(LayoutRootPanelName) as Panel;
             _contentBorder = GetTemplateChild(ContentBorderName) as Border;
-            _inputTextBox = GetTemplateChild(InputTextBoxName) as TextBox;
+            _inputTextBox = GetTemplateChild(InputTextBoxName) as WYTextBox;
             _titleTextBlock = GetTemplateChild(TitleTextBlockName) as TextBlock;
-            _textTextBlock = GetTemplateChild(TextTextBlockName) as TextBlock;
             _buttonsPanel = GetTemplateChild(ButtonsPanelName) as Panel;
 
             _layoutRoot.Tapped += OnLayoutRootTapped;
-            _inputTextBox.Text = this.InputText;
-            _inputTextBox.TextChanged += OnInputTextBoxTextChanged;
             _inputTextBox.KeyUp += OnInputTextBoxKeyUp;
+            if (_inputTextBox != null)
+                _inputTextBox.PlaceholderText = PlaceholderText;
+
             _contentBorder.Tapped += OnContentBorderTapped;
         }
 
-
-        #region InputText
+        #region PlaceholderText
         /// <summary>
-        /// InputText Dependency Property
+        /// PlaceholderText Dependency Property
         /// </summary>
-        public static readonly DependencyProperty InputTextProperty =
+        public static readonly DependencyProperty PlaceholderTextProperty =
             DependencyProperty.Register(
-                "InputText",
+                "PlaceholderText",
                 typeof(string),
                 typeof(WYInputDialog),
-                new PropertyMetadata("", OnInputTextChanged));
+                new PropertyMetadata(string.Empty));
 
         /// <summary>
         /// Gets or sets the InputText property. This dependency property 
         /// indicates the text in the input box.
         /// </summary>
-        public string InputText
+        public string PlaceholderText
         {
-            get { return (string)GetValue(InputTextProperty); }
-            set { SetValue(InputTextProperty, value); }
-        }
-
-        /// <summary>
-        /// Handles changes to the InputText property.
-        /// </summary>
-        /// <param name="d">
-        /// The <see cref="DependencyObject"/> on which
-        /// the property has changed value.
-        /// </param>
-        /// <param name="e">
-        /// Event data that is issued by any event that
-        /// tracks changes to the effective value of this property.
-        /// </param>
-        private static void OnInputTextChanged(
-            DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var target = (WYInputDialog)d;
-            string oldInputText = (string)e.OldValue;
-            string newInputText = target.InputText;
-            target.OnInputTextChanged(oldInputText, newInputText);
-        }
-
-        /// <summary>
-        /// Provides derived classes an opportunity to handle changes
-        /// to the InputText property.
-        /// </summary>
-        /// <param name="oldInputText">The old InputText value</param>
-        /// <param name="newInputText">The new InputText value</param>
-        protected virtual void OnInputTextChanged(
-            string oldInputText, string newInputText)
-        {
-            if (_inputTextBox != null)
-            {
-                _inputTextBox.Text = newInputText;
-            }
+            get { return (string)GetValue(PlaceholderTextProperty); }
+            set { SetValue(PlaceholderTextProperty, value); }
         }
         #endregion
 
@@ -223,20 +184,15 @@ namespace CCUWPToolkit.Controls
 
             if (AcceptButton != null && (button = _buttons.FirstOrDefault(b => string.Equals(b.Content, buttonContent))) != null)
             {
-                button.Focus(Windows.UI.Xaml.FocusState.Programmatic);
+                button.Focus(FocusState.Programmatic);
                 return;
             }
 
             if (_buttons.Count > 0)
             {
                 button = (WYBtnColors)_buttons[0];
-                button.Focus(Windows.UI.Xaml.FocusState.Programmatic);
+                button.Focus(FocusState.Programmatic);
             }
-        }
-
-        private void OnInputTextBoxTextChanged(object sender, TextChangedEventArgs e)
-        {
-            this.InputText = _inputTextBox.Text;
         }
 
         private FrameworkElement RootFrameworkElement
@@ -263,8 +219,6 @@ namespace CCUWPToolkit.Controls
             _dialogPopup.IsOpen = true;
             await this.WaitForLayoutUpdateAsync();
             _titleTextBlock.Text = title;
-            _textTextBlock.Text = text;
-
             _buttons = new List<BaseButton>();
 
             foreach (var buttonText in buttonTexts)
@@ -276,14 +230,15 @@ namespace CCUWPToolkit.Controls
                     button.Style = this.ButtonStyle;
                 }
 
-                button.Content = buttonText;
+                button.Label = buttonText;
                 button.Click += OnButtonClick;
                 button.KeyUp += OnGlobalKeyUp;
                 _buttons.Add(button);
                 _buttonsPanel.Children.Add(button);
             }
+            System.Diagnostics.Debug.Write(_buttonsPanel.Children.Count);
 
-            _inputTextBox.Focus(Windows.UI.Xaml.FocusState.Programmatic);
+            _inputTextBox.Focus(FocusState.Programmatic);
 
             ResizeLayoutRoot();
 
@@ -370,8 +325,6 @@ namespace CCUWPToolkit.Controls
 
         private void OnInputTextBoxKeyUp(object sender, KeyRoutedEventArgs e)
         {
-            this.InputText = _inputTextBox.Text;
-
             if (e.Key == VirtualKey.Enter)
             {
                 FocusOnButton(AcceptButton);
@@ -399,7 +352,7 @@ namespace CCUWPToolkit.Controls
             if (_buttons.Count > 0)
             {
                 var button = (WYBtnColors)_buttons[0];
-                button.Focus(Windows.UI.Xaml.FocusState.Programmatic);
+                button.Focus(FocusState.Programmatic);
             }
         }
     }

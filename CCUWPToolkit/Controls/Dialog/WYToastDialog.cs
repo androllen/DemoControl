@@ -4,17 +4,10 @@
 *********************************************************************************/
 using CCUWPToolkit.Controls.Extensions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Windows.Foundation;
-using Windows.System;
-using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 namespace CCUWPToolkit.Controls
 {
     [TemplatePart(Name = LayoutRootPanelName, Type = typeof(Panel))]

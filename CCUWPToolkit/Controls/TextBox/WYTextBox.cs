@@ -39,9 +39,9 @@ namespace CCUWPToolkit.Controls
         protected override void OnApplyTemplate()
         {
             _waitForApplyTemplateTaskSource.SetResult(true);
-            _gridStateName = (Grid)GetTemplateChild(GridStateName);
-            _placeholderTextContentPresenter = (ContentControl)GetTemplateChild(PlaceholderTextStateName);
-            _borderElementStateName = (Border)GetTemplateChild(BorderElementStateName);
+            _gridStateName = GetTemplateChild(GridStateName) as Grid;
+            _placeholderTextContentPresenter = GetTemplateChild(PlaceholderTextStateName) as ContentControl;
+            _borderElementStateName = GetTemplateChild(BorderElementStateName) as Border;
             this.TextChanging += WYTextBox_TextChanging;
 
             base.OnApplyTemplate();
@@ -59,7 +59,7 @@ namespace CCUWPToolkit.Controls
         /// <summary>
         /// 正常
         /// </summary>
-        public Color NormalStateColors
+        private Color NormalStateColors
         {
             get { return (Color)GetValue(NormalStateColorsProperty); }
             set { SetValue(NormalStateColorsProperty, value); }
@@ -84,7 +84,7 @@ namespace CCUWPToolkit.Controls
         /// <summary>
         /// 按下
         /// </summary>
-        public Color PressedStateColors
+        private Color PressedStateColors
         {
             get { return (Color)GetValue(PressedStateColorsProperty); }
             set { SetValue(PressedStateColorsProperty, value); }
@@ -103,7 +103,6 @@ namespace CCUWPToolkit.Controls
             Color newTarget = target.NormalStateColors;
             //to do
             target.UpdateRectangleState(oldtarget, newTarget);
-
         }
         #endregion
         private async void UpdateRectangleState(Color oldtarget, Color newTarget)
@@ -114,8 +113,7 @@ namespace CCUWPToolkit.Controls
             //    _rectangleStateName.Fill = new SolidColorBrush(newTarget);
         }
 
-
-         public HorizontalAlignment DelHorAligStretch
+        public HorizontalAlignment DelHorAligStretch
         {
             get { return (HorizontalAlignment)GetValue(DelHorAligStretchProperty); }
             set { SetValue(DelHorAligStretchProperty, value); }

@@ -23,7 +23,7 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -33,18 +33,19 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-       <ctl:WYBtnColors ColorsSource="Green" Label="请输入手机号码" Click="btn_Click"/>
+       <ctl:WYBtnColors ColorsSource="Green" Label="请输入手机号码" />
        <ctl:WYBtnColors ColorsSource="Green" IsGeneratedImageStretch="True" 
                         IconSource="/Assets/StoreLogo.png"
-                        Grid.Column="1" Grid.Row="0" Click="btn_Toast_Click"/>
+                        Grid.Column="1" Grid.Row="0"/>
         <ctl:WYTextBox BorderBrush="Black" BorderThickness="1,1,0,1" Background="Transparent"
                 Grid.Column="0" Grid.Row="1" Foreground="Gray" FontFamily="{ThemeResource PhoneFontFamilySemiLight}"
                 PlaceholderText="请输入手机号码" DelBorderThicknessPadding="1"/>
         <ctl:WYTextBox BorderBrush="Black" BorderThickness="1" Background="Transparent"
-            Grid.Column="1" Grid.Row="1" NormalStateColors="Black" PressedStateColors="Brown" 
+            Grid.Column="1" Grid.Row="1" 
             PlaceholderText="请输入手机号码" />
         <ctl:WYBtnColors ColorsSource="Green" Label="请输入手机号码" Grid.Column="0" Grid.Row="2" 
                        IsEnableComponentStretch="True" IconSource="/Assets/StoreLogo.png" />
+        <ctl:WYBtnColors Grid.Column="1" Grid.Row="2"  ColorsSource="Green" Label="this is a toast dialog" Tag="0" Click="btn_Click"/>
         <ctl:WYBtnColors ColorsSource="Transparent" Label="请输入手机号码" 
                           Grid.Column="0" Grid.Row="3" />        
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
@@ -55,11 +56,15 @@
         
             <ctl:WYBtnImage ColorsSource="Transparent" 
                 ImageUri="ms-appx:///Assets/test.jpg" StretchSource="UniformToFill"
-                                Grid.Column="1" Grid.Row="4"
                                 Width="100" Height="100"/>
         </StackPanel>
-        
-        <!--<Ellipse Grid.Column="0" Grid.Row="4" Fill="Green" Width="100" Height="100"/>-->
-        <PasswordBox Foreground="Gray" PlaceholderText="请输入手机号码" BorderThickness="1" Grid.Column="1" Grid.Row="2" />
+        <ctl:WYBtnColors
+            Grid.Column="1" Grid.Row="4"
+            ColorsSource="Green" Label="this is a regular dialog"
+            Click="btn_Click" Tag="1"/>
+        <ctl:WYBtnColors
+            Grid.Column="0" Grid.Row="4"
+            ColorsSource="Green" Label="this is a intput dialog"
+            Click="btn_Click" Tag="2"/>        
     </Grid>
 </Page>
