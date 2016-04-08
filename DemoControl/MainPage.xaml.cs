@@ -38,5 +38,13 @@ namespace DemoControl
             var content = string.Format( "Text: {0}", result);
             System.Diagnostics.Debug.WriteLine(content);
         }
+
+        private void btn_Toast_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new WYToastDialog();
+            dialog.CornerSource = new CornerRadius(5);
+            dialog.ShowAsync("黄油小伙伴");
+        }
+
     }
 }

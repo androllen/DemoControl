@@ -575,6 +575,84 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--吐死对话框-->
+    <Style TargetType="controls:WYToastDialog">
+        <Setter Property="ColorsSource" Value="Yellow" />
+        <!-- 文本 默认样式 -->
+        <Setter Property="TextStyle">
+            <Setter.Value>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontFamily" Value="Segoe UI Semilight" />
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="14" />
+                    <Setter Property="Margin" Value="20,15" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:WYToastDialog">
+                    <Grid x:Name="LayoutRoot" >
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="PopupStates">
+                                <VisualState x:Name="OpenPopupState">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames
+                                                Storyboard.TargetProperty="Opacity"
+                                                Storyboard.TargetName="GridRoot">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.4"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <PowerEase EasingMode="EaseOut" Power="3" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1.0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="0.4">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <PowerEase EasingMode="EaseIn" Power="3" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames
+                                                Storyboard.TargetProperty="Y"
+                                                Storyboard.TargetName="ContentBorderTranslation">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="-30"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-80">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <PowerEase EasingMode="EaseOut" Power="3" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="-80"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="-30">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <PowerEase EasingMode="EaseIn" Power="3" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="GridRoot"
+                            Width="200" Height="45" 
+                            CornerRadius="{TemplateBinding CornerSource}"
+                            Background="{TemplateBinding ColorsSource}" 
+                            RenderTransformOrigin="0.5,0.5" 
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Center">
+                            <Grid.RenderTransform>
+                                <TranslateTransform x:Name="ContentBorderTranslation"/>
+                            </Grid.RenderTransform>
+                            <TextBlock  x:Name="TextTextBlock" 
+                                        Style="{TemplateBinding TextStyle}"  />
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <!--输入对话框-->
     <Style TargetType="controls:WYInputDialog">
         <Setter Property="ColorsSource" Value="Black" />

@@ -104,6 +104,7 @@
     <Compile Include="Controls\Dialog\IBaseDialog.cs" />
     <Compile Include="Controls\Dialog\WYDialog.cs" />
     <Compile Include="Controls\Dialog\WYInputDialog.cs" />
+    <Compile Include="Controls\Dialog\WYToastDialog.cs" />
     <Compile Include="Controls\Events\EventAsync.cs" />
     <Compile Include="Controls\Extensions\BitmapImageExtensions.cs" />
     <Compile Include="Controls\Extensions\ControlExtensions.cs" />
