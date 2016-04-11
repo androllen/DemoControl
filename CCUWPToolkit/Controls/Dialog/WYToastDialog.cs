@@ -53,7 +53,8 @@ namespace CCUWPToolkit.Controls
                 return (FrameworkElement)Window.Current.Content;
             }
         }
-        public async void ShowAsync(string text)
+
+        public async void ShowAsync(string text, Action action = null)
         {
             if (_shown)
             {
@@ -75,6 +76,7 @@ namespace CCUWPToolkit.Controls
             // Hide dialog
             _dialogPopup.IsOpen = false;
             _shown = false;
+            action?.Invoke();
         }
         /// <summary>
         /// 重载布局
