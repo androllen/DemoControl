@@ -8,9 +8,6 @@
     xmlns:ctl="using:CCUWPToolkit.Controls"
     mc:Ignorable="d">
     <Page.Resources>
-
-
-
     </Page.Resources>
     <!---->
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
@@ -22,8 +19,9 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="300"/>
-            <RowDefinition Height="300"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <ctl:WYBtnColors ColorsSource="Green" Label="请输入手机号码" />
         <ctl:WYBtnColors ColorsSource="Green" IsGeneratedImageStretch="True" 
@@ -39,7 +37,7 @@
                         IsEnableComponentStretch="True" IconSource="/Assets/StoreLogo.png" />
         <ctl:WYBtnColors Grid.Column="1" Grid.Row="2"  ColorsSource="Green" Label="this is a toast dialog" Tag="0" Click="btn_Click"/>
         <ctl:WYBtnColors ColorsSource="Transparent" Label="请输入手机号码" 
-                            Grid.Column="0" Grid.Row="3" />        
+                            Grid.Column="0" Grid.Row="3" Tag="3" Click="btn_Click"/>        
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
             <ctl:WYBtnImage Label="手机号码" ColorsSource="Transparent" FontSize="10"
                 ImageUri="ms-appx:///Assets/test.jpg" StretchSource="UniformToFill"
@@ -50,9 +48,15 @@
                 ImageUri="ms-appx:///Assets/test.jpg" StretchSource="UniformToFill"
                                 Width="100" Height="100"/>
         </StackPanel>
-        <ScrollViewer Grid.ColumnSpan="2" Grid.Row="4" HorizontalScrollBarVisibility="Visible" HorizontalScrollMode="Enabled">
+        <!--<ScrollViewer Grid.ColumnSpan="2" Grid.Row="4" HorizontalScrollBarVisibility="Visible" HorizontalScrollMode="Enabled">
             <Image Source="ms-appx:///Assets/test.jpg" Stretch="None"/>
-        </ScrollViewer>
+        </ScrollViewer>-->
+
+    <ctl:WYHeaderTitleBar Grid.ColumnSpan="2" Grid.Row="4"
+                          LeftVisibility="Visible" LeftTextTitle="left" 
+                          Title="haha" ColorsSource="Green"  Height="70" />
+    
+
         <!--<ctl:WYBtnColors
             Grid.Column="1" Grid.Row="4"
             ColorsSource="Green" Label="this is a regular dialog"

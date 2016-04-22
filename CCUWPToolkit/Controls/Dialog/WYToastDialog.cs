@@ -62,6 +62,9 @@ namespace CCUWPToolkit.Controls
             }
 
             //注册自适应
+            if (RootFrameworkElement == null)
+                return;
+
             RootFrameworkElement.SizeChanged += WYDialog_SizeChanged;
             _shown = true;
             _dialogPopup = new Popup();

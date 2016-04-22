@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using CCUWPToolkit.Controls;
 using Windows.UI;
+using System.Collections.ObjectModel;
 
 //“空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 上有介绍
 
@@ -58,12 +59,10 @@ namespace DemoControl
                         System.Diagnostics.Debug.WriteLine(content);
                         break;
                     }
+                case 3:
+                    this.Frame.Navigate(typeof(WYGridView));
+                    break;
             }
-
-
-
-
-
         }
 
     }

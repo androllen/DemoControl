@@ -210,6 +210,40 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="controls:WYHeaderTitleBar">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:WYHeaderTitleBar">
+                    <RelativePanel x:Name="PART_GridElementName" Background="{TemplateBinding ColorsSource}">
+           
+                        <controls:WYBtnColors
+                                              Label="{TemplateBinding LeftTextTitle}" 
+                                              Visibility="{TemplateBinding LeftVisibility}"
+                                              IconSource="{TemplateBinding LeftIcon}" 
+                                              RelativePanel.AlignLeftWithPanel="True"
+                                              RelativePanel.AlignTopWith="PART_PlaceholderTextContentPresenter"/>
+
+                        <ContentControl x:Name="PART_PlaceholderTextContentPresenter" 
+                                        Content="{TemplateBinding Title}" 
+                                        FontFamily="{TemplateBinding FontFamily}"
+                                        Foreground="{TemplateBinding Foreground}" 
+                                        IsHitTestVisible="False" IsTabStop="False" 
+                                        Margin="{TemplateBinding BorderThickness}" 
+                                        RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                        RelativePanel.AlignVerticalCenterWithPanel="True"/>
+
+                        <controls:WYBtnColors
+                                            Label="{TemplateBinding RightTextTitle}" 
+                                            Visibility="{TemplateBinding RightVisibility}" 
+                                            IconSource="{TemplateBinding RightIcon}" 
+                                            RelativePanel.AlignRightWithPanel="True" 
+                                            RelativePanel.AlignTopWith="PART_PlaceholderTextContentPresenter"/>
+                        
+                    </RelativePanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <!--输入框-->
     <Style TargetType="controls:WYTextBox">
         <Setter Property="MinWidth" Value="{ThemeResource TextControlThemeMinWidth}"/>
