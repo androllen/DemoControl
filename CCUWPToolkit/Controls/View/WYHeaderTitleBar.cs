@@ -14,20 +14,8 @@ using Windows.UI.Xaml.Media;
 
 namespace CCUWPToolkit.Controls
 {
-    //[TemplatePart(Name = GridElementName, Type = typeof(Grid))]
-    //[TemplatePart(Name = TitleElementName, Type = typeof(ContentControl))]
-    //[TemplatePart(Name = LeftBtnElementName, Type = typeof(WYBtnColors))]
-    //[TemplatePart(Name = RightBtnElementName, Type = typeof(WYBtnColors))]
     public class WYHeaderTitleBar : BaseControl
     {
-        //private readonly TaskCompletionSource<bool> _waitForApplyTemplateTaskSource = new TaskCompletionSource<bool>(false);
-        //private const string GridElementName = "PART_GridElementName";
-        //private const string TitleElementName = "PART_TitleElementName";
-        //private const string LeftBtnElementName = "PART_LeftBtnElementName";
-        //private const string RightBtnElementName = "PART_RightBtnElementName";
-
-        private Grid _gridElementName;
-
         public WYHeaderTitleBar()
         {
             DefaultStyleKey = typeof(WYHeaderTitleBar);
@@ -35,10 +23,6 @@ namespace CCUWPToolkit.Controls
 
         protected override void OnApplyTemplate()
         {
-            //_waitForApplyTemplateTaskSource.SetResult(true);
-            //_gridElementName = GetTemplateChild(GridElementName) as Grid;
-
-
             base.OnApplyTemplate();
         }
 
