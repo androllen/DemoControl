@@ -52,9 +52,9 @@
             <Image Source="ms-appx:///Assets/test.jpg" Stretch="None"/>
         </ScrollViewer>-->
 
-    <ctl:WYHeaderTitleBar Grid.ColumnSpan="2" Grid.Row="4"
-                          LeftVisibility="Visible" LeftTextTitle="left" 
-                          Title="haha" ColorsSource="Green"  Height="70" />
+        <ctl:WYHeaderTitleBar Grid.ColumnSpan="2" Grid.Row="4"
+                          LeftVisibility="Visible" LeftText="left" RightText="sdf" RightVisibility="Visible" RightIcon="/Assets/test.jpg"
+                          Title="haha" ColorsSource="Green"  Height="45" LeftClick="WYHeaderTitleBar_LeftClick" RightClick="WYHeaderTitleBar_RightClick"/>
     
 
         <!--<ctl:WYBtnColors

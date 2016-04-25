@@ -165,7 +165,7 @@ namespace CCUWPToolkit.Controls
             if (_buttons.Count > 0)
             {
                 button = (WYBtnColors)_buttons[0];
-                button.Focus(Windows.UI.Xaml.FocusState.Programmatic);
+                button.Focus(FocusState.Programmatic);
             }
         }
 

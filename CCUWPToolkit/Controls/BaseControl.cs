@@ -50,6 +50,17 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register("CornerSource", typeof(CornerRadius), typeof(BaseControl),
                 new PropertyMetadata(new CornerRadius(0)));
         #endregion
-        
+
+        public Thickness MarginSource
+        {
+            get { return (Thickness)GetValue(MarginSourceProperty); }
+            set { SetValue(MarginSourceProperty, value); }
+        }
+
+        private static readonly DependencyProperty MarginSourceProperty =
+            DependencyProperty.Register("MarginSource",
+                typeof(Thickness),
+                typeof(BaseControl),
+                new PropertyMetadata(new Thickness(0)));
     }
 }

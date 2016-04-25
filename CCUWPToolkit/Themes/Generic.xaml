@@ -199,7 +199,7 @@
                                         FontSize="{TemplateBinding FontSize}"
                                         RelativePanel.AlignVerticalCenterWithPanel="True" 
                                         RelativePanel.RightOf="PART_ImageStateName"
-                                        Margin="10,0,0,0"
+                                        Margin="{TemplateBinding MarginSource}"
                                         VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
                                         HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
                                         Content="{TemplateBinding Label}" />
@@ -211,34 +211,51 @@
         </Setter>
     </Style>
     <Style TargetType="controls:WYHeaderTitleBar">
+        <!-- 标题 默认样式 -->
+        <Setter Property="BtnColorsStyle">
+            <Setter.Value>
+                <Style TargetType="controls:WYBtnColors">
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Width" Value="100"/>
+                    <Setter Property="StretchSource" Value="Uniform"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:WYHeaderTitleBar">
-                    <RelativePanel x:Name="PART_GridElementName" Background="{TemplateBinding ColorsSource}">
-           
-                        <controls:WYBtnColors
-                                              Label="{TemplateBinding LeftTextTitle}" 
-                                              Visibility="{TemplateBinding LeftVisibility}"
-                                              IconSource="{TemplateBinding LeftIcon}" 
-                                              RelativePanel.AlignLeftWithPanel="True"
-                                              RelativePanel.AlignTopWith="PART_PlaceholderTextContentPresenter"/>
-
-                        <ContentControl x:Name="PART_PlaceholderTextContentPresenter" 
-                                        Content="{TemplateBinding Title}" 
-                                        FontFamily="{TemplateBinding FontFamily}"
-                                        Foreground="{TemplateBinding Foreground}" 
-                                        IsHitTestVisible="False" IsTabStop="False" 
-                                        Margin="{TemplateBinding BorderThickness}" 
-                                        RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                        RelativePanel.AlignVerticalCenterWithPanel="True"/>
-
-                        <controls:WYBtnColors
-                                            Label="{TemplateBinding RightTextTitle}" 
-                                            Visibility="{TemplateBinding RightVisibility}" 
-                                            IconSource="{TemplateBinding RightIcon}" 
-                                            RelativePanel.AlignRightWithPanel="True" 
-                                            RelativePanel.AlignTopWith="PART_PlaceholderTextContentPresenter"/>
+                    <RelativePanel x:Name="PART_GridElementName"
+                                   Background="{TemplateBinding ColorsSource}">
+                        <controls:WYBtnColors x:Name="PART_LeftBtnElementState"
+                            Label="{TemplateBinding LeftText}"
+                            Visibility="{TemplateBinding LeftVisibility}"
+                            IconSource="{TemplateBinding LeftIcon}" 
+                            Style="{TemplateBinding BtnColorsStyle}" 
+                            MarginSource="10,0,0,0"
+                            GeneratedContentHorizontalStretch="Left"
+                            Height="{TemplateBinding Height}"
+                            RelativePanel.AlignLeftWithPanel="True"
+                            RelativePanel.AlignHorizontalCenterWith="PART_Middle"/>
                         
+                        <ContentControl x:Name="PART_Middle"
+                            Content="{TemplateBinding Title}" 
+                            FontFamily="{TemplateBinding FontFamily}"
+                            Foreground="{TemplateBinding Foreground}" 
+                            IsHitTestVisible="False" IsTabStop="False" 
+                            Margin="{TemplateBinding BorderThickness}" 
+                            RelativePanel.AlignHorizontalCenterWithPanel="True"
+                            RelativePanel.AlignVerticalCenterWithPanel="True"/>
+
+                        <controls:WYBtnColors x:Name="PART_RightBtnElementState"
+                            Label="{TemplateBinding RightText}"
+                            Visibility="{TemplateBinding RightVisibility}" 
+                            IconSource="{TemplateBinding RightIcon}" 
+                            MarginSource="0,0,10,0"
+                            Style="{TemplateBinding BtnColorsStyle}"  
+                            GeneratedContentHorizontalStretch="Right"
+                            Height="{TemplateBinding Height}"
+                            RelativePanel.AlignRightWithPanel="True"
+                            RelativePanel.AlignHorizontalCenterWith="PART_Middle"/>
                     </RelativePanel>
                 </ControlTemplate>
             </Setter.Value>

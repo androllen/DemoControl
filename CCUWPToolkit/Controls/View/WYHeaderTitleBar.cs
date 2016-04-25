@@ -14,16 +14,52 @@ using Windows.UI.Xaml.Media;
 
 namespace CCUWPToolkit.Controls
 {
+    [TemplatePart(Name = LeftBtnElementName, Type = typeof(WYBtnColors))]
+    [TemplatePart(Name = RightBtnElementName, Type = typeof(WYBtnColors))]
     public class WYHeaderTitleBar : BaseControl
     {
+        private const string LeftBtnElementName = "PART_LeftBtnElementState";
+        private const string RightBtnElementName = "PART_RightBtnElementState";
+
         public WYHeaderTitleBar()
         {
             DefaultStyleKey = typeof(WYHeaderTitleBar);
         }
+        public event EventHandler<RoutedEventArgs> LeftClick;
+        public event EventHandler<RoutedEventArgs> RightClick;
+        private WYBtnColors _leftBtn;
+        private WYBtnColors _rightBtn;
 
         protected override void OnApplyTemplate()
         {
+            if (_leftBtn != null)
+                _leftBtn.Click -= OnLeftBtn_Click;
+
+            if (_rightBtn != null)
+                _rightBtn.Click -= OnRightBtn_Click;
+
+            _leftBtn = GetTemplateChild(LeftBtnElementName) as WYBtnColors;
+            _rightBtn = GetTemplateChild(RightBtnElementName) as WYBtnColors;
+
+            if (_leftBtn != null)
+                _leftBtn.Click += OnLeftBtn_Click;
+
+            if (_rightBtn != null)
+                _rightBtn.Click += OnRightBtn_Click;
+
             base.OnApplyTemplate();
+        }
+
+        private void OnLeftBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (LeftClick != null)
+                LeftClick(sender, e);
+        }
+
+        private void OnRightBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (RightClick != null)
+                RightClick(sender, e);
         }
 
         public ImageSource LeftIcon
@@ -88,28 +124,50 @@ namespace CCUWPToolkit.Controls
                 typeof(WYHeaderTitleBar), 
                 new PropertyMetadata(string.Empty));
 
-        public string LeftTextTitle
+        public string LeftText
         {
-            get { return (string)GetValue(LeftTextTitleProperty); }
-            set { SetValue(LeftTextTitleProperty, value); }
+            get { return (string)GetValue(LeftTextProperty); }
+            set { SetValue(LeftTextProperty, value); }
         }
 
-        public static readonly DependencyProperty LeftTextTitleProperty =
-            DependencyProperty.Register("LeftTextTitle",
+        public static readonly DependencyProperty LeftTextProperty =
+            DependencyProperty.Register("LeftText",
                 typeof(string),
                 typeof(WYHeaderTitleBar),
                 new PropertyMetadata(string.Empty));
 
-        public static readonly DependencyProperty RightTextTitleProperty =
-            DependencyProperty.Register("RightTextTitle",
+        public static readonly DependencyProperty RightTextProperty =
+            DependencyProperty.Register("RightText",
                 typeof(string),
                 typeof(WYHeaderTitleBar),
                 new PropertyMetadata(string.Empty));
 
-        public string RightTextTitle
+        public string RightText
         {
-            get { return (string)GetValue(RightTextTitleProperty); }
-            set { SetValue(RightTextTitleProperty, value); }
+            get { return (string)GetValue(RightTextProperty); }
+            set { SetValue(RightTextProperty, value); }
         }
+
+        #region TitleStyle
+        /// <summary>
+        /// TitleStyle Dependency Property
+        /// </summary>
+        public static readonly DependencyProperty BtnColorsStyleProperty =
+            DependencyProperty.Register(
+                "BtnColorsStyle",
+                typeof(Style),
+                typeof(WYHeaderTitleBar),
+                new PropertyMetadata(null));
+
+        /// <summary>
+        /// Gets or sets the TitleStyle property. This dependency property 
+        /// indicates the style to use for the title TextBlock.
+        /// </summary>
+        public Style BtnColorsStyle
+        {
+            get { return (Style)GetValue(BtnColorsStyleProperty); }
+            set { SetValue(BtnColorsStyleProperty, value); }
+        }
+        #endregion
     }
 }
