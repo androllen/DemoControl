@@ -67,9 +67,7 @@ namespace DemoControl
 
         private void WYHeaderTitleBar_LeftClick(object sender, RoutedEventArgs e)
         {
-            var toast = new WYToastDialog();
-            toast.CornerSource = new CornerRadius(5);
-            toast.ShowAsync("你 是 我 的 黄 油 小 伙 伴 对 吗？");
+            this.Frame.Navigate(typeof(IncrementalScrollingPage));
         }
 
         private void WYHeaderTitleBar_RightClick(object sender, RoutedEventArgs e)
