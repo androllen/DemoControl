@@ -1,15 +1,19 @@
-﻿using System;
+﻿/********************************************************************************
+** 作者： androllen
+** 日期： 16/5/4 18:16:45
+** 微博： http://weibo.com/Androllen
+*********************************************************************************/
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
 
 namespace CCUWPToolkit.Controls
 {
-    public abstract class BaseButton : Button, IBaseLabel
+    public class BaseText : BaseControl, IBaseLabel
     {
         protected override void OnApplyTemplate()
         {
@@ -30,7 +34,7 @@ namespace CCUWPToolkit.Controls
                 DependencyProperty.Register(
                 "IconSource",
                 typeof(ImageSource),
-                typeof(BaseButton),
+                typeof(BaseText),
                 new PropertyMetadata(null));
         #endregion
 
@@ -48,7 +52,7 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
             "Label",
             typeof(object),
-            typeof(BaseButton),
+            typeof(BaseText),
             new PropertyMetadata(string.Empty));
         #endregion
 
@@ -64,50 +68,8 @@ namespace CCUWPToolkit.Controls
 
         // Using a DependencyProperty as the backing store for Stretch.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty StretchSourceProperty =
-            DependencyProperty.Register("StretchSource", typeof(Stretch), typeof(BaseButton),
+            DependencyProperty.Register("StretchSource", typeof(Stretch), typeof(BaseText),
                 new PropertyMetadata(Stretch.None));
         #endregion
-
-        #region 背景色
-        /// <summary>
-        /// 背景色
-        /// </summary>
-        public Brush ColorsSource
-        {
-            get { return (Brush)GetValue(ColorsSourceProperty); }
-            set { SetValue(ColorsSourceProperty, value); }
-        }
-
-        public static readonly DependencyProperty ColorsSourceProperty =
-            DependencyProperty.Register("ColorsSource", typeof(Brush), typeof(BaseButton),
-                new PropertyMetadata(new SolidColorBrush(Colors.Transparent)));
-        #endregion
-
-        #region 背景圆角度
-        /// <summary>
-        /// 背景圆角度
-        /// </summary>
-        public CornerRadius CornerSource
-        {
-            get { return (CornerRadius)GetValue(CornerSourceProperty); }
-            set { SetValue(CornerSourceProperty, value); }
-        }
-
-        public static readonly DependencyProperty CornerSourceProperty =
-            DependencyProperty.Register("CornerSource", typeof(CornerRadius), typeof(BaseButton),
-                new PropertyMetadata(new CornerRadius(0)));
-        #endregion
-
-        public Thickness MarginSource
-        {
-            get { return (Thickness)GetValue(MarginSourceProperty); }
-            set { SetValue(MarginSourceProperty, value); }
-        }
-
-        private static readonly DependencyProperty MarginSourceProperty =
-            DependencyProperty.Register("MarginSource",
-                typeof(Thickness),
-                typeof(BaseButton),
-                new PropertyMetadata(new Thickness(0)));
     }
 }

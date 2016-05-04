@@ -51,6 +51,7 @@ namespace CCUWPToolkit.Controls
                 new PropertyMetadata(new CornerRadius(0)));
         #endregion
 
+        #region 背景边距
         public Thickness MarginSource
         {
             get { return (Thickness)GetValue(MarginSourceProperty); }
@@ -62,5 +63,6 @@ namespace CCUWPToolkit.Controls
                 typeof(Thickness),
                 typeof(BaseControl),
                 new PropertyMetadata(new Thickness(0)));
+        #endregion
     }
 }

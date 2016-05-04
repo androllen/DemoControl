@@ -2,7 +2,7 @@
 
 namespace CCUWPToolkit.Controls
 {
-    public interface IBaseButton : IBaseControl, IImageSource
+    public interface IBaseLabel : IBaseControl, IImageSource
     {
         object Label { get; set; }
     }

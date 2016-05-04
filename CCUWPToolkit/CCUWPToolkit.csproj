@@ -98,11 +98,12 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\BaseText.cs" />
     <Compile Include="Controls\BaseControl.cs" />
     <Compile Include="Controls\Button\BaseButton.cs" />
     <Compile Include="Controls\Button\WYBtnColors.cs" />
     <Compile Include="Controls\Button\WYBtnImage.cs" />
-    <Compile Include="Controls\Button\IBaseButton.cs" />
+    <Compile Include="Controls\Button\IBaseLabel.cs" />
     <Compile Include="Controls\Button\IImageSource.cs" />
     <Compile Include="Controls\Dialog\BaseDialog.cs" />
     <Compile Include="Controls\Dialog\IBaseDialog.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Controls\TextBox\WYTextBox.cs" />
     <Compile Include="Controls\View\WYHeaderTitleBar.cs" />
     <Compile Include="Controls\View\WYGridView.cs" />
+    <Compile Include="Controls\View\WYTabHeader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Properties\CCUWPToolkit.rd.xml" />
   </ItemGroup>
