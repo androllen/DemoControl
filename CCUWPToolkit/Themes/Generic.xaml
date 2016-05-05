@@ -268,13 +268,13 @@
                     <Grid>
                         <StackPanel >
                             <FontIcon HorizontalAlignment="Center"
-                                      Margin="0 12 0 0"
-                                      Glyph="{TemplateBinding Glyph}"
-                                      FontSize="16"/>
+                                      Margin="0 6 0 0"
+                                      Glyph="{TemplateBinding Glyph}" FontSize="{TemplateBinding FontSize}"/>
                             <ContentPresenter 
                                 FontFamily="Segoe UI"
                                 Content="{TemplateBinding Label}"
-                                HorizontalAlignment="Center"/>
+                                HorizontalAlignment="Center"
+                                FontSize="{TemplateBinding FontSize}"/>
                             <Rectangle Height="2" Fill="{TemplateBinding ColorsSource}"/>
                         </StackPanel>
                     </Grid>
