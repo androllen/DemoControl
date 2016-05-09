@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Navigation;
 using CCUWPToolkit.Controls;
 using Windows.UI;
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
+using DemoControl.Model;
 
 //“空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 上有介绍
 
@@ -25,10 +27,21 @@ namespace DemoControl
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
         public MainPage()
         {
             this.InitializeComponent();
+            FlipViewItems = new ObservableCollection<NavLink>()
+            {
+            new NavLink() { Label = "ms-appx:///Assets/arya.jpg"},
+            new NavLink() { Label = "ms-appx:///Assets/catelyn.jpg"},
+            new NavLink() { Label = "ms-appx:///Assets/cercei.jpg"},
+            new NavLink() { Label = "ms-appx:///Assets/jamie.jpg" }
+            };
+
         }
+
+        private ObservableCollection<NavLink> FlipViewItems { get; set; }
 
         private async void btn_Click(object sender, RoutedEventArgs e)
         {
@@ -76,5 +89,7 @@ namespace DemoControl
             toast.CornerSource = new CornerRadius(5);
             toast.ShowAsync("你 不是 我 的 黄 油 小 伙 伴 对 吗？");
         }
+
+
     }
 }

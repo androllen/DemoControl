@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoControl", "DemoControl\DemoControl.csproj", "{E6C2D07C-CE85-4314-8330-8143FF573FF6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCUWPToolkit", "CCUWPToolkit\CCUWPToolkit.csproj", "{057CA838-C89F-4130-A391-AA8DF7AC1886}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UwpHelpers.Controls", "..\..\Clone\UwpProjects\UwpHelpers\UwpHelpers.Controls\UwpHelpers.Controls.csproj", "{C8B8E600-6754-4F63-948E-314003886F91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,22 +53,6 @@ Global
 		{057CA838-C89F-4130-A391-AA8DF7AC1886}.Release|x64.Build.0 = Release|x64
 		{057CA838-C89F-4130-A391-AA8DF7AC1886}.Release|x86.ActiveCfg = Release|x86
 		{057CA838-C89F-4130-A391-AA8DF7AC1886}.Release|x86.Build.0 = Release|x86
-		{C8B8E600-6754-4F63-948E-314003886F91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8B8E600-6754-4F63-948E-314003886F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8B8E600-6754-4F63-948E-314003886F91}.Debug|ARM.ActiveCfg = Debug|ARM
-		{C8B8E600-6754-4F63-948E-314003886F91}.Debug|ARM.Build.0 = Debug|ARM
-		{C8B8E600-6754-4F63-948E-314003886F91}.Debug|x64.ActiveCfg = Debug|x64
-		{C8B8E600-6754-4F63-948E-314003886F91}.Debug|x64.Build.0 = Debug|x64
-		{C8B8E600-6754-4F63-948E-314003886F91}.Debug|x86.ActiveCfg = Debug|x86
-		{C8B8E600-6754-4F63-948E-314003886F91}.Debug|x86.Build.0 = Debug|x86
-		{C8B8E600-6754-4F63-948E-314003886F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8B8E600-6754-4F63-948E-314003886F91}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C8B8E600-6754-4F63-948E-314003886F91}.Release|ARM.ActiveCfg = Release|ARM
-		{C8B8E600-6754-4F63-948E-314003886F91}.Release|ARM.Build.0 = Release|ARM
-		{C8B8E600-6754-4F63-948E-314003886F91}.Release|x64.ActiveCfg = Release|x64
-		{C8B8E600-6754-4F63-948E-314003886F91}.Release|x64.Build.0 = Release|x64
-		{C8B8E600-6754-4F63-948E-314003886F91}.Release|x86.ActiveCfg = Release|x86
-		{C8B8E600-6754-4F63-948E-314003886F91}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -57,8 +57,14 @@
                           Title="haha" ColorsSource="Green"  Height="45"
                               LeftClick="WYHeaderTitleBar_LeftClick" 
                               RightClick="WYHeaderTitleBar_RightClick"/>-->
-    <ctl:WYTabHeader ColorsSource="Pink" Label="haha" Grid.ColumnSpan="2" Grid.Row="4"/>
-
+    <!--<ctl:WYTabHeader ColorsSource="Pink" Label="haha" Grid.ColumnSpan="2" Grid.Row="4"/>-->
+    <!--<ctl:WYFlipView MaxWidth="400" Height="270" Grid.ColumnSpan="2" Grid.Row="4">
+        <Image Source="ms-appx:///Assets/arya.jpg"/>
+        <Image Source="ms-appx:///Assets/catelyn.jpg"/>
+        <Image Source="ms-appx:///Assets/cercei.jpg"/>
+        <Image Source="ms-appx:///Assets/jamie.jpg"/>
+        <Image Source="ms-appx:///Assets/jon.jpg"/>
+    </ctl:WYFlipView>-->
     <!--<ctl:WYBtnColors
             Grid.Column="1" Grid.Row="4"
             ColorsSource="Green" Label="this is a regular dialog"

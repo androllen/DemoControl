@@ -102,13 +102,10 @@
     <Compile Include="ControlButton.xaml.cs">
       <DependentUpon>ControlButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IncrementalScrollingPage.xaml.cs">
-      <DependentUpon>IncrementalScrollingPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="IncrementalScrollingViewModel.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NavLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WYGridView.xaml.cs">
       <DependentUpon>WYGridView.xaml</DependentUpon>
@@ -121,7 +118,16 @@
     <None Include="DemoControl_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\arya.jpg" />
+    <Content Include="Assets\catelyn.jpg" />
+    <Content Include="Assets\cercei.jpg" />
+    <Content Include="Assets\jamie.jpg" />
+    <Content Include="Assets\jon.jpg" />
+    <Content Include="Assets\rob.jpg" />
+    <Content Include="Assets\sandor.jpg" />
+    <Content Include="Assets\sansa.jpg" />
     <Content Include="Assets\test.jpg" />
+    <Content Include="Assets\tyrion.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -144,10 +150,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="IncrementalScrollingPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -158,10 +160,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Clone\UwpProjects\UwpHelpers\UwpHelpers.Controls\UwpHelpers.Controls.csproj">
-      <Project>{c8b8e600-6754-4f63-948e-314003886f91}</Project>
-      <Name>UwpHelpers.Controls</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CCUWPToolkit\CCUWPToolkit.csproj">
       <Project>{057ca838-c89f-4130-a391-aa8df7ac1886}</Project>
       <Name>CCUWPToolkit</Name>
