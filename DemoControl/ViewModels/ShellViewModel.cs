@@ -50,12 +50,7 @@ namespace DemoControl.ViewModels
                 new CharacterViewModel("Tyrion Lannister", "ms-appx:///Assets/tyrion.jpg")
             };
         }
-        public async void CharacterSelected(CharacterViewModel character)
-        {
-            var dialog = new MessageDialog(String.Format("{0} selected.", character.TBName), "Character Selected");
 
-            await dialog.ShowAsync();
-        }
         private void FrameManager_BackRequested(object sender, BackRequestedEventArgs e)
         {
             if (_navigationService.CanGoBack)

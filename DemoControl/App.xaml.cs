@@ -33,12 +33,16 @@ namespace DemoControl
 
         protected override void Configure()
         {
+            MessageBinder.SpecialValues.Add("$clickeditem", c => ((SelectionChangedEventArgs)c.EventArgs).AddedItems);
+
             _container = new WinRTContainer();
             _container.RegisterWinRTServices();
 
             _container
-                .PerRequest<ShellViewModel>();
-             
+                .PerRequest<ShellViewModel>()
+                .PerRequest<DeviceViewModel>();
+
+
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)

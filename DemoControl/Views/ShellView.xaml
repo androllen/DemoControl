@@ -63,7 +63,8 @@
         
     <!--<ctl:WYTabHeader ColorsSource="Pink" Label="haha" Grid.ColumnSpan="2" Grid.Row="4"/>-->
     <ctl:WYFlipView x:Name="Characters"
-                    MaxWidth="400" Height="270" 
+                    MaxWidth="400" Height="270"
+                    SelectionChanged="Characters_SelectionChanged"
                     Grid.ColumnSpan="2" Grid.Row="4" >
         
     <!--<Image Source="ms-appx:///Assets/arya.jpg"/>

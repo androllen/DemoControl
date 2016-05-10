@@ -20,16 +20,15 @@ namespace DemoControl.Views
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class ShellView
+    public sealed partial class DeviceView : Page
     {
-        public ShellView()
+        public DeviceView()
         {
             this.InitializeComponent();
         }
-
-        private void Characters_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Test(object sender, RoutedEventArgs e)
         {
-
+            Title.Text = "Cliced";
         }
     }
 }

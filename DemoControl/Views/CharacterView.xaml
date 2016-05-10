@@ -5,13 +5,20 @@
     xmlns:local="using:DemoControl.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:cm="using:Caliburn.Micro"
+    xmlns:ctl="using:CCUWPToolkit.Controls"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal">
 
-        <Image x:Name="Image" Width="200" Stretch="Uniform" />
+    <Button cm:Message.Attach="[Click] = [CarouselClick($dataContext)]">
+        <Grid>
+            <StackPanel Orientation="Horizontal">
 
-        <TextBlock x:Name="TBName" Grid.Column="1" Style="{StaticResource TitleTextBlockStyle}" Width="200" />
+                <Image x:Name="Image" Width="200" Stretch="Uniform" />
 
-    </StackPanel>
+                <TextBlock x:Name="TBName" Grid.Column="1" Style="{StaticResource TitleTextBlockStyle}" Width="200" />
+
+            </StackPanel>
+        </Grid>
+    </Button>
 </Page>

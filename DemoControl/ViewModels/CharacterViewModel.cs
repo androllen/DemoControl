@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 
 namespace DemoControl.ViewModels
 {
@@ -29,6 +30,13 @@ namespace DemoControl.ViewModels
         {
             get;
             private set;
+        }
+  
+        public async void CarouselClick(CharacterViewModel character)
+        {
+            var dialog = new MessageDialog(String.Format("{0} selected.", character.TBName), "Character Selected");
+
+            await dialog.ShowAsync();
         }
     }
 }
