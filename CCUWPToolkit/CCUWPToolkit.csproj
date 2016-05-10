@@ -118,9 +118,14 @@
     <Compile Include="Controls\Extensions\WriteableBitmapExtensions.cs" />
     <Compile Include="Controls\IBaseControl.cs" />
     <Compile Include="Controls\TextBox\WYTextBox.cs" />
+    <Compile Include="Controls\Utils\FileUtil.cs" />
+    <Compile Include="Controls\Utils\HttpUtil.cs" />
+    <Compile Include="Controls\Utils\ImageUtil.cs" />
+    <Compile Include="Controls\Utils\Md5Util.cs" />
     <Compile Include="Controls\View\WYFlipView.cs" />
     <Compile Include="Controls\View\WYHeaderTitleBar.cs" />
     <Compile Include="Controls\View\WYGridView.cs" />
+    <Compile Include="Controls\View\WYImage.cs" />
     <Compile Include="Controls\View\WYTabHeader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Properties\CCUWPToolkit.rd.xml" />

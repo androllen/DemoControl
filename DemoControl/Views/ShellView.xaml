@@ -7,8 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:cm="using:Caliburn.Micro"
     xmlns:ctl="using:CCUWPToolkit.Controls"
-    xmlns:model="using:DemoControl.Model"
-    xmlns:vm="using:DemoControl.ViewModels"
     mc:Ignorable="d">
 
     <!---->
@@ -62,18 +60,13 @@
                           cm:Message.Attach="[Event LeftClick] = [Action WYHeaderTitleBar_LeftClick]; [Event RightClick] = [Action WYHeaderTitleBar_RightClick]"/>-->
         
     <!--<ctl:WYTabHeader ColorsSource="Pink" Label="haha" Grid.ColumnSpan="2" Grid.Row="4"/>-->
-    <ctl:WYFlipView x:Name="Characters"
+    <!--<ctl:WYFlipView x:Name="Characters"
                     MaxWidth="400" Height="270"
                     SelectionChanged="Characters_SelectionChanged"
-                    Grid.ColumnSpan="2" Grid.Row="4" >
-        
-    <!--<Image Source="ms-appx:///Assets/arya.jpg"/>
-        <Image Source="ms-appx:///Assets/catelyn.jpg"/>
-        <Image Source="ms-appx:///Assets/cercei.jpg"/>
-        <Image Source="ms-appx:///Assets/jamie.jpg"/>
-        <Image Source="ms-appx:///Assets/jon.jpg"/>-->
-    
-    </ctl:WYFlipView>
+                    Grid.ColumnSpan="2" Grid.Row="4" />-->
+    <ctl:WYImage Background="#ff4E5058" Stretch="Uniform"
+                 LoadNew="True" IsNightMode="False" Grid.ColumnSpan="2" Grid.Row="4"
+                 ImageUrl="http://img.ivsky.com/img/bizhi/pre/201604/01/april-002.jpg"/>
     <!--<ctl:WYBtnColors
             Grid.Column="1" Grid.Row="4"
             ColorsSource="Green" Label="this is a regular dialog"

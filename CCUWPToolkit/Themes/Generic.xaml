@@ -897,7 +897,21 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <!--图片控件-->
+    <Style TargetType="controls:WYImage">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:WYImage">
+                    <Grid Background="{TemplateBinding ColorsSource}">
+                        <Image x:Name="PART_ImageElementState"
+                               Stretch="{TemplateBinding Stretch}"/>
+                        <Rectangle x:Name="PART_RectangleElementState"
+                                   Fill="#33000000" Visibility="Collapsed"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <!-- Default style for Windows.UI.Xaml.Controls.FlipView -->
     <Style TargetType="controls:WYFlipView">
         <Setter Property="Background" Value="{ThemeResource SystemControlPageBackgroundListLowBrush}" />

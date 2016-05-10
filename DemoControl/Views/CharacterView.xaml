@@ -10,15 +10,15 @@
     mc:Ignorable="d">
 
 
-    <Button cm:Message.Attach="[Click] = [CarouselClick($dataContext)]">
+    <ctl:WYBtnColors cm:Message.Attach="[Click] = [CarouselClick($dataContext)]" Background="Transparent">
         <Grid>
             <StackPanel Orientation="Horizontal">
 
                 <Image x:Name="Image" Width="200" Stretch="Uniform" />
-
+                
                 <TextBlock x:Name="TBName" Grid.Column="1" Style="{StaticResource TitleTextBlockStyle}" Width="200" />
 
             </StackPanel>
         </Grid>
-    </Button>
+    </ctl:WYBtnColors>
 </Page>

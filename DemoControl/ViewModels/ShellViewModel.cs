@@ -5,7 +5,6 @@
 *********************************************************************************/
 using Caliburn.Micro;
 using CCUWPToolkit.Controls;
-using DemoControl.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
