@@ -1,11 +1,11 @@
-﻿<Application
+﻿<cm:CaliburnApplication
     x:Class="DemoControl.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:DemoControl"
+    xmlns:cm="using:Caliburn.Micro"
     RequestedTheme="Light">
 
-    <Application.Resources>
+    <cm:CaliburnApplication.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 
@@ -684,5 +684,5 @@
             </Style>
         </ResourceDictionary>
 
-    </Application.Resources>
-</Application>
+    </cm:CaliburnApplication.Resources>
+</cm:CaliburnApplication>

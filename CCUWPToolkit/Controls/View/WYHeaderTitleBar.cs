@@ -25,8 +25,8 @@ namespace CCUWPToolkit.Controls
         {
             DefaultStyleKey = typeof(WYHeaderTitleBar);
         }
-        public event EventHandler<RoutedEventArgs> LeftClick;
-        public event EventHandler<RoutedEventArgs> RightClick;
+        public event RoutedEventHandler LeftClick;
+        public event RoutedEventHandler RightClick;
         private WYBtnColors _leftBtn;
         private WYBtnColors _rightBtn;
 
@@ -52,14 +52,12 @@ namespace CCUWPToolkit.Controls
 
         private void OnLeftBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (LeftClick != null)
-                LeftClick(sender, e);
+            LeftClick?.Invoke(sender, e);
         }
 
         private void OnRightBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (RightClick != null)
-                RightClick(sender, e);
+            RightClick?.Invoke(sender, e);
         }
 
         public ImageSource LeftIcon

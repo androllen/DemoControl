@@ -13,16 +13,18 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
+// “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
 
-namespace DemoControl
+namespace DemoControl.Views
 {
-    public sealed partial class AppShell : UserControl
+    /// <summary>
+    /// 可用于自身或导航至 Frame 内部的空白页。
+    /// </summary>
+    public sealed partial class ShellView
     {
-        public AppShell()
+        public ShellView()
         {
             this.InitializeComponent();
-            this.RootFrame.Navigate(typeof(MainPage));
         }
     }
 }

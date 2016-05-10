@@ -1126,7 +1126,8 @@
                                       AutomationProperties.AccessibilityView="Raw">
                             <ItemsPresenter />
                         </ScrollViewer>
-                        <ListBox x:Name="TipList" Height="20" Background="Transparent"
+                        <ListBox x:Name="TipList" 
+                                    Height="20" Background="Transparent"
                                     ItemsSource="{TemplateBinding ItemsSource}"
                                     SelectedIndex="{TemplateBinding SelectedIndex}"
                                     SelectedItem="{TemplateBinding SelectedItem}" 
