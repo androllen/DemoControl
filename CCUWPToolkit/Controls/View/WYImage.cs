@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -20,10 +21,14 @@ namespace CCUWPToolkit.Controls
 {
     [TemplatePart(Name = ImageElementName, Type = typeof(Image))]
     [TemplatePart(Name = RectangleElementState, Type = typeof(Rectangle))]
+    [TemplatePart(Name = GridElementState, Type = typeof(Grid))]
     public class WYImage : BaseControl
     {
         private const string RectangleElementState = "PART_RectangleElementState";
         private const string ImageElementName = "PART_ImageElementState";
+        private const string GridElementState = "PART_GridElementState";
+
+        private Grid _grid;
         private Image _image;
         private Rectangle _rectangle;
         private readonly TaskCompletionSource<bool> _waitForApplyTemplateTaskSource = new TaskCompletionSource<bool>(false);
@@ -35,6 +40,7 @@ namespace CCUWPToolkit.Controls
 
         protected override void OnApplyTemplate()
         {
+            _grid = GetTemplateChild(GridElementState) as Grid;
             _image = GetTemplateChild(ImageElementName) as Image;
             _rectangle = GetTemplateChild(RectangleElementState) as Rectangle;
 
@@ -64,7 +70,7 @@ namespace CCUWPToolkit.Controls
         private async void OnDefaultImageUriChanged()
         {
             await _waitForApplyTemplateTaskSource.Task;
-            //_image.Source = new BitmapImage(new Uri(DefaultUri, UriKind.RelativeOrAbsolute));
+            _image.Source = new BitmapImage(new Uri(DefaultUri, UriKind.RelativeOrAbsolute));
 
         }
 
@@ -108,15 +114,20 @@ namespace CCUWPToolkit.Controls
             await _waitForApplyTemplateTaskSource.Task;
 
             var uri = await ImageUtil.LoadImage(ImageUrl, LoadNew);
-            if (!string.IsNullOrEmpty(uri.OriginalString))
+            if (!string.IsNullOrEmpty(uri.OriginalString) || !string.IsNullOrEmpty(DefaultUri))
             {
                 _image.Source = uri != null ? new BitmapImage(uri) : new BitmapImage(new Uri(DefaultUri, UriKind.RelativeOrAbsolute));
                 StoryBordImg(_image);
             }
+            else
+            {
+                _grid.Background = this.ColorsSource;
+                StoryBordImg(_grid);
+            }
 
         }
 
-        private void StoryBordImg(Image img)
+        private void StoryBordImg(UIElement img)
         {
             var sb = new Storyboard();
             var anim = new DoubleAnimation { From = 0, To = 1, Duration = TimeSpan.FromMilliseconds(500) };

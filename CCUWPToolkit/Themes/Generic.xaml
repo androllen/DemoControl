@@ -902,7 +902,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:WYImage">
-                    <Grid Background="{TemplateBinding ColorsSource}">
+                    <Grid x:Name="PART_GridElementState">
                         <Image x:Name="PART_ImageElementState"
                                Stretch="{TemplateBinding Stretch}"/>
                         <Rectangle x:Name="PART_RectangleElementState"
