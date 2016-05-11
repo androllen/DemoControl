@@ -169,25 +169,17 @@
                             <Grid.RenderTransform>
                                 <CompositeTransform />
                             </Grid.RenderTransform>
-                            <RelativePanel 
-                                        VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
-                                        HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}">
-                                <Image
-                                        x:Name="PART_ImageStateName"
-                                        Stretch="None"
+                            <Image x:Name="PART_ImageStateName"
+                                        Stretch="{TemplateBinding StretchSource}"
                                         Source="{TemplateBinding IconSource}"
                                         VerticalAlignment="{TemplateBinding GeneratedImageVerticalStretch}"
                                         HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}"/>
-                                <ContentPresenter
-                                        x:Name="PART_ContentPresenter"
+                            <ContentPresenter x:Name="PART_ContentPresenter"
                                         FontSize="{TemplateBinding FontSize}"
-                                        RelativePanel.AlignVerticalCenterWithPanel="True" 
-                                        RelativePanel.RightOf="PART_ImageStateName"
                                         Margin="{TemplateBinding MarginSource}"
                                         VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
                                         HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
                                         Content="{TemplateBinding Label}" />
-                            </RelativePanel>
                         </Grid>
                     </Grid>
                 </ControlTemplate>

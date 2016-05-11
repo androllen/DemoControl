@@ -18,34 +18,60 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="300"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <ctl:WYBtnColors ColorsSource="Green" Label="请输入手机号码" />
-        <ctl:WYBtnColors ColorsSource="Green" IsGeneratedImageStretch="True" 
+        <ctl:WYBtnColors ColorsSource="Green"
+                        IsGeneratedImageStretch="True" 
                         IconSource="/Assets/StoreLogo.png"
+                        GeneratedImageVerticalStretch="Center"
                         Grid.Column="1" Grid.Row="0"/>
-        <ctl:WYTextBox BorderBrush="Black" BorderThickness="1,1,0,1" Background="Transparent"
-                Grid.Column="0" Grid.Row="1" Foreground="Gray" FontFamily="{ThemeResource PhoneFontFamilySemiLight}"
-                PlaceholderText="请输入手机号码" DelBorderThicknessPadding="1"/>
-        <ctl:WYTextBox BorderBrush="Black" BorderThickness="1" Background="Transparent"
-            Grid.Column="1" Grid.Row="1" 
-            PlaceholderText="请输入手机号码" />
+        <ctl:WYTextBox BorderBrush="Black" 
+                        BorderThickness="1,1,0,1" 
+                        Background="Transparent"
+                        Grid.Column="0" Grid.Row="1"
+                        Foreground="Gray" 
+                        FontFamily="{ThemeResource PhoneFontFamilySemiLight}"
+                        PlaceholderText="请输入手机号码" 
+                        DelBorderThicknessPadding="1"/>
+        <ctl:WYTextBox BorderBrush="Black" 
+                        BorderThickness="1" 
+                        Background="Transparent"
+                        Grid.Column="1" Grid.Row="1" 
+                        PlaceholderText="请输入手机号码" />
         <ctl:WYBtnColors  x:Name="ShowInputToastDialog" 
-                          ColorsSource="Green" Label="请输入手机号码" Grid.Column="0" Grid.Row="2" 
-                        IsEnableComponentStretch="True" IconSource="/Assets/StoreLogo.png" />
+                        MarginSource="30,0,0,0"
+                        GeneratedImageHorizontalStretch="Left"
+                        GeneratedContentVerticalStretch="Center"
+                        ColorsSource="Green" Label="请输入手机号码"
+                        Grid.Column="0" Grid.Row="2" 
+                        IsEnableComponentStretch="True"
+                        IconSource="/Assets/StoreLogo.png" />
         <ctl:WYBtnColors x:Name="ShowToastDialog" 
-                         Grid.Column="1" Grid.Row="2"  ColorsSource="Green" Label="this is a toast dialog"/>
-        <ctl:WYBtnColors x:Name="ShowPhoneNumber"  ColorsSource="Transparent" Label="请输入手机号码" 
+                         Grid.Column="1" Grid.Row="2" 
+                         ColorsSource="Green" 
+                         Label="this is a toast dialog"/>
+        <ctl:WYBtnColors x:Name="ShowPhoneNumber"
+                         ColorsSource="Transparent" 
+                         Label="请输入手机号码" 
                             Grid.Column="0" Grid.Row="3"/>        
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
-         <ctl:WYBtnImage Label="手机号码" ColorsSource="Transparent" FontSize="16" OrientationSource="Horizontal"
-                ImageUri="http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREgNPMVcojMU6/800" 
-                            StretchSource="Uniform" GeneratedImageVerticalStretch="Top" GeneratedContentVerticalStretch="Bottom"
-                                IsEnableComponentStretch="True"  Grid.ColumnSpan="2" Grid.Row="4"
-                               Width="100" Height="80" Foreground="Orange" EllipseHeight="40" EllipseWidth="40"/>
+            <ctl:WYBtnImage Label="手机号码" 
+                            ColorsSource="Transparent" 
+                            FontSize="16" 
+                            OrientationSource="Horizontal"
+                            ImageUri="http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREgNPMVcojMU6/800" 
+                            StretchSource="Uniform" 
+                            GeneratedImageVerticalStretch="Top" 
+                            GeneratedContentVerticalStretch="Bottom"
+                            IsEnableComponentStretch="True" 
+                            Grid.ColumnSpan="2" Grid.Row="4"
+                            Width="100" Height="80" 
+                            Foreground="Orange" 
+                            EllipseHeight="40" EllipseWidth="40"/>
         
             <ctl:WYBtnImage ColorsSource="Transparent" 
                 ImageUri="ms-appx:///Assets/test.jpg" StretchSource="UniformToFill"
