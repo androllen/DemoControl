@@ -33,21 +33,23 @@
         <ctl:WYTextBox BorderBrush="Black" BorderThickness="1" Background="Transparent"
             Grid.Column="1" Grid.Row="1" 
             PlaceholderText="请输入手机号码" />
-        <ctl:WYBtnColors  x:Name="ShowInputToastDialog"  ColorsSource="Green" Label="请输入手机号码" Grid.Column="0" Grid.Row="2" 
+        <ctl:WYBtnColors  x:Name="ShowInputToastDialog" 
+                          ColorsSource="Green" Label="请输入手机号码" Grid.Column="0" Grid.Row="2" 
                         IsEnableComponentStretch="True" IconSource="/Assets/StoreLogo.png" />
         <ctl:WYBtnColors x:Name="ShowToastDialog" 
                          Grid.Column="1" Grid.Row="2"  ColorsSource="Green" Label="this is a toast dialog"/>
         <ctl:WYBtnColors x:Name="ShowPhoneNumber"  ColorsSource="Transparent" Label="请输入手机号码" 
                             Grid.Column="0" Grid.Row="3"/>        
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
-            <ctl:WYBtnImage Label="手机号码" ColorsSource="Transparent" FontSize="10"
-                ImageUri="ms-appx:///Assets/test.jpg" StretchSource="UniformToFill"
-                                IsEnableComponentStretch="True"
-                                Width="80" Height="100" Foreground="Orange"/>
+         <ctl:WYBtnImage Label="手机号码" ColorsSource="Transparent" FontSize="16" OrientationSource="Horizontal"
+                ImageUri="http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREgNPMVcojMU6/800" 
+                            StretchSource="Uniform" GeneratedImageVerticalStretch="Top" GeneratedContentVerticalStretch="Bottom"
+                                IsEnableComponentStretch="True"  Grid.ColumnSpan="2" Grid.Row="4"
+                               Width="100" Height="80" Foreground="Orange" EllipseHeight="40" EllipseWidth="40"/>
         
             <ctl:WYBtnImage ColorsSource="Transparent" 
                 ImageUri="ms-appx:///Assets/test.jpg" StretchSource="UniformToFill"
-                                Width="100" Height="100"/>
+                                EllipseHeight="40" EllipseWidth="40"/>
         </StackPanel>
         <!--<ScrollViewer Grid.ColumnSpan="2" Grid.Row="4" HorizontalScrollBarVisibility="Visible" HorizontalScrollMode="Enabled">
             <Image Source="ms-appx:///Assets/test.jpg" Stretch="None"/>
@@ -58,7 +60,7 @@
                           RightVisibility="Visible" RightIcon="/Assets/test.jpg"
                           Title="haha" ColorsSource="Green"  Height="45"
                           cm:Message.Attach="[Event LeftClick] = [Action WYHeaderTitleBar_LeftClick]; [Event RightClick] = [Action WYHeaderTitleBar_RightClick]"/>-->
-        
+
     <!--<ctl:WYTabHeader ColorsSource="Pink" Label="haha" Grid.ColumnSpan="2" Grid.Row="4"/>-->
     <!--<ctl:WYFlipView x:Name="Characters"
                     MaxWidth="400" Height="270"

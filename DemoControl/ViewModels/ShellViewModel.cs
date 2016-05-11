@@ -46,6 +46,14 @@ namespace DemoControl.ViewModels
                 new CharacterViewModel("Rob Stark", "ms-appx:///Assets/rob.jpg"),
                 new CharacterViewModel("Sandor Clegane", "ms-appx:///Assets/sandor.jpg"),
                 new CharacterViewModel("Sansa Stark", "ms-appx:///Assets/sansa.jpg"),
+                new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREgNPMVcojMU6/800"),
+                new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREgJPMVdHzFoK/800"),
+                new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREv5OMVdY3JQd/800"),
+                new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREvxOMVdYz8op/800"),
+                new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREvpOMVc*AswL/800"),
+                new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREvlOMVdID58E/800"),
+                new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREvdOMVdopw4o/800"),
+                new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREvZOMVcwmAcr/800"),
                 new CharacterViewModel("Tyrion Lannister", "ms-appx:///Assets/tyrion.jpg")
             };
         }

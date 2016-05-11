@@ -98,6 +98,21 @@ namespace CCUWPToolkit.Controls
                 new PropertyMetadata(new CornerRadius(0)));
         #endregion
 
+        #region 控件或布局方向
+        public Orientation OrientationSource
+        {
+            get { return (Orientation)GetValue(OrientationSourceProperty); }
+            set { SetValue(OrientationSourceProperty, value); }
+        }
+
+        private static readonly DependencyProperty OrientationSourceProperty =
+            DependencyProperty.Register("OrientationSource",
+                typeof(Orientation),
+                typeof(BaseButton),
+                new PropertyMetadata(Orientation.Vertical));
+        #endregion
+
+        #region 控件或布局边距
         public Thickness MarginSource
         {
             get { return (Thickness)GetValue(MarginSourceProperty); }
@@ -109,5 +124,7 @@ namespace CCUWPToolkit.Controls
                 typeof(Thickness),
                 typeof(BaseButton),
                 new PropertyMetadata(new Thickness(0)));
+        #endregion
+
     }
 }

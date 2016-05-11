@@ -93,6 +93,7 @@ namespace CCUWPToolkit.Controls
         {
             if (_ellipseStateName != null)
             {
+                _ellipseStateName.Fill = new SolidColorBrush(Colors.Gray);
                 ((ImageBrush)_ellipseStateName.Fill).ImageFailed -= Img_ImageFailed;
             }
         }
@@ -187,6 +188,35 @@ namespace CCUWPToolkit.Controls
             typeof(VerticalAlignment),
             typeof(WYBtnImage),
             new PropertyMetadata(VerticalAlignment.Center));
+        #endregion
+
+        #region EllipseWidth
+        public double EllipseWidth
+        {
+            get { return (double)GetValue(EllipseWidthProperty); }
+            set { SetValue(EllipseWidthProperty, value); }
+        }
+        public static readonly DependencyProperty EllipseWidthProperty =
+            DependencyProperty.Register(
+            "EllipseWidth",
+            typeof(double),
+            typeof(WYBtnImage),
+            new PropertyMetadata(0.0));
+        #endregion
+
+        #region EllipseHeight
+        public double EllipseHeight
+        {
+            get { return (double)GetValue(EllipseHeightProperty); }
+            set { SetValue(EllipseHeightProperty, value); }
+        }
+        public static readonly DependencyProperty EllipseHeightProperty =
+            DependencyProperty.Register(
+            "EllipseHeight",
+            typeof(double),
+            typeof(WYBtnImage),
+            new PropertyMetadata(0.0));
+
         #endregion
     }
 }

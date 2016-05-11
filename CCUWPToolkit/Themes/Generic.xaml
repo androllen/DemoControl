@@ -30,10 +30,8 @@
                 <ControlTemplate TargetType="controls:WYBtnImage">
                     <Grid>
                         <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup
-                                x:Name="CommonStates">
-                                <VisualState
-                                    x:Name="Normal">
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
@@ -43,8 +41,7 @@
                                         </DoubleAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
-                                <VisualState
-                                    x:Name="PointerOver">
+                                <VisualState x:Name="PointerOver">
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
@@ -54,8 +51,7 @@
                                         </DoubleAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
-                                <VisualState
-                                    x:Name="Pressed">
+                                <VisualState x:Name="Pressed">
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
@@ -71,8 +67,7 @@
                                                          Storyboard.TargetName="PART_GridStateName" />
                                     </Storyboard>
                                 </VisualState>
-                                <VisualState
-                                    x:Name="Disabled">
+                                <VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
@@ -92,23 +87,17 @@
                             <Grid.RenderTransform>
                                 <CompositeTransform />
                             </Grid.RenderTransform>
-                            <RelativePanel>
-                                <Ellipse x:Name="PART_EllipseStateName" Fill="Beige"
-                                         Width="{TemplateBinding Width}" Height="{TemplateBinding Width}"
+                            <Ellipse x:Name="PART_EllipseStateName" Fill="Gray" Margin="10" 
+                                         Width="{TemplateBinding EllipseWidth}" Height="{TemplateBinding EllipseHeight}"
                                          VerticalAlignment="{TemplateBinding GeneratedImageVerticalStretch}"
-                                         HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}"
-                                         RelativePanel.AlignTopWithPanel="True"
-                                         RelativePanel.AlignHorizontalCenterWithPanel="True"/>
-                                <ContentPresenter
+                                         HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}"/>
+                            <ContentPresenter
                                                 x:Name="PART_ContentPresenter"  Visibility="Collapsed"
                                                 FontSize="{TemplateBinding FontSize}"
                                                 Foreground="{TemplateBinding Foreground}"
                                                 VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
                                                 HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
-                                                Content="{TemplateBinding Label}"
-                                                RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                RelativePanel.AlignBottomWithPanel="True"/>                                    
-                            </RelativePanel>
+                                                Content="{TemplateBinding Label}"/>
                         </Grid>
                     </Grid>
                 </ControlTemplate>
@@ -123,10 +112,8 @@
                 <ControlTemplate TargetType="controls:WYBtnColors">
                     <Grid>
                         <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup
-                                x:Name="CommonStates">
-                                <VisualState
-                                    x:Name="Normal">
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
@@ -136,8 +123,7 @@
                                         </DoubleAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
-                                <VisualState
-                                    x:Name="PointerOver">
+                                <VisualState x:Name="PointerOver">
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
@@ -147,8 +133,7 @@
                                         </DoubleAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
-                                <VisualState
-                                    x:Name="Pressed">
+                                <VisualState x:Name="Pressed">
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
@@ -164,8 +149,7 @@
                                                          Storyboard.TargetName="PART_GridStateName" />
                                     </Storyboard>
                                 </VisualState>
-                                <VisualState
-                                    x:Name="Disabled">
+                                <VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Opacity"
