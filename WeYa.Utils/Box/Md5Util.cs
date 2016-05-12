@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using Windows.Security.Cryptography;
 using Windows.Security.Cryptography.Core;
 
-namespace CCUWPToolkit.Controls.Utils
+namespace WeYa.Utils
 {
     public class Md5Util
     {

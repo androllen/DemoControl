@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CCUWPToolkit.Controls.Utils
+namespace WeYa.Utils
 {
     public class ImageUtil
     {

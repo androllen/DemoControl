@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
-namespace CCUWPToolkit.Controls.Utils
+namespace WeYa.Utils
 {
     public class FileUtil
     {

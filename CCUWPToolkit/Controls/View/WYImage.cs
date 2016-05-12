@@ -3,19 +3,15 @@
 ** 日期： 16/5/10 13:45:52
 ** 微博： http://weibo.com/Androllen
 *********************************************************************************/
-using CCUWPToolkit.Controls.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Shapes;
+using WeYa.Utils;
 
 namespace CCUWPToolkit.Controls
 {
@@ -94,7 +90,7 @@ namespace CCUWPToolkit.Controls
             "ImageUrl", 
             typeof(string), 
             typeof(WYImage), 
-            new PropertyMetadata(default(string), ImageUriChangedCallback));
+            new PropertyMetadata(string.Empty, ImageUriChangedCallback));
 
         public string ImageUrl
         {

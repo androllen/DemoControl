@@ -11,98 +11,21 @@
 
     <!---->
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="300"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <ctl:WYBtnColors ColorsSource="Green" Label="请输入手机号码" />
-        <ctl:WYBtnColors ColorsSource="Green"
-                        IsGeneratedImageStretch="True" 
-                        IconSource="/Assets/StoreLogo.png"
-                        GeneratedImageVerticalStretch="Center"
-                        Grid.Column="1" Grid.Row="0"/>
-        <ctl:WYTextBox BorderBrush="Black" 
-                        BorderThickness="1,1,0,1" 
-                        Background="Transparent"
-                        Grid.Column="0" Grid.Row="1"
-                        Foreground="Gray" 
-                        FontFamily="{ThemeResource PhoneFontFamilySemiLight}"
-                        PlaceholderText="请输入手机号码" 
-                        DelBorderThicknessPadding="1"/>
-        <ctl:WYTextBox BorderBrush="Black" 
-                        BorderThickness="1" 
-                        Background="Transparent"
-                        Grid.Column="1" Grid.Row="1" 
-                        PlaceholderText="请输入手机号码" />
-        <ctl:WYBtnColors  x:Name="ShowInputToastDialog" 
-                        MarginSource="30,0,0,0"
-                        GeneratedImageHorizontalStretch="Left"
-                        GeneratedContentVerticalStretch="Center"
-                        ColorsSource="Green" Label="请输入手机号码"
-                        Grid.Column="0" Grid.Row="2" 
-                        IsEnableComponentStretch="True"
-                        IconSource="/Assets/StoreLogo.png" />
-        <ctl:WYBtnColors x:Name="ShowToastDialog" 
-                         Grid.Column="1" Grid.Row="2" 
-                         ColorsSource="Green" 
-                         Label="this is a toast dialog"/>
-        <ctl:WYBtnColors x:Name="ShowPhoneNumber"
-                         ColorsSource="Transparent" 
-                         Label="请输入手机号码" 
-                            Grid.Column="0" Grid.Row="3"/>        
-        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
-            <ctl:WYBtnImage Label="手机号码" 
-                            ColorsSource="Transparent" 
-                            FontSize="16" 
-                            OrientationSource="Horizontal"
-                            ImageUri="http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREgNPMVcojMU6/800" 
-                            StretchSource="Uniform" 
-                            GeneratedImageVerticalStretch="Top" 
-                            GeneratedContentVerticalStretch="Bottom"
-                            IsEnableComponentStretch="True" 
-                            Grid.ColumnSpan="2" Grid.Row="4"
-                            Width="100" Height="80" 
-                            Foreground="Orange" 
-                            EllipseHeight="40" EllipseWidth="40"/>
-        
-            <ctl:WYBtnImage ColorsSource="Transparent" 
-                ImageUri="ms-appx:///Assets/test.jpg" StretchSource="UniformToFill"
-                                EllipseHeight="40" EllipseWidth="40"/>
-        </StackPanel>
-        <!--<ScrollViewer Grid.ColumnSpan="2" Grid.Row="4" HorizontalScrollBarVisibility="Visible" HorizontalScrollMode="Enabled">
-            <Image Source="ms-appx:///Assets/test.jpg" Stretch="None"/>
-        </ScrollViewer>-->
-
-    <!--<ctl:WYHeaderTitleBar x:Name="ShowHeaderTitleBar" Grid.ColumnSpan="2" Grid.Row="4"
-                          LeftVisibility="Visible" LeftText="left" RightText="sdf"
-                          RightVisibility="Visible" RightIcon="/Assets/test.jpg"
-                          Title="haha" ColorsSource="Green"  Height="45"
-                          cm:Message.Attach="[Event LeftClick] = [Action WYHeaderTitleBar_LeftClick]; [Event RightClick] = [Action WYHeaderTitleBar_RightClick]"/>-->
-
-    <!--<ctl:WYTabHeader ColorsSource="Pink" Label="haha" Grid.ColumnSpan="2" Grid.Row="4"/>-->
-    <!--<ctl:WYFlipView x:Name="Characters"
-                    MaxWidth="400" Height="270"
-                    SelectionChanged="Characters_SelectionChanged"
-                    Grid.ColumnSpan="2" Grid.Row="4" />-->
-    <ctl:WYImage ColorsSource="#ff4E5058" Stretch="Uniform"
-                 LoadNew="True" IsNightMode="False" Grid.ColumnSpan="2" Grid.Row="4"
-                 ImageUrl="http://img.ivsky.com/img/bizhi/pre/201604/01/april-002.jpg"/>
-    <!--<ctl:WYBtnColors
-            Grid.Column="1" Grid.Row="4"
-            ColorsSource="Green" Label="this is a regular dialog"
-            Click="btn_Click" Tag="1"/>
-        <ctl:WYBtnColors
-            Grid.Column="0" Grid.Row="4"
-            ColorsSource="Green" Label="this is a intput dialog"
-            Click="btn_Click" Tag="2"/>-->
+        <SplitView x:Name="NavigationView" DisplayMode="Overlay" OpenPaneLength="120">
+            <SplitView.Pane>
+                <StackPanel Background="Gray">
+                    <Button x:Name="ShowDevices" Content="Device Specific Views" Margin="24" />
+                    <Button x:Name="ShowDevice" Content="Device Specific Views" Margin="24" />
+                    <Button x:Name="Show" Content="Device Specific Views" Margin="24" />
+                </StackPanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Grid>
+                    <Frame cm:Message.Attach="[Event Loaded] = [SetupNavigationService($source)]" DataContext="{x:Null}" />
+                    <Button Click="OpenNavigationView" Content="&#xE700;" FontFamily="{ThemeResource SymbolThemeFontFamily}" VerticalAlignment="Top" Margin="24" />
+                </Grid>
+            </SplitView.Content>
+        </SplitView>
     </Grid>
 
 </Page>

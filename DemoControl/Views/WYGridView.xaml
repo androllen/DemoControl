@@ -1,16 +1,15 @@
 ﻿<Page
-    x:Class="DemoControl.WYGridView"
+    x:Class="DemoControl.Views.WYGridView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:DemoControl"
+    xmlns:local="using:DemoControl.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ctl="using:CCUWPToolkit.Controls"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ctl:WYGridView  IsSynchronizedWithCurrentItem="False"
-            ItemsSource="{x:Bind ListItems}">
+        <ctl:WYGridView x:Name="ListItems" IsSynchronizedWithCurrentItem="False">
             <ctl:WYGridView.ItemTemplate>
                 <DataTemplate>
                     <Border Background="{ThemeResource SystemControlHighlightListAccentHighBrush}">

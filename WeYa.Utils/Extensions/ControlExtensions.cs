@@ -9,7 +9,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 
-namespace CCUWPToolkit.Controls.Extensions
+namespace WeYa.Utils
 {
     public static class ControlExtensions
     {

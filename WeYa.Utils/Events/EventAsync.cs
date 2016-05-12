@@ -6,7 +6,7 @@ using System;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 
-namespace CCUWPToolkit.Controls.Events
+namespace WeYa.Utils
 {
     // Based on: http://social.msdn.microsoft.com/Forums/sk/async/thread/30f3339c-5e04-4aa8-9a09-9be72d9d9a1b
     public static class EventAsync

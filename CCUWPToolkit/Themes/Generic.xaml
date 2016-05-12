@@ -21,7 +21,15 @@
     <x:Double x:Key="TextControlBackgroundFocusedOpacity">1</x:Double>
     <Thickness x:Key="TextControlBorderThemeThickness">2</Thickness>
     <Thickness x:Key="TextControlThemePadding">10,3,6,5</Thickness>-->
-
+    <Style TargetType="controls:WYGridView">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:WYGridView">
+                    <Grid x:Name="PART_GridStateName"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <!-- ImageButton default style -->
     <Style TargetType="controls:WYBtnImage">
         <Setter Property="Padding" Value="0" />

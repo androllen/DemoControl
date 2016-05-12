@@ -2,7 +2,7 @@
 ** 作者： androllen
 ** 日期： 16/4/8 10:47:43
 *********************************************************************************/
-using CCUWPToolkit.Controls.Extensions;
+using WeYa.Utils;
 using System;
 using Windows.Foundation;
 using Windows.UI.Xaml;

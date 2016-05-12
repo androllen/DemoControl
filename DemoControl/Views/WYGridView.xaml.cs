@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Navigation;
 
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上提供
 
-namespace DemoControl
+namespace DemoControl.Views
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
@@ -26,21 +26,6 @@ namespace DemoControl
         public WYGridView()
         {
             this.InitializeComponent();
-        }
-
-        private ObservableCollection<string> listItems;
-        public ObservableCollection<string> ListItems => listItems ?? (listItems = GenerateSampleListData());
-
-        private ObservableCollection<string> GenerateSampleListData()
-        {
-            var list = new ObservableCollection<string>();
-
-            for (int i = 1; i < 2000; i++)
-            {
-                list.Add($"Item {i}");
-            }
-
-            return list;
         }
 
     }

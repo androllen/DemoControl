@@ -2,14 +2,14 @@
 ** 作者： androllen
 ** 日期： 16/4/6 10:46:54
 *********************************************************************************/
-using CCUWPToolkit.Controls.Events;
+
 using System.Threading.Tasks;
 using System.Windows;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 
-namespace CCUWPToolkit.Controls.Extensions
+namespace WeYa.Utils
 {
     public static class FrameworkElementExtensions
     {

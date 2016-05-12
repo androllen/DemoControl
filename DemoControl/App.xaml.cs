@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using DemoControl.Model;
 using DemoControl.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace DemoControl
     /// <summary>
     /// 提供特定于应用程序的行为，以补充默认的应用程序类。
     /// </summary>
-    sealed partial class App
+    sealed partial class App 
     {
         private WinRTContainer _container;
         public App()
@@ -38,9 +39,10 @@ namespace DemoControl
 
             _container
                 .PerRequest<ShellViewModel>()
+                .PerRequest<MainViewModel>()
+                .PerRequest<WYGridViewModel>()
                 .PerRequest<DeviceViewModel>();
-
-
+            
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)

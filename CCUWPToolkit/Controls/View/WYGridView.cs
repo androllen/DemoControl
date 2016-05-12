@@ -11,65 +11,38 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using CCUWPToolkit.Controls.Extensions;
+using WeYa.Utils;
 
 namespace CCUWPToolkit.Controls
 {
+    [TemplatePart(Name = GridStateName, Type = typeof(Grid))]
     public class WYGridView : GridView
     {
-  
+        private const string GridStateName = "PART_GridStateName";
+        private Grid _gridStateName;
+
+        protected override void OnApplyTemplate()
+        {
+            if(_gridStateName!=null)
+                _gridStateName.SizeChanged -= WYGridView_SizeChanged;
+
+            _gridStateName = GetTemplateChild(GridStateName) as Grid;
+
+            if (_gridStateName != null)
+                _gridStateName.SizeChanged += WYGridView_SizeChanged;
+
+            base.OnApplyTemplate();
+        }
         public WYGridView()
         {
-            if (this.ItemContainerStyle == null)
-            {
-                this.ItemContainerStyle = new Style(typeof(GridViewItem));
-            }
-
-            this.ItemContainerStyle.Setters.Add(new Setter(GridViewItem.HorizontalContentAlignmentProperty, HorizontalAlignment.Stretch));
-
-            this.Loaded += (s, a) =>
-            {
-                Grid framework = Window.Current.Content.GetFirstDescendantOfType<Grid>();
-                framework.SizeChanged += Framework_SizeChanged;
-                var panel = this.ItemsPanelRoot as ItemsWrapGrid;
-                if (panel != null)
-                {
-                    if (framework.ActualWidth >= 500 && framework.ActualWidth <= 600)
-                    {
-                        var itemSize = framework.ActualWidth / 2;
-                        panel.ItemWidth = itemSize;
-                        panel.ItemHeight = itemSize;
-                    }
-                    else if (framework.ActualWidth >= 600 && framework.ActualWidth <= 700)
-                    {
-                        var itemSize = framework.ActualWidth / 3;
-                        panel.ItemWidth = itemSize;
-                        panel.ItemHeight = itemSize;
-                    }
-                    else if (framework.ActualWidth >= 700 && framework.ActualWidth <= 1000)
-                    {
-                        var itemSize = framework.ActualWidth / 4;
-                        panel.ItemWidth = itemSize;
-                        panel.ItemHeight = itemSize;
-                    }
-                    else if (framework.ActualWidth >= 1000)
-                    {
-                        var itemSize = framework.ActualWidth / 5;
-                        panel.ItemWidth = itemSize;
-                        panel.ItemHeight = itemSize;
-                    }
-                }
-            };
+            DefaultStyleKey = typeof(WYGridView);
         }
-        private FrameworkElement framework
+
+        private void WYGridView_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            get
-            {
-                return (FrameworkElement)Window.Current.Content;
-            }
-        }
-        private void Framework_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
+            if (this.ItemsSource == null | this.ItemsPanelRoot==null)
+                return;
+
             var panel = this.ItemsPanelRoot as ItemsWrapGrid;
 
             if (e.NewSize.Width >= 500 && e.NewSize.Width <= 600)
@@ -97,6 +70,6 @@ namespace CCUWPToolkit.Controls
                 panel.ItemHeight = itemSize;
             }
         }
-  
+
     }
 }

@@ -4,7 +4,8 @@
 ** 微博： http://weibo.com/Androllen
 *********************************************************************************/
 using Caliburn.Micro;
-using CCUWPToolkit.Controls;
+using DemoControl.Model;
+using DemoControl.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,44 +21,22 @@ namespace DemoControl.ViewModels
     public class ShellViewModel: Screen
     {
         private readonly WinRTContainer _container;
+        private readonly IEventAggregator _eventAggregator;
         private Frame _navigationService;
         private SystemNavigationManager systemNavigationManager;
 
-   
-        public BindableCollection<CharacterViewModel> Characters
-        {
-            get;
-            private set;
-        }
-
-        public ShellViewModel(WinRTContainer container)
+        //public BindableCollection<CharacterViewModel> Characters
+        //{
+        //    get;
+        //    private set;
+        //}
+        public ShellViewModel(WinRTContainer container, IEventAggregator eventAggregator)
         {
             _container = container;
-            systemNavigationManager = SystemNavigationManager.GetForCurrentView();
+            _eventAggregator = eventAggregator;
+            this.systemNavigationManager = SystemNavigationManager.GetForCurrentView();
             systemNavigationManager.BackRequested += FrameManager_BackRequested;
-
-            Characters = new BindableCollection<CharacterViewModel>
-            {
-                new CharacterViewModel("Arya Stark", "ms-appx:///Assets/arya.jpg"),
-                new CharacterViewModel("Catelyn Stark", "ms-appx:///Assets/catelyn.jpg"),
-                new CharacterViewModel("Cercei Lannister", "ms-appx:///Assets/cercei.jpg"),
-                new CharacterViewModel("Jamie Lannister", "ms-appx:///Assets/jamie.jpg"),
-                new CharacterViewModel("Jon Snow", "ms-appx:///Assets/jon.jpg"),
-                new CharacterViewModel("Rob Stark", "ms-appx:///Assets/rob.jpg"),
-                new CharacterViewModel("Sandor Clegane", "ms-appx:///Assets/sandor.jpg"),
-                new CharacterViewModel("Sansa Stark", "ms-appx:///Assets/sansa.jpg"),
-                new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREgNPMVcojMU6/800"),
-                new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREgJPMVdHzFoK/800"),
-                new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREv5OMVdY3JQd/800"),
-                new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREvxOMVdYz8op/800"),
-                new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREvpOMVc*AswL/800"),
-                new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREvlOMVdID58E/800"),
-                new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREvdOMVdopw4o/800"),
-                new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREvZOMVcwmAcr/800"),
-                new CharacterViewModel("Tyrion Lannister", "ms-appx:///Assets/tyrion.jpg")
-            };
         }
-
         private void FrameManager_BackRequested(object sender, BackRequestedEventArgs e)
         {
             if (_navigationService.CanGoBack)
@@ -65,55 +44,53 @@ namespace DemoControl.ViewModels
                 _navigationService.GoBack();
             }
         }
+        public void ShowDevices()
+        {
+            _navigationService.Navigate(typeof(DeviceView));
+        }
+        public void ShowDevice()
+        {
+            _navigationService.Navigate(typeof(WYGridView));
+        }
+        public void Show()
+        {
+            _navigationService.Navigate(typeof(MainView));
+        }
+        //public ShellViewModel(WinRTContainer container, INotifyFrameChanged navigate)
+        //{
+        //    _frame = navigate;
+
+        //    //Characters = new BindableCollection<CharacterViewModel>
+        //    //{
+        //    //    new CharacterViewModel("Arya Stark", "ms-appx:///Assets/arya.jpg"),
+        //    //    new CharacterViewModel("Catelyn Stark", "ms-appx:///Assets/catelyn.jpg"),
+        //    //    new CharacterViewModel("Cercei Lannister", "ms-appx:///Assets/cercei.jpg"),
+        //    //    new CharacterViewModel("Jamie Lannister", "ms-appx:///Assets/jamie.jpg"),
+        //    //    new CharacterViewModel("Jon Snow", "ms-appx:///Assets/jon.jpg"),
+        //    //    new CharacterViewModel("Rob Stark", "ms-appx:///Assets/rob.jpg"),
+        //    //    new CharacterViewModel("Sandor Clegane", "ms-appx:///Assets/sandor.jpg"),
+        //    //    new CharacterViewModel("Sansa Stark", "ms-appx:///Assets/sansa.jpg"),
+        //    //    new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREgNPMVcojMU6/800"),
+        //    //    new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREgJPMVdHzFoK/800"),
+        //    //    new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREv5OMVdY3JQd/800"),
+        //    //    new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREvxOMVdYz8op/800"),
+        //    //    new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREvpOMVc*AswL/800"),
+        //    //    new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREvlOMVdID58E/800"),
+        //    //    new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREvdOMVdopw4o/800"),
+        //    //    new CharacterViewModel("Sansa Stark", "http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREvZOMVcwmAcr/800"),
+        //    //    new CharacterViewModel("Tyrion Lannister", "ms-appx:///Assets/tyrion.jpg")
+        //    //};
+        //}
+
         public void SetupNavigationService(Frame frame)
         {
             _navigationService = frame;
             _navigationService.Navigated += (e, s) => UpdatePhoneBackButton();
-
         }
         private void UpdatePhoneBackButton()
         {
             systemNavigationManager.AppViewBackButtonVisibility =
          this._navigationService.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
-        }
-        public void ShowDevices()
-        {
-            //_navigationService.Navigate(typeof(DeviceView));
-        }
-        public void ShowToastDialog()
-        {
-            var toast = new WYToastDialog();
-            toast.CornerSource = new CornerRadius(5);
-            toast.ShowAsync("你 是 我 的 黄 油 小 伙 伴 对 吗？");
-        }
-        public async void ShowPhoneNumber()
-        {
-            var dialog = new WYDialog();
-            dialog.CornerSource = new CornerRadius(5);
-            var result = await dialog.ShowAsync("黄油小伙伴", "快来注册和TA一起互动!", "取消", "确定");
-            var content = string.Format("Text: {0}", result);
-            System.Diagnostics.Debug.WriteLine(content);
-        }
-        public async void ShowInputToastDialog()
-        {
-            var dialog = new WYInputDialog();
-            dialog.CornerSource = new CornerRadius(5);
-            var result = await dialog.ShowAsync("黄油小伙伴", "快来注册和TA一起互动!", "取消", "确定");
-            var content = string.Format("Text: {0}", result);
-            System.Diagnostics.Debug.WriteLine(content);
-        }
-        public void WYHeaderTitleBar_LeftClick()
-        {
-            var toast = new WYToastDialog();
-            toast.CornerSource = new CornerRadius(5);
-            toast.ShowAsync("WYHeaderTitleBar_LeftClick");
-        }
-
-        public void WYHeaderTitleBar_RightClick()
-        {
-            var toast = new WYToastDialog();
-            toast.CornerSource = new CornerRadius(5);
-            toast.ShowAsync("WYHeaderTitleBar_RightClick");
         }
     }
 }

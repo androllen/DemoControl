@@ -20,15 +20,11 @@ namespace DemoControl.Views
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class ShellView
+    public sealed partial class MyGridView : Page
     {
-        public ShellView()
+        public MyGridView()
         {
             this.InitializeComponent();
-        }
-        private void OpenNavigationView(object sender, RoutedEventArgs e)
-        {
-            NavigationView.IsPaneOpen = true;
         }
     }
 }
