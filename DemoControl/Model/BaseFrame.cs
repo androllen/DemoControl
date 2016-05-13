@@ -16,7 +16,7 @@ namespace DemoControl.Model
 {
     public class BaseFrame : INotifyFrameChanged
     {
-        public INavigationService MainNavigationService { get; private set; }
+        public INavigationService MainService { get; set; }
         private SystemNavigationManager systemNavigationManager;
         protected readonly WinRTContainer _container;
 
@@ -30,16 +30,16 @@ namespace DemoControl.Model
 
         private void FrameManager_BackRequested(object sender, BackRequestedEventArgs e)
         {
-            if (MainNavigationService.CanGoBack)
+            if (MainService.CanGoBack)
             {
-                MainNavigationService.GoBack();
+                MainService.GoBack();
             }
         }
 
         private void UpdateMainBackButton()
         {
             systemNavigationManager.AppViewBackButtonVisibility =
-                this.MainNavigationService.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+                this.MainService.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
         }
         private Frame _mainFrame;
         public Frame MainFrame
@@ -47,13 +47,11 @@ namespace DemoControl.Model
             get { return _mainFrame; }
             set
             {
-                if (MainNavigationService == null)
-                {
-                    MainNavigationService = new FrameAdapter(value);
-                    _container.RegisterInstance(typeof(INavigationService), "MainFrame", MainNavigationService);
-                    MainNavigationService.Navigated += (s, e) => UpdateMainBackButton();
-                    _mainFrame = value;
-                }
+                if (MainService != null)
+                    MainService.Navigated += (s, e) => UpdateMainBackButton();
+
+                _mainFrame = value;
+
             }
         }
     }

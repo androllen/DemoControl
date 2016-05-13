@@ -9,7 +9,10 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ctl:WYGridView x:Name="ListItems" IsSynchronizedWithCurrentItem="False">
+        <ctl:WYGridView ItemsSource="{Binding ListItems}" 
+            IsSynchronizedWithCurrentItem="False" 
+            MinItemHeight="105"
+            MinItemWidth="315">
             <ctl:WYGridView.ItemTemplate>
                 <DataTemplate>
                     <Border Background="{ThemeResource SystemControlHighlightListAccentHighBrush}">

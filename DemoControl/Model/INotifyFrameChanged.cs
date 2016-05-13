@@ -15,7 +15,7 @@ namespace DemoControl.Model
 {
     public interface INotifyFrameChanged
     {
-        INavigationService MainNavigationService { get; }
+        INavigationService MainService { get; set; }
         Frame MainFrame { get; set; }
 
     }

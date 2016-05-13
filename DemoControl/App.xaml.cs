@@ -42,7 +42,8 @@ namespace DemoControl
                 .PerRequest<MainViewModel>()
                 .PerRequest<WYGridViewModel>()
                 .PerRequest<DeviceViewModel>();
-            
+
+            _container.RegisterSingleton(typeof(INotifyFrameChanged), "BaseFrame", typeof(BaseFrame));
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)

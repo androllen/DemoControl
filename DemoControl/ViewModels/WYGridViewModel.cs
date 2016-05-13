@@ -12,10 +12,10 @@ using DemoControl.Model;
 
 namespace DemoControl.ViewModels
 {
-    public class WYGridViewModel : BaseViewModel 
+    public class WYGridViewModel : Screen 
     {
         private readonly INotifyFrameChanged _frame;
-        public WYGridViewModel(INotifyFrameChanged navigate) : base(navigate)
+        public WYGridViewModel(INotifyFrameChanged navigate)
         {
             _frame = navigate;
 

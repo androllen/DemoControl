@@ -22,10 +22,7 @@ namespace DemoControl.ViewModels
         {
             _frame = navigate;
         }
-        public void NavigatoGridView()
-        {
-            _frame.MainNavigationService.For<WYGridViewModel>().Navigate();
-        }
+
         public void ShowToastDialog()
         {
             var toast = new WYToastDialog();

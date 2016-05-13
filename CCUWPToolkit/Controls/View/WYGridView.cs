@@ -15,61 +15,98 @@ using WeYa.Utils;
 
 namespace CCUWPToolkit.Controls
 {
-    [TemplatePart(Name = GridStateName, Type = typeof(Grid))]
     public class WYGridView : GridView
     {
-        private const string GridStateName = "PART_GridStateName";
-        private Grid _gridStateName;
+        #region DependencyProperties
 
-        protected override void OnApplyTemplate()
+        /// <summary>
+        /// Minimum height for item
+        /// </summary>
+        public double MinItemHeight
         {
-            if(_gridStateName!=null)
-                _gridStateName.SizeChanged -= WYGridView_SizeChanged;
-
-            _gridStateName = GetTemplateChild(GridStateName) as Grid;
-
-            if (_gridStateName != null)
-                _gridStateName.SizeChanged += WYGridView_SizeChanged;
-
-            base.OnApplyTemplate();
+            get { return (double)GetValue(WYGridView.MinItemHeightProperty); }
+            set { SetValue(WYGridView.MinItemHeightProperty, value); }
         }
+
+        public static readonly DependencyProperty MinItemHeightProperty =
+            DependencyProperty.Register(
+                "MinItemHeight",
+                typeof(double),
+                typeof(WYGridView),
+                new PropertyMetadata(1.0, (s, a) =>
+                {
+                    if (!double.IsNaN((double)a.NewValue))
+                    {
+                        ((WYGridView)s).InvalidateMeasure();
+                    }
+                }));
+
+        /// <summary>
+        /// Minimum width for item (must be greater than zero)
+        /// </summary>
+        public double MinItemWidth
+        {
+            get { return (double)GetValue(WYGridView.MinimumItemWidthProperty); }
+            set { SetValue(WYGridView.MinimumItemWidthProperty, value); }
+        }
+
+        public static readonly DependencyProperty MinimumItemWidthProperty =
+            DependencyProperty.Register(
+                "MinItemWidth",
+                typeof(double),
+                typeof(WYGridView),
+                new PropertyMetadata(1.0, (s, a) =>
+                {
+                    if (!Double.IsNaN((double)a.NewValue))
+                    {
+                        ((WYGridView)s).InvalidateMeasure();
+                    }
+                }));
+
+        #endregion
+
         public WYGridView()
         {
-            DefaultStyleKey = typeof(WYGridView);
+            if (this.ItemContainerStyle == null)
+            {
+                this.ItemContainerStyle = new Style(typeof(GridViewItem));
+            }
+
+            this.ItemContainerStyle.Setters.Add(new Setter(GridViewItem.HorizontalContentAlignmentProperty, HorizontalAlignment.Stretch));
+
+            this.Loaded += (s, a) =>
+            {
+                if (this.ItemsPanelRoot != null)
+                {
+                    this.InvalidateMeasure();
+                }
+            };
         }
 
-        private void WYGridView_SizeChanged(object sender, SizeChangedEventArgs e)
+        protected override Size MeasureOverride(Size availableSize)
         {
-            if (this.ItemsSource == null | this.ItemsPanelRoot==null)
-                return;
-
             var panel = this.ItemsPanelRoot as ItemsWrapGrid;
+            if (panel != null)
+            {
+                if (MinItemWidth == 0)
+                    throw new DivideByZeroException("You need to have a MinItemWidth greater than zero");
 
-            if (e.NewSize.Width >= 500 && e.NewSize.Width <= 600)
-            {
-                var itemSize = e.NewSize.Width / 2;
-                panel.ItemWidth = itemSize;
-                panel.ItemHeight = itemSize;
+                var availableWidth = availableSize.Width - (this.Padding.Right + this.Padding.Left);
+
+                var numColumns = Math.Floor(availableWidth / MinItemWidth);
+                numColumns = numColumns == 0 ? 1 : numColumns;
+                var numRows = Math.Ceiling(this.Items.Count / numColumns);
+
+                var itemWidth = availableWidth / numColumns;
+                var aspectRatio = MinItemHeight / MinItemWidth;
+                var itemHeight = itemWidth * aspectRatio;
+
+                panel.ItemWidth = itemWidth;
+                panel.ItemHeight = itemHeight;
             }
-            else if (e.NewSize.Width >= 600 && e.NewSize.Width <= 700)
-            {
-                var itemSize = e.NewSize.Width / 3;
-                panel.ItemWidth = itemSize;
-                panel.ItemHeight = itemSize;
-            }
-            else if (e.NewSize.Width >= 700 && e.NewSize.Width <= 1000)
-            {
-                var itemSize = e.NewSize.Width / 4;
-                panel.ItemWidth = itemSize;
-                panel.ItemHeight = itemSize;
-            }
-            else if (e.NewSize.Width >= 1000)
-            {
-                var itemSize = e.NewSize.Width / 5;
-                panel.ItemWidth = itemSize;
-                panel.ItemHeight = itemSize;
-            }
+
+            return base.MeasureOverride(availableSize);
         }
-
     }
+
 }

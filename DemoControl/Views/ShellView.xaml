@@ -11,18 +11,24 @@
 
     <!---->
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <SplitView x:Name="NavigationView" DisplayMode="Overlay" OpenPaneLength="120">
+        <SplitView x:Name="NavigationView" 
+                   DisplayMode="CompactInline" 
+                   OpenPaneLength="100"
+                   IsPaneOpen="True">
             <SplitView.Pane>
                 <StackPanel Background="Gray">
-                    <Button x:Name="ShowDevices" Content="Device Specific Views" Margin="24" />
-                    <Button x:Name="ShowDevice" Content="Device Specific Views" Margin="24" />
-                    <Button x:Name="Show" Content="Device Specific Views" Margin="24" />
+                    <Button x:Name="ShowDevice" 
+                            Content="ShowDevice" 
+                            Margin="0,0,0,20" />
+                    <Button x:Name="ShowGrid" 
+                            Content="ShowGrid"
+                            Margin="0,0,0,20"/>
                 </StackPanel>
             </SplitView.Pane>
             <SplitView.Content>
                 <Grid>
-                    <Frame cm:Message.Attach="[Event Loaded] = [SetupNavigationService($source)]" DataContext="{x:Null}" />
-                    <Button Click="OpenNavigationView" Content="&#xE700;" FontFamily="{ThemeResource SymbolThemeFontFamily}" VerticalAlignment="Top" Margin="24" />
+                    <Frame cm:Message.Attach="[Event Loaded] = [SetupNavigationService($source)]"
+                           DataContext="{x:Null}" />
                 </Grid>
             </SplitView.Content>
         </SplitView>

@@ -21,41 +21,27 @@ namespace DemoControl.ViewModels
     public class ShellViewModel: Screen
     {
         private readonly WinRTContainer _container;
-        private readonly IEventAggregator _eventAggregator;
-        private Frame _navigationService;
-        private SystemNavigationManager systemNavigationManager;
+        private INotifyFrameChanged _service;
 
         //public BindableCollection<CharacterViewModel> Characters
         //{
         //    get;
         //    private set;
         //}
-        public ShellViewModel(WinRTContainer container, IEventAggregator eventAggregator)
+        public ShellViewModel(WinRTContainer container, INotifyFrameChanged frame)
         {
             _container = container;
-            _eventAggregator = eventAggregator;
-            this.systemNavigationManager = SystemNavigationManager.GetForCurrentView();
-            systemNavigationManager.BackRequested += FrameManager_BackRequested;
-        }
-        private void FrameManager_BackRequested(object sender, BackRequestedEventArgs e)
-        {
-            if (_navigationService.CanGoBack)
-            {
-                _navigationService.GoBack();
-            }
+            _service = frame;
         }
         public void ShowDevices()
         {
-            _navigationService.Navigate(typeof(DeviceView));
+            _service.MainService.For<DeviceViewModel>().Navigate();
         }
-        public void ShowDevice()
+        public void ShowGrid()
         {
-            _navigationService.Navigate(typeof(WYGridView));
+            _service.MainService.For<WYGridViewModel>().Navigate();
         }
-        public void Show()
-        {
-            _navigationService.Navigate(typeof(MainView));
-        }
+
         //public ShellViewModel(WinRTContainer container, INotifyFrameChanged navigate)
         //{
         //    _frame = navigate;
@@ -84,13 +70,10 @@ namespace DemoControl.ViewModels
 
         public void SetupNavigationService(Frame frame)
         {
-            _navigationService = frame;
-            _navigationService.Navigated += (e, s) => UpdatePhoneBackButton();
-        }
-        private void UpdatePhoneBackButton()
-        {
-            systemNavigationManager.AppViewBackButtonVisibility =
-         this._navigationService.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+            _service.MainService = _container.RegisterNavigationService(frame);
+            _service.MainFrame = frame;
+            _service.MainService.For<MainViewModel>().Navigate();
+
         }
     }
 }

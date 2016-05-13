@@ -11,9 +11,10 @@ namespace DemoControl.ViewModels
 {
     public class DeviceViewModel : Screen
     {
-        public DeviceViewModel()
+        private readonly INotifyFrameChanged _frame;
+        public DeviceViewModel(INotifyFrameChanged navigate)
         {
-
+            _frame = navigate;
         }
 
     }
