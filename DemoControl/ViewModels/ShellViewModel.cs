@@ -33,7 +33,7 @@ namespace DemoControl.ViewModels
             _container = container;
             _service = frame;
         }
-        public void ShowDevices()
+        public void ShowDevice()
         {
             _service.MainService.For<DeviceViewModel>().Navigate();
         }

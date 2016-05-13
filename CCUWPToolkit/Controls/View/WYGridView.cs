@@ -12,6 +12,8 @@ using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using WeYa.Utils;
+using Windows.UI.ViewManagement;
+using System.Collections;
 
 namespace CCUWPToolkit.Controls
 {
@@ -65,12 +67,28 @@ namespace CCUWPToolkit.Controls
 
         #endregion
 
+        #region MaxRowsOrColumnsValue
+        public static readonly DependencyProperty MaxRowsOrColumnsValueProperty =
+            DependencyProperty.Register("MaxRowsOrColumnsValue",
+            typeof(int),
+            typeof(WYGridView),
+            new PropertyMetadata(3));
+
+        public int MaxRowsOrColumnsValue
+        {
+            get { return (int)GetValue(MaxRowsOrColumnsValueProperty); }
+            set { SetValue(MaxRowsOrColumnsValueProperty, value); }
+        }
+        #endregion
+
         public WYGridView()
         {
             if (this.ItemContainerStyle == null)
             {
                 this.ItemContainerStyle = new Style(typeof(GridViewItem));
             }
+
+            this.LayoutUpdated += (sender, o) => AdaptLayout();
 
             this.ItemContainerStyle.Setters.Add(new Setter(GridViewItem.HorizontalContentAlignmentProperty, HorizontalAlignment.Stretch));
 
@@ -81,6 +99,18 @@ namespace CCUWPToolkit.Controls
                     this.InvalidateMeasure();
                 }
             };
+
+        }
+
+        private void AdaptLayout()
+        {
+            var currentViewState = ApplicationView.GetForCurrentView().Orientation;
+            var isLandscape = currentViewState == ApplicationViewOrientation.Landscape;
+            var panel = this.ItemsPanelRoot as ItemsWrapGrid;
+            if (panel != null)
+            {
+                panel.MaximumRowsOrColumns = MaxRowsOrColumnsValue;
+            }
         }
 
         protected override Size MeasureOverride(Size availableSize)
@@ -94,7 +124,9 @@ namespace CCUWPToolkit.Controls
                 var availableWidth = availableSize.Width - (this.Padding.Right + this.Padding.Left);
 
                 var numColumns = Math.Floor(availableWidth / MinItemWidth);
-                numColumns = numColumns == 0 ? 1 : numColumns;
+
+                numColumns = numColumns == 0 ? 1 : (Convert.ToInt32(numColumns) > panel.MaximumRowsOrColumns ? panel.MaximumRowsOrColumns : numColumns);
+
                 var numRows = Math.Ceiling(this.Items.Count / numColumns);
 
                 var itemWidth = availableWidth / numColumns;

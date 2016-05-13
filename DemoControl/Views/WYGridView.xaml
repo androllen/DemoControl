@@ -12,7 +12,7 @@
         <ctl:WYGridView ItemsSource="{Binding ListItems}" 
             IsSynchronizedWithCurrentItem="False" 
             MinItemHeight="105"
-            MinItemWidth="315">
+            MinItemWidth="200">
             <ctl:WYGridView.ItemTemplate>
                 <DataTemplate>
                     <Border Background="{ThemeResource SystemControlHighlightListAccentHighBrush}">
