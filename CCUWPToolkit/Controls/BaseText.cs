@@ -56,20 +56,5 @@ namespace CCUWPToolkit.Controls
             new PropertyMetadata(string.Empty));
         #endregion
 
-        #region 图片的扩展
-        /// <summary>
-        /// 图片的扩展
-        /// </summary>
-        public Stretch StretchSource
-        {
-            get { return (Stretch)GetValue(StretchSourceProperty); }
-            set { SetValue(StretchSourceProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Stretch.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty StretchSourceProperty =
-            DependencyProperty.Register("StretchSource", typeof(Stretch), typeof(BaseText),
-                new PropertyMetadata(Stretch.None));
-        #endregion
     }
 }

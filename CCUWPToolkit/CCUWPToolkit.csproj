@@ -105,6 +105,7 @@
     <Compile Include="Controls\Button\WYBtnImage.cs" />
     <Compile Include="Controls\Button\IBaseLabel.cs" />
     <Compile Include="Controls\Button\IImageSource.cs" />
+    <Compile Include="Controls\Button\WYBtnSharp.cs" />
     <Compile Include="Controls\Dialog\BaseDialog.cs" />
     <Compile Include="Controls\Dialog\IBaseDialog.cs" />
     <Compile Include="Controls\Dialog\WYDialog.cs" />

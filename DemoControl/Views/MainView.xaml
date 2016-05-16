@@ -8,101 +8,131 @@
     xmlns:cm="using:Caliburn.Micro"
     xmlns:ctl="using:CCUWPToolkit.Controls"    
     mc:Ignorable="d">
-
+    
+    <Page.Resources>
+        <Style x:Key="leftbtn" TargetType="ctl:WYBtnImage">
+            <!--<Setter Property="Label" Value="请输"/>-->
+            <Setter Property="OrientationSource" Value="Horizontal"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="0,5,0,5"/>
+            <Setter Property="StretchSource" Value="Fill"/>
+            <Setter Property="GeneratedContentHorizontalStretch" Value="Center"/>
+            <Setter Property="GeneratedContentVerticalStretch" Value="Center"/>
+            <Setter Property="IconSource" Value="/Assets/StoreLogo.png"/>
+        </Style>
+        <Style x:Key="rightbtn" TargetType="ctl:WYBtnImage">
+            <!--<Setter Property="Label" Value="请输"/>-->
+            <Setter Property="OrientationSource" Value="Horizontal"/>
+            <Setter Property="StretchSource" Value="Fill"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="0,5,0,5"/>
+            <Setter Property="IconSource" Value="/Assets/StoreLogo.png"/>
+        </Style>        
+    </Page.Resources>
+    
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="300"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <ctl:WYBtnColors x:Name="NavigatoGridView"
-                          ColorsSource="Green"
-                          Label="请输入手机号码" />
-        <ctl:WYBtnColors ColorsSource="Green"
-                        IsGeneratedImageStretch="True" 
-                        IconSource="/Assets/StoreLogo.png"
-                        GeneratedImageVerticalStretch="Center"
-                        Grid.Column="1" Grid.Row="0"/>
-        <ctl:WYTextBox BorderBrush="Black" 
-                        BorderThickness="1,1,0,1" 
-                        Background="Transparent"
-                        Grid.Column="0" Grid.Row="1"
-                        Foreground="Gray" 
-                        FontFamily="{ThemeResource PhoneFontFamilySemiLight}"
-                        PlaceholderText="请输入手机号码" 
-                        DelBorderThicknessPadding="1"/>
-        <ctl:WYTextBox BorderBrush="Black" 
-                        BorderThickness="1" 
-                        Background="Transparent"
-                        Grid.Column="1" Grid.Row="1" 
-                        PlaceholderText="请输入手机号码" />
-        <ctl:WYBtnColors  x:Name="ShowInputToastDialog" 
-                        MarginSource="30,0,0,0"
-                        GeneratedImageHorizontalStretch="Left"
-                        GeneratedContentVerticalStretch="Center"
-                        ColorsSource="Green" Label="请输入手机号码"
-                        Grid.Column="0" Grid.Row="2" 
-                        IsEnableComponentStretch="True"
-                        IconSource="/Assets/StoreLogo.png" />
-        <ctl:WYBtnColors x:Name="ShowToastDialog" 
-                         Grid.Column="1" Grid.Row="2" 
-                         ColorsSource="Green" 
-                         Label="this is a toast dialog"/>
-        <ctl:WYBtnColors x:Name="ShowDialog"
-                         ColorsSource="Transparent" 
-                         Label="请输入手机号码" 
-                            Grid.Column="0" Grid.Row="3"/>
-        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
-            <ctl:WYBtnImage Label="手机号码" 
-                            ColorsSource="Transparent" 
-                            FontSize="16" 
-                            OrientationSource="Horizontal"
-                            ImageUri="http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREgNPMVcojMU6/800" 
-                            StretchSource="Uniform" 
-                            GeneratedImageVerticalStretch="Top" 
-                            GeneratedContentVerticalStretch="Bottom"
-                            IsEnableComponentStretch="True" 
-                            Grid.ColumnSpan="2" Grid.Row="4"
-                            Width="100" Height="80" 
-                            Foreground="Orange" 
-                            EllipseHeight="40" EllipseWidth="40"/>
+        <ScrollViewer>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ctl:WYBtnColors x:Name="NavigatoGridView"
+                                 ColorsSource="Green"
+                                 Label="请输入手机号码" />
+                <ctl:WYBtnImage ColorsSource="Green" 
+                                Label="请输入手机号码" 
+                                OrientationSource="Horizontal"
+                                FontSize="10"
+                                IconSource="/Assets/StoreLogo.png"
+                                Grid.Column="1" Grid.Row="0"/>
+                <ctl:WYBtnImage  x:Name="ShowInputToastDialog" 
+                                ColorsSource="Green" Label="请输入手机号码"
+                                Grid.Column="0" Grid.Row="2" 
+                                OrientationSource="Horizontal"
+                                IconSource="/Assets/StoreLogo.png" />
+                <ctl:WYTextBox BorderBrush="Black" 
+                                BorderThickness="1,1,0,1" 
+                                Background="Transparent"
+                                Grid.Column="0" Grid.Row="1"
+                                Foreground="Gray" 
+                                FontFamily="{ThemeResource PhoneFontFamilySemiLight}"
+                                PlaceholderText="请输入手机号码" 
+                                DelBorderThicknessPadding="1"/>
+                <ctl:WYTextBox BorderBrush="Black" 
+                                BorderThickness="1" 
+                                Background="Transparent"
+                                Grid.Column="1" Grid.Row="1" 
+                                PlaceholderText="请输入手机号码" />
+                <ctl:WYBtnColors x:Name="ShowToastDialog" 
+                                 Grid.Column="1" Grid.Row="2" 
+                                 ColorsSource="Green" 
+                                 Label="this is a toast dialog"/>
+                <ctl:WYBtnColors x:Name="ShowDialog"
+                                 ColorsSource="Transparent" 
+                                 Label="请输入手机号码" 
+                                    Grid.Column="0" Grid.Row="3"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
+                    <ctl:WYBtnSharp Label="手机号码" OrientationSource="Vertical"
+                                    GeneratedContentHorizontalStretch="Center"
+                                    GeneratedContentVerticalStretch="Bottom"
+                                    ImageUri="http://group.store.qq.com/qun/V108nu362ue0TN/V3tzaAREgNPMVcojMU6/800" 
+                                    StretchSource="Uniform" Foreground="Green"
+                                    Grid.ColumnSpan="2" Grid.Row="4"
+                                    Width="100" Height="80" 
+                                    EllipseHeight="40" EllipseWidth="40"/>
 
-            <ctl:WYBtnImage ColorsSource="Transparent" 
-                ImageUri="ms-appx:///Assets/test.jpg" StretchSource="UniformToFill"
-                                EllipseHeight="40" EllipseWidth="40"/>
-        </StackPanel>
-        <!--<ScrollViewer Grid.ColumnSpan="2" Grid.Row="4" HorizontalScrollBarVisibility="Visible" HorizontalScrollMode="Enabled">
-            <Image Source="ms-appx:///Assets/test.jpg" Stretch="None"/>
-        </ScrollViewer>-->
+                    <ctl:WYBtnSharp ColorsSource="Transparent" 
+                        ImageUri="ms-appx:///Assets/test.jpg" StretchSource="UniformToFill"
+                                        EllipseHeight="40" EllipseWidth="40"/>
+                </StackPanel>
+                <!--<ScrollViewer Grid.ColumnSpan="2" Grid.Row="4" HorizontalScrollBarVisibility="Visible" HorizontalScrollMode="Enabled">
+                    <Image Source="ms-appx:///Assets/test.jpg" Stretch="None"/>
+                    LeftIcon="/Assets/Wide310x150Logo.scale-200.png"
+                    RightIcon="/Assets/Wide310x150Logo.scale-200.png"
+                </ScrollViewer>-->
 
-        <!--<ctl:WYHeaderTitleBar x:Name="ShowHeaderTitleBar" Grid.ColumnSpan="2" Grid.Row="4"
-                          LeftVisibility="Visible" LeftText="left" RightText="sdf"
-                          RightVisibility="Visible" RightIcon="/Assets/test.jpg"
-                          Title="haha" ColorsSource="Green"  Height="45"
-                          cm:Message.Attach="[Event LeftClick] = [Action WYHeaderTitleBar_LeftClick]; [Event RightClick] = [Action WYHeaderTitleBar_RightClick]"/>-->
-
-        <!--<ctl:WYTabHeader ColorsSource="Pink" Label="haha" Grid.ColumnSpan="2" Grid.Row="4"/>-->
-        <!--<ctl:WYFlipView x:Name="Characters"
-                    MaxWidth="400" Height="270"
-                    SelectionChanged="Characters_SelectionChanged"
-                    Grid.ColumnSpan="2" Grid.Row="4" />-->
-        <!--<ctl:WYImage ColorsSource="#ff4E5058" Stretch="Uniform"
-                 LoadNew="True" IsNightMode="False" Grid.ColumnSpan="2" Grid.Row="4"
-                 ImageUrl="http://img.ivsky.com/img/bizhi/pre/201604/01/april-002.jpg"/>-->
-        <!--<ctl:WYBtnColors
-            Grid.Column="1" Grid.Row="4"
-            ColorsSource="Green" Label="this is a regular dialog"
-            Click="btn_Click" Tag="1"/>
-        <ctl:WYBtnColors
-            Grid.Column="0" Grid.Row="4"
-            ColorsSource="Green" Label="this is a intput dialog"
-            Click="btn_Click" Tag="2"/>-->
+                <ctl:WYHeaderTitleBar x:Name="ShowHeaderTitleBar" 
+                                        Grid.ColumnSpan="2" Grid.Row="4"
+                                        Title="请输入手机号码"
+                                        Height="50" 
+                                        FontSize="22"
+                                        Foreground="Green"
+                                         BtnLeftStyle="{StaticResource leftbtn}"
+                                         BtnRightStyle="{StaticResource rightbtn}"
+                                        Background="Gray" 
+                                      cm:Message.Attach="[Event LeftClick] = [Action WYHeaderTitleBar_LeftClick]; [Event RightClick] = [Action WYHeaderTitleBar_RightClick]">
+                </ctl:WYHeaderTitleBar>
+                <!-- -->
+                <!--<ctl:WYTabHeader ColorsSource="Pink" Label="haha" Grid.ColumnSpan="2" Grid.Row="4"/>-->
+                <!--<ctl:WYFlipView x:Name="Characters"
+                            MaxWidth="400" Height="270"
+                            SelectionChanged="Characters_SelectionChanged"
+                            Grid.ColumnSpan="2" Grid.Row="4" />-->
+                <!--<ctl:WYImage ColorsSource="#ff4E5058" Stretch="Uniform"
+                         LoadNew="True" IsNightMode="False" Grid.ColumnSpan="2" Grid.Row="4"
+                         ImageUrl="http://img.ivsky.com/img/bizhi/pre/201604/01/april-002.jpg"/>-->
+                <!--<ctl:WYBtnColors
+                    Grid.Column="1" Grid.Row="4"
+                    ColorsSource="Green" Label="this is a regular dialog"
+                    Click="btn_Click" Tag="1"/>
+                <ctl:WYBtnColors
+                    Grid.Column="0" Grid.Row="4"
+                    ColorsSource="Green" Label="this is a intput dialog"
+                    Click="btn_Click" Tag="2"/>-->
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>

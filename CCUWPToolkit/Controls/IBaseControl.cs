@@ -14,6 +14,5 @@ namespace CCUWPToolkit.Controls
         CornerRadius CornerSource { get; set; }
         Brush ColorsSource { get; set; }
         Thickness MarginSource { get; set; }
-        Orientation OrientationSource { get; set; }
     }
 }

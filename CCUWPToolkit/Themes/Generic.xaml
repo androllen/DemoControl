@@ -21,21 +21,13 @@
     <x:Double x:Key="TextControlBackgroundFocusedOpacity">1</x:Double>
     <Thickness x:Key="TextControlBorderThemeThickness">2</Thickness>
     <Thickness x:Key="TextControlThemePadding">10,3,6,5</Thickness>-->
-    <Style TargetType="controls:WYGridView">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="controls:WYGridView">
-                    <Grid x:Name="PART_GridStateName"/>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <!-- ImageButton default style -->
-    <Style TargetType="controls:WYBtnImage">
+
+    <!-- WYBtnSharp default style -->
+    <Style TargetType="controls:WYBtnSharp">
         <Setter Property="Padding" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="controls:WYBtnImage">
+                <ControlTemplate TargetType="controls:WYBtnSharp">
                     <Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -95,17 +87,23 @@
                             <Grid.RenderTransform>
                                 <CompositeTransform />
                             </Grid.RenderTransform>
-                            <Ellipse x:Name="PART_EllipseStateName" Fill="Gray" Margin="10" 
-                                         Width="{TemplateBinding EllipseWidth}" Height="{TemplateBinding EllipseHeight}"
-                                         VerticalAlignment="{TemplateBinding GeneratedImageVerticalStretch}"
-                                         HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}"/>
-                            <ContentPresenter
-                                                x:Name="PART_ContentPresenter"  Visibility="Collapsed"
-                                                FontSize="{TemplateBinding FontSize}"
-                                                Foreground="{TemplateBinding Foreground}"
-                                                VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
-                                                HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
-                                                Content="{TemplateBinding Label}"/>
+                            <StackPanel x:Name="PART_StackPanelStateName" 
+                              HorizontalAlignment="{TemplateBinding GeneratedBaseHorizontalStretch}"
+                              VerticalAlignment="{TemplateBinding GeneratedBaseVerticalStretch}"
+                                Orientation="{TemplateBinding OrientationSource}">
+                                <Ellipse x:Name="PART_EllipseStateName" Fill="Gray"
+                                    Width="{TemplateBinding EllipseWidth}" 
+                                    Height="{TemplateBinding EllipseHeight}"
+                                    VerticalAlignment="{TemplateBinding GeneratedImageVerticalStretch}"
+                                    HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}"/>
+                                <ContentPresenter x:Name="PART_ContentPresenter"  
+                                    FontSize="{TemplateBinding FontSize}"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Margin="{TemplateBinding MarginSource}"                                
+                                    VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
+                                    HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
+                                    Content="{TemplateBinding Label}"/>
+                            </StackPanel>                            
                         </Grid>
                     </Grid>
                 </ControlTemplate>
@@ -173,20 +171,16 @@
                         <Grid x:Name="PART_GridStateName"
                             RenderTransformOrigin="0.5,0.5" 
                             CornerRadius="{TemplateBinding CornerSource}"
+                            Margin="{TemplateBinding Margin}"                              
                             Background="{TemplateBinding ColorsSource}">
                             <Grid.RenderTransform>
                                 <CompositeTransform />
                             </Grid.RenderTransform>
-                            <Image x:Name="PART_ImageStateName"
-                                        Stretch="{TemplateBinding StretchSource}"
-                                        Source="{TemplateBinding IconSource}"
-                                        VerticalAlignment="{TemplateBinding GeneratedImageVerticalStretch}"
-                                        HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}"/>
                             <ContentPresenter x:Name="PART_ContentPresenter"
                                         FontSize="{TemplateBinding FontSize}"
-                                        Margin="{TemplateBinding MarginSource}"
-                                        VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
                                         HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"
+                                        VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
+                                        Foreground="{TemplateBinding Foreground}"
                                         Content="{TemplateBinding Label}" />
                         </Grid>
                     </Grid>
@@ -194,49 +188,114 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="controls:WYHeaderTitleBar">
-        <!-- 标题 默认样式 -->
-        <Setter Property="BtnColorsStyle">
+    <!--WYBtnImage default style-->
+    <Style TargetType="controls:WYBtnImage">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Template">
             <Setter.Value>
-                <Style TargetType="controls:WYBtnColors">
-                    <Setter Property="VerticalAlignment" Value="Center"/>
-                    <Setter Property="Width" Value="100"/>
-                    <Setter Property="StretchSource" Value="Uniform"/>
-                </Style>
+                <ControlTemplate TargetType="controls:WYBtnImage">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetProperty="Opacity"
+                                            Storyboard.TargetName="PART_GridStateName">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundThemeOpacity}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundFocusedOpacity}"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetProperty="Opacity"
+                                            Storyboard.TargetName="PART_GridStateName">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundFocusedOpacity}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundThemeOpacity}"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetProperty="Opacity"
+                                            Storyboard.TargetName="PART_GridStateName">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundThemeOpacity}"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="{ThemeResource TextControlBackgroundHoverOpacity}"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimation Duration="0:0:0.2" To="0.99" From="1"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)"
+                                                         Storyboard.TargetName="PART_GridStateName" />
+                                        <DoubleAnimation Duration="0:0:0.2" To="0.99" From="1"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)"
+                                                         Storyboard.TargetName="PART_GridStateName" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetProperty="Opacity"
+                                            Storyboard.TargetName="PART_GridStateName">
+                                            <DiscreteDoubleKeyFrame
+                                                KeyTime="0"
+                                                Value="1.0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="PART_GridStateName"
+                            RenderTransformOrigin="0.5,0.5" 
+                            CornerRadius="{TemplateBinding CornerSource}"                          
+                            Background="{TemplateBinding ColorsSource}">
+                            <Grid.RenderTransform>
+                                <CompositeTransform />
+                            </Grid.RenderTransform>
+                            <StackPanel x:Name="PART_StackPanelStateName" 
+                              HorizontalAlignment="{TemplateBinding GeneratedBaseHorizontalStretch}"
+                              VerticalAlignment="{TemplateBinding GeneratedBaseVerticalStretch}"
+                                Orientation="{TemplateBinding OrientationSource}">
+                                <Image x:Name="PART_ImageStateName"
+                                            Stretch="{TemplateBinding StretchSource}"
+                                            Source="{TemplateBinding IconSource}"
+                                       VerticalAlignment="{TemplateBinding GeneratedImageVerticalStretch}"
+                                        HorizontalAlignment="{TemplateBinding GeneratedImageHorizontalStretch}"/>
+                                <ContentPresenter x:Name="PART_ContentPresenter"
+                                            FontSize="{TemplateBinding FontSize}"
+                                            Foreground="{TemplateBinding Foreground}"
+                                            Margin="{TemplateBinding MarginSource}"
+                                        VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
+                                        HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"                                                  
+                                            Content="{TemplateBinding Label}" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    <Style TargetType="controls:WYHeaderTitleBar">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:WYHeaderTitleBar">
                     <RelativePanel x:Name="PART_GridElementName"
                                    Background="{TemplateBinding Background}">
-                        <controls:WYBtnColors x:Name="PART_LeftBtnElementState"
-                            Label="{TemplateBinding LeftText}"
-                            Visibility="{TemplateBinding LeftVisibility}"
-                            IconSource="{TemplateBinding LeftIcon}" 
-                            Style="{TemplateBinding BtnColorsStyle}" 
-                            MarginSource="10,0,0,0"
-                            GeneratedContentHorizontalStretch="Left"
-                            Height="{TemplateBinding Height}"
+                        <controls:WYBtnImage x:Name="PART_LeftBtnElementState"
+                            Style="{TemplateBinding BtnLeftStyle}"   
                             RelativePanel.AlignLeftWithPanel="True"
                             RelativePanel.AlignHorizontalCenterWith="PART_Middle"/>
                         
                         <ContentControl x:Name="PART_Middle"
                             Content="{TemplateBinding Title}" 
-                            FontFamily="{TemplateBinding FontFamily}"
-                            Foreground="{TemplateBinding ColorsSource}" 
-                            IsHitTestVisible="False" IsTabStop="False" 
+                            VerticalAlignment="{TemplateBinding GeneratedContentVerticalStretch}"
+                            HorizontalAlignment="{TemplateBinding GeneratedContentHorizontalStretch}"                                         
                             RelativePanel.AlignHorizontalCenterWithPanel="True"
                             RelativePanel.AlignVerticalCenterWithPanel="True"/>
 
-                        <controls:WYBtnColors x:Name="PART_RightBtnElementState"
-                            Label="{TemplateBinding RightText}"
-                            Visibility="{TemplateBinding RightVisibility}" 
-                            IconSource="{TemplateBinding RightIcon}" 
-                            MarginSource="0,0,10,0"
-                            Style="{TemplateBinding BtnColorsStyle}"  
-                            GeneratedContentHorizontalStretch="Right"
-                            Height="{TemplateBinding Height}"
+                        <controls:WYBtnImage x:Name="PART_RightBtnElementState"
+                            Style="{TemplateBinding BtnRightStyle}"   
                             RelativePanel.AlignRightWithPanel="True"
                             RelativePanel.AlignHorizontalCenterWith="PART_Middle"/>
                     </RelativePanel>

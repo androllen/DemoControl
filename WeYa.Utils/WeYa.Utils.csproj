@@ -107,10 +107,16 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Box\DeviceUtil.cs" />
     <Compile Include="Box\FileUtil.cs" />
     <Compile Include="Box\HttpUtil.cs" />
     <Compile Include="Box\ImageUtil.cs" />
     <Compile Include="Box\Md5Util.cs" />
+    <Compile Include="Box\SettingUtil.cs" />
+    <Compile Include="Box\StopTimer.cs" />
+    <Compile Include="Box\StringUtil.cs" />
+    <Compile Include="Box\TimeUtil.cs" />
+    <Compile Include="EnumType\DeviceFamily.cs" />
     <Compile Include="Events\EventAsync.cs" />
     <Compile Include="Extensions\BitmapImageExtensions.cs" />
     <Compile Include="Extensions\ControlExtensions.cs" />
@@ -119,6 +125,14 @@
     <Compile Include="Extensions\WriteableBitmapExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\WeYa.Utils.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="WindowsDesktop, Version=10.0.10586.0">
+      <Name>Windows Desktop Extensions for the UWP</Name>
+    </SDKReference>
+    <SDKReference Include="WindowsMobile, Version=10.0.10586.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

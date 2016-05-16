@@ -14,8 +14,8 @@ using Windows.UI.Xaml.Media;
 
 namespace CCUWPToolkit.Controls
 {
-    [TemplatePart(Name = LeftBtnElementName, Type = typeof(WYBtnColors))]
-    [TemplatePart(Name = RightBtnElementName, Type = typeof(WYBtnColors))]
+    [TemplatePart(Name = LeftBtnElementName, Type = typeof(WYBtnImage))]
+    [TemplatePart(Name = RightBtnElementName, Type = typeof(WYBtnImage))]
     public class WYHeaderTitleBar : BaseControl
     {
         private const string LeftBtnElementName = "PART_LeftBtnElementState";
@@ -27,8 +27,8 @@ namespace CCUWPToolkit.Controls
         }
         public event RoutedEventHandler LeftClick;
         public event RoutedEventHandler RightClick;
-        private WYBtnColors _leftBtn;
-        private WYBtnColors _rightBtn;
+        private WYBtnImage _leftBtn;
+        private WYBtnImage _rightBtn;
 
         protected override void OnApplyTemplate()
         {
@@ -38,8 +38,8 @@ namespace CCUWPToolkit.Controls
             if (_rightBtn != null)
                 _rightBtn.Click -= OnRightBtn_Click;
 
-            _leftBtn = GetTemplateChild(LeftBtnElementName) as WYBtnColors;
-            _rightBtn = GetTemplateChild(RightBtnElementName) as WYBtnColors;
+            _leftBtn = GetTemplateChild(LeftBtnElementName) as WYBtnImage;
+            _rightBtn = GetTemplateChild(RightBtnElementName) as WYBtnImage;
 
             if (_leftBtn != null)
                 _leftBtn.Click += OnLeftBtn_Click;
@@ -60,56 +60,7 @@ namespace CCUWPToolkit.Controls
             RightClick?.Invoke(sender, e);
         }
 
-        public ImageSource LeftIcon
-        {
-            get { return (ImageSource)GetValue(LeftIconProperty); }
-            set { SetValue(LeftIconProperty, value); }
-        }
-
-        private static readonly DependencyProperty LeftIconProperty =
-            DependencyProperty.Register("LeftIcon",
-                typeof(ImageSource),
-                typeof(WYHeaderTitleBar),
-                new PropertyMetadata(null));
-
-        public ImageSource RightIcon
-        {
-            get { return (ImageSource)GetValue(RightIconProperty); }
-            set { SetValue(RightIconProperty, value); }
-        }
-
-        private static readonly DependencyProperty RightIconProperty =
-            DependencyProperty.Register("RightIcon",
-                typeof(ImageSource),
-                typeof(WYHeaderTitleBar),
-                new PropertyMetadata(null));
-
-        public Visibility LeftVisibility
-        {
-            get { return (Visibility)GetValue(LeftVisibilityProperty); }
-            set { SetValue(LeftVisibilityProperty, value); }
-        }
-
-        private static readonly DependencyProperty LeftVisibilityProperty =
-            DependencyProperty.Register("LeftVisibility",
-                typeof(Visibility),
-                typeof(WYHeaderTitleBar),
-                new PropertyMetadata(Visibility.Collapsed));
-
-
-        public Visibility RightVisibility
-        {
-            get { return (Visibility)GetValue(RightVisibilityProperty); }
-            set { SetValue(RightVisibilityProperty, value); }
-        }
-
-        private static readonly DependencyProperty RightVisibilityProperty =
-            DependencyProperty.Register("RightVisibility",
-                typeof(Visibility),
-                typeof(WYHeaderTitleBar),
-                new PropertyMetadata(Visibility.Collapsed));
-
-
+        #region Title
         public object Title
         {
             get { return GetValue(TitleProperty); }
@@ -121,38 +72,15 @@ namespace CCUWPToolkit.Controls
                 typeof(object), 
                 typeof(WYHeaderTitleBar), 
                 new PropertyMetadata(string.Empty));
+        #endregion
 
-        public string LeftText
-        {
-            get { return (string)GetValue(LeftTextProperty); }
-            set { SetValue(LeftTextProperty, value); }
-        }
-
-        public static readonly DependencyProperty LeftTextProperty =
-            DependencyProperty.Register("LeftText",
-                typeof(string),
-                typeof(WYHeaderTitleBar),
-                new PropertyMetadata(string.Empty));
-
-        public static readonly DependencyProperty RightTextProperty =
-            DependencyProperty.Register("RightText",
-                typeof(string),
-                typeof(WYHeaderTitleBar),
-                new PropertyMetadata(string.Empty));
-
-        public string RightText
-        {
-            get { return (string)GetValue(RightTextProperty); }
-            set { SetValue(RightTextProperty, value); }
-        }
-
-        #region TitleStyle
+        #region BtnLeftStyle
         /// <summary>
         /// TitleStyle Dependency Property
         /// </summary>
-        public static readonly DependencyProperty BtnColorsStyleProperty =
+        public static readonly DependencyProperty BtnLeftStyleProperty =
             DependencyProperty.Register(
-                "BtnColorsStyle",
+                "BtnLeftStyle",
                 typeof(Style),
                 typeof(WYHeaderTitleBar),
                 new PropertyMetadata(null));
@@ -161,10 +89,32 @@ namespace CCUWPToolkit.Controls
         /// Gets or sets the TitleStyle property. This dependency property 
         /// indicates the style to use for the title TextBlock.
         /// </summary>
-        public Style BtnColorsStyle
+        public Style BtnLeftStyle
         {
-            get { return (Style)GetValue(BtnColorsStyleProperty); }
-            set { SetValue(BtnColorsStyleProperty, value); }
+            get { return (Style)GetValue(BtnLeftStyleProperty); }
+            set { SetValue(BtnLeftStyleProperty, value); }
+        }
+        #endregion
+
+        #region BtnRightStyle
+        /// <summary>
+        /// TitleStyle Dependency Property
+        /// </summary>
+        public static readonly DependencyProperty BtnRightStyleProperty =
+            DependencyProperty.Register(
+                "BtnRightStyle",
+                typeof(Style),
+                typeof(WYHeaderTitleBar),
+                new PropertyMetadata(null));
+
+        /// <summary>
+        /// Gets or sets the TitleStyle property. This dependency property 
+        /// indicates the style to use for the title TextBlock.
+        /// </summary>
+        public Style BtnRightStyle
+        {
+            get { return (Style)GetValue(BtnRightStyleProperty); }
+            set { SetValue(BtnRightStyleProperty, value); }
         }
         #endregion
     }

@@ -15,6 +15,93 @@ namespace CCUWPToolkit.Controls
         {
             base.OnApplyTemplate();
         }
+        #region GeneratedBaseHorizontalStretch
+        public HorizontalAlignment GeneratedBaseHorizontalStretch
+        {
+            get { return (HorizontalAlignment)GetValue(GeneratedBaseHorizontalStretchProperty); }
+            set { SetValue(GeneratedBaseHorizontalStretchProperty, value); }
+        }
+        public static readonly DependencyProperty GeneratedBaseHorizontalStretchProperty =
+            DependencyProperty.Register(
+            "GeneratedBaseHorizontalStretch",
+            typeof(HorizontalAlignment),
+            typeof(BaseButton),
+            new PropertyMetadata(HorizontalAlignment.Center));
+
+        #endregion
+
+        #region GeneratedBaseVerticalStretch
+        public VerticalAlignment GeneratedBaseVerticalStretch
+        {
+            get { return (VerticalAlignment)GetValue(GeneratedBaseVerticalStretchProperty); }
+            set { SetValue(GeneratedBaseVerticalStretchProperty, value); }
+        }
+        public static readonly DependencyProperty GeneratedBaseVerticalStretchProperty =
+            DependencyProperty.Register(
+            "GeneratedBaseVerticalStretch",
+            typeof(VerticalAlignment),
+            typeof(BaseButton),
+            new PropertyMetadata(VerticalAlignment.Center));
+        #endregion
+
+        #region GeneratedImageHorizontalStretch
+        public HorizontalAlignment GeneratedImageHorizontalStretch
+        {
+            get { return (HorizontalAlignment)GetValue(GeneratedImageHorizontalStretchProperty); }
+            set { SetValue(GeneratedImageHorizontalStretchProperty, value); }
+        }
+        public static readonly DependencyProperty GeneratedImageHorizontalStretchProperty =
+            DependencyProperty.Register(
+            "GeneratedImageHorizontalStretch",
+            typeof(HorizontalAlignment),
+            typeof(BaseButton),
+            new PropertyMetadata(HorizontalAlignment.Center));
+
+        #endregion
+
+        #region GeneratedImageVerticalStretch
+        public VerticalAlignment GeneratedImageVerticalStretch
+        {
+            get { return (VerticalAlignment)GetValue(GeneratedImageVerticalStretchProperty); }
+            set { SetValue(GeneratedImageVerticalStretchProperty, value); }
+        }
+        public static readonly DependencyProperty GeneratedImageVerticalStretchProperty =
+            DependencyProperty.Register(
+            "GeneratedImageVerticalStretch",
+            typeof(VerticalAlignment),
+            typeof(BaseButton),
+            new PropertyMetadata(VerticalAlignment.Center));
+        #endregion
+
+        #region GeneratedContentHorizontalStretch
+        public HorizontalAlignment GeneratedContentHorizontalStretch
+        {
+            get { return (HorizontalAlignment)GetValue(GeneratedContentHorizontalStretchProperty); }
+            set { SetValue(GeneratedContentHorizontalStretchProperty, value); }
+        }
+        public static readonly DependencyProperty GeneratedContentHorizontalStretchProperty =
+            DependencyProperty.Register(
+            "GeneratedContentHorizontalStretch",
+            typeof(HorizontalAlignment),
+            typeof(BaseButton),
+            new PropertyMetadata(HorizontalAlignment.Center));
+
+        #endregion
+
+        #region GeneratedContentVerticalStretch
+        public VerticalAlignment GeneratedContentVerticalStretch
+        {
+            get { return (VerticalAlignment)GetValue(GeneratedContentVerticalStretchProperty); }
+            set { SetValue(GeneratedContentVerticalStretchProperty, value); }
+        }
+        public static readonly DependencyProperty GeneratedContentVerticalStretchProperty =
+            DependencyProperty.Register(
+            "GeneratedContentVerticalStretch",
+            typeof(VerticalAlignment),
+            typeof(BaseButton),
+            new PropertyMetadata(VerticalAlignment.Center));
+        #endregion
+
         #region 按钮图标
         /// <summary>
         /// 按钮图标
@@ -68,6 +155,36 @@ namespace CCUWPToolkit.Controls
                 new PropertyMetadata(Stretch.None));
         #endregion
 
+        #region 文本大小
+        /// <summary>
+        /// 背景色
+        /// </summary>
+        public double FontSizeSource
+        {
+            get { return (double)GetValue(FontSizeSourceProperty); }
+            set { SetValue(FontSizeSourceProperty, value); }
+        }
+
+        public static readonly DependencyProperty FontSizeSourceProperty =
+            DependencyProperty.Register("FontSizeSource", typeof(double), typeof(BaseButton),
+                new PropertyMetadata(21.0));
+        #endregion
+
+        #region 前景色
+        /// <summary>
+        /// 背景色
+        /// </summary>
+        public Brush ForegroundSource
+        {
+            get { return (Brush)GetValue(ForegroundSourceProperty); }
+            set { SetValue(ForegroundSourceProperty, value); }
+        }
+
+        public static readonly DependencyProperty ForegroundSourceProperty =
+            DependencyProperty.Register("ForegroundSource", typeof(Brush), typeof(BaseButton),
+                new PropertyMetadata(new SolidColorBrush(Colors.Black)));
+        #endregion
+
         #region 背景色
         /// <summary>
         /// 背景色
@@ -97,21 +214,7 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register("CornerSource", typeof(CornerRadius), typeof(BaseButton),
                 new PropertyMetadata(new CornerRadius(0)));
         #endregion
-
-        #region 控件或布局方向
-        public Orientation OrientationSource
-        {
-            get { return (Orientation)GetValue(OrientationSourceProperty); }
-            set { SetValue(OrientationSourceProperty, value); }
-        }
-
-        private static readonly DependencyProperty OrientationSourceProperty =
-            DependencyProperty.Register("OrientationSource",
-                typeof(Orientation),
-                typeof(BaseButton),
-                new PropertyMetadata(Orientation.Vertical));
-        #endregion
-
+        
         #region 控件或布局边距
         public Thickness MarginSource
         {

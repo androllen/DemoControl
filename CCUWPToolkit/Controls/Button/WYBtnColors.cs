@@ -10,6 +10,7 @@ using Windows.UI.Xaml.Shapes;
 using Windows.UI.Xaml.Media;
 using Windows.System.Profile;
 using Windows.UI.Xaml.Input;
+using WeYa.Utils;
 
 namespace CCUWPToolkit.Controls
 {
@@ -31,11 +32,6 @@ namespace CCUWPToolkit.Controls
         /// 图片控件名字
         /// </summary>
         private const string ImageStateName = "PART_ImageStateName";
-        /// <summary>
-        /// 图片控件
-        /// </summary>
-        private Image _imageStateName;
-        private ContentPresenter _contentPresenter;
         private Grid _gridStateName;
         private readonly TaskCompletionSource<bool> _waitForApplyTemplateTaskSource = new TaskCompletionSource<bool>(false);
         #endregion
@@ -164,190 +160,16 @@ namespace CCUWPToolkit.Controls
                 _gridStateName.Background = new SolidColorBrush(newTarget);
         }
 
-
         protected override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             _gridStateName = (Grid)GetTemplateChild(GridStateName);
-            _imageStateName = (Image)GetTemplateChild(ImageStateName);
-            _contentPresenter = (ContentPresenter)GetTemplateChild(ContentPresenterName);
             _waitForApplyTemplateTaskSource.SetResult(true);
         }
 
-        public enum DeviceFamily
-        {
-            /// <summary>
-            ///     Unknown
-            /// </summary>
-            Unknown,
-
-            /// <summary>
-            ///     Desktop
-            /// </summary>
-            Desktop,
-
-            /// <summary>
-            ///     Mobile
-            /// </summary>
-            Mobile,
-
-            /// <summary>
-            ///     Team
-            /// </summary>
-            Team,
-
-            /// <summary>
-            ///     Windows IoT
-            /// </summary>
-            IoT,
-
-            /// <summary>
-            ///     Xbox
-            /// </summary>
-            Xbox
-        }
-        public static bool IsType(DeviceFamily family)
-        {
-            return $"Windows.{family}" == AnalyticsInfo.VersionInfo.DeviceFamily;
-        }
-
-
-        #region GeneratedImageHorizontalStretch
-        public HorizontalAlignment GeneratedImageHorizontalStretch
-        {
-            get { return (HorizontalAlignment)GetValue(GeneratedImageHorizontalStretchProperty); }
-            set { SetValue(GeneratedImageHorizontalStretchProperty, value); }
-        }
-        public static readonly DependencyProperty GeneratedImageHorizontalStretchProperty =
-            DependencyProperty.Register(
-            "GeneratedImageHorizontalStretch",
-            typeof(HorizontalAlignment),
-            typeof(WYBtnColors),
-            new PropertyMetadata(HorizontalAlignment.Center));
-
-        #endregion
-
-        #region GeneratedImageVerticalStretch
-        public VerticalAlignment GeneratedImageVerticalStretch
-        {
-            get { return (VerticalAlignment)GetValue(GeneratedImageVerticalStretchProperty); }
-            set { SetValue(GeneratedImageVerticalStretchProperty, value); }
-        }
-        public static readonly DependencyProperty GeneratedImageVerticalStretchProperty =
-            DependencyProperty.Register(
-            "GeneratedImageVerticalStretch",
-            typeof(VerticalAlignment),
-            typeof(WYBtnColors),
-            new PropertyMetadata(VerticalAlignment.Center));
-        #endregion
-
-        #region GeneratedContentHorizontalStretch
-        public HorizontalAlignment GeneratedContentHorizontalStretch
-        {
-            get { return (HorizontalAlignment)GetValue(GeneratedContentHorizontalStretchProperty); }
-            set { SetValue(GeneratedContentHorizontalStretchProperty, value); }
-        }
-        public static readonly DependencyProperty GeneratedContentHorizontalStretchProperty =
-            DependencyProperty.Register(
-            "GeneratedContentHorizontalStretch",
-            typeof(HorizontalAlignment),
-            typeof(WYBtnColors),
-            new PropertyMetadata(HorizontalAlignment.Center));
-
-        #endregion
-
-        #region GeneratedContentVerticalStretch
-        public VerticalAlignment GeneratedContentVerticalStretch
-        {
-            get { return (VerticalAlignment)GetValue(GeneratedContentVerticalStretchProperty); }
-            set { SetValue(GeneratedContentVerticalStretchProperty, value); }
-        }
-        public static readonly DependencyProperty GeneratedContentVerticalStretchProperty =
-            DependencyProperty.Register(
-            "GeneratedContentVerticalStretch",
-            typeof(VerticalAlignment),
-            typeof(WYBtnColors),
-            new PropertyMetadata(VerticalAlignment.Center));
-        #endregion
-
-        #region IsGeneratedImageStretch
-        /// <summary>
-        /// 是否显示图片
-        /// </summary>
-        public bool IsGeneratedImageStretch
-        {
-            get { return (bool)GetValue(IsGeneratedImageStretchProperty); }
-            set { SetValue(IsGeneratedImageStretchProperty, value); }
-        }
-        public static readonly DependencyProperty IsGeneratedImageStretchProperty =
-            DependencyProperty.Register(
-            "IsGeneratedImageStretch",
-            typeof(bool),
-            typeof(WYBtnColors),
-            new PropertyMetadata(false, OnIsGeneratedImageStretchChanged));
-
-        private static void OnIsGeneratedImageStretchChanged(
-            DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var target = (WYBtnColors)d;
-            bool oldtarget = (bool)e.OldValue;
-            bool newTarget = target.IsGeneratedImageStretch;
-            target.OnIsGeneratedImageChanged(oldtarget, newTarget);
-        }
-        private async void OnIsGeneratedImageChanged(bool oldtarget, bool newTarget)
-        {
-            await _waitForApplyTemplateTaskSource.Task;
-
-            if (oldtarget != newTarget)
-            {
-                _imageStateName.Visibility = Visibility.Visible;
-                _contentPresenter.Visibility = Visibility.Collapsed;
-
-            }
-            else
-            {
-                _imageStateName.Visibility = Visibility.Collapsed;
-                _contentPresenter.Visibility = Visibility.Visible;
-            }
-        }
-        #endregion
-
-        #region IsEnableComponentStretch
-        public bool IsEnableComponentStretch
-        {
-            get { return (bool)GetValue(IsEnableComponentStretchProperty); }
-            set { SetValue(IsEnableComponentStretchProperty, value); }
-        }
-        public static readonly DependencyProperty IsEnableComponentStretchProperty =
-            DependencyProperty.Register(
-            "IsEnableComponentStretch",
-            typeof(bool),
-            typeof(WYBtnColors),
-            new PropertyMetadata(false, OnIsEnableComponentStretchChanged));
-
-        private static void OnIsEnableComponentStretchChanged(
-            DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var target = (WYBtnColors)d;
-            bool oldtarget = (bool)e.OldValue;
-            bool newTarget = target.IsEnableComponentStretch;
-            target.OnIsEnableComponentChanged(oldtarget, newTarget);
-        }
-        private async void OnIsEnableComponentChanged(bool oldtarget, bool newTarget)
-        {
-            await _waitForApplyTemplateTaskSource.Task;
-
-            if (oldtarget != newTarget)
-            {
-                _imageStateName.Visibility = Visibility.Visible;
-                _contentPresenter.Visibility = Visibility.Visible;
-            }
-        }
-        #endregion
-
         #region IsEnableColorsStretch
         /// <summary>
-        /// 是否启用三种状态
+        /// 是否启用三种颜色状态
         /// </summary>
         public bool IsEnableColorsStretch
         {
@@ -377,7 +199,7 @@ namespace CCUWPToolkit.Controls
 
             if (oldtarget != newTarget && _gridStateName != null)
             {
-                if (IsType(DeviceFamily.Mobile)) return;
+                if (DeviceUtil.IsType(DeviceFamily.Mobile)) return;
 
                 _gridStateName.PointerEntered += OnPointerEntered;
                 _gridStateName.PointerExited += OnPointerExited;
