@@ -6,10 +6,13 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.Storage.Streams;
 
 namespace WeYa.Utils
 {
@@ -17,16 +20,72 @@ namespace WeYa.Utils
     {
         public static StorageFolder LocalFolder => ApplicationData.Current.LocalFolder;
 
-        public async static Task<StorageFile> MakeFile(string fileName)
+        public async static Task<StorageFile> MakeFile(string name)
         {
-            return await LocalFolder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
+            return await LocalFolder.CreateFileAsync(name, CreationCollisionOption.ReplaceExisting);
+        }
+        public async static Task<StorageFolder> GetFolder(string name)
+        {
+            return await LocalFolder.GetFolderAsync(name);
+        }
+        public async static Task<StorageFile> GetFile(string name)
+        {
+            return await LocalFolder.GetFileAsync(name);
+        }
+        /// <summary>
+        /// no test
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public async static Task<bool> DeleteFile(string name)
+        {
+            bool ok = await IsFileExists(name);
+            StorageFile file = await FileUtil.MakeFile(name);
+            if (file != null)
+            {
+               await file.DeleteAsync();
+                return true;
+            }
+            return false;
         }
 
-        public async static Task<StorageFile> GetFile(string fileName)
+        /// <summary>
+        /// no test
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public async static Task DeleteDirectory(string name)
         {
-            return await LocalFolder.GetFileAsync(fileName);
+            var item = await LocalFolder.GetFolderAsync(name);
+            var items = await item.GetFoldersAsync();
+            foreach(StorageFolder folder in items)
+            {
+                var files = await folder.GetFilesAsync();
+                foreach (IStorageFile file in files)
+                {
+                    await file.DeleteAsync();
+                }
+            }
         }
 
+        public async static Task<string> ReadText(StorageFile file, string name)
+        {
+            bool ok = await IsFileExists(name);
+            if (ok)
+                return await FileIO.ReadTextAsync(file);
+
+            return string.Empty;
+        }
+        public async static Task<Stream> ReadStream(StorageFile file, string name)
+        {
+            bool ok = await IsFileExists(name);
+
+            var buffer = await FileIO.ReadBufferAsync(file);
+
+            var stream =  buffer.AsStream();
+
+            return stream;
+        }
         public static async Task WriteText(StorageFile file, string text)
         {
             try
@@ -52,18 +111,15 @@ namespace WeYa.Utils
             }
         }
 
-        public static async Task<bool> IsFileExists(string fileName)
+        public static async Task<bool> isFolderExists(string name)
         {
-            try
-            {
-                var item = await LocalFolder.TryGetItemAsync(fileName);
-                return item != null;
-
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            var item = await LocalFolder.GetFolderAsync(name);
+            return item != null ? true : false;
+        }
+        public static async Task<bool> IsFileExists(string name)
+        {
+            var item = await LocalFolder.TryGetItemAsync(name);
+            return item != null ? true : false;
         }
     }
 }

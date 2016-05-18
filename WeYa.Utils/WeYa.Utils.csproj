@@ -116,7 +116,11 @@
     <Compile Include="Box\StopTimer.cs" />
     <Compile Include="Box\StringUtil.cs" />
     <Compile Include="Box\TimeUtil.cs" />
+    <Compile Include="Const_def.cs" />
+    <Compile Include="EnumType\CacheType.cs" />
+    <Compile Include="EnumType\DataResult.cs" />
     <Compile Include="EnumType\DeviceFamily.cs" />
+    <Compile Include="EnumType\FeatureType.cs" />
     <Compile Include="Events\EventAsync.cs" />
     <Compile Include="Extensions\BitmapImageExtensions.cs" />
     <Compile Include="Extensions\ControlExtensions.cs" />
