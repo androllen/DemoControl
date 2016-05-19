@@ -61,6 +61,10 @@ namespace WeYa.Utils
         public const string Category = "Category";
 
         //http://newapi.meipai.com/output/channels_topics_timeline.json?id=1&count=20&page=2
-        public const string API_Category = "http://newapi.meipai.com/output/channels_topics_timeline.json";
+        public const string API_Category = "http://newapi.meipai.com/medias/topics_timeline.json?";
+
+        public const string db_CacheDir = "cachedata\\favorite\\favorite.db";
+
+
     }
 }

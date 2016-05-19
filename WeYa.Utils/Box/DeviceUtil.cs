@@ -17,6 +17,16 @@ namespace WeYa.Utils
 {
     public class DeviceUtil
     {
+        public const int VersionNumber = 40;
+        public const int AdVersion = 22;
+        public const string DEVICE_TYPE = "wp";
+        public const string DEVICE_MODEL = "DEVICE_MODEL";
+        public const string Language = "zh-Hans";
+        public const int Version = 180;
+        public const string Channel = "oppo";
+
+        public static string client_id=> TimeUtil.GetUnixTimestamp().ToString();
+
         /// <summary>
         ///       if (IsType(DeviceFamily.Mobile)) return;
         /// </summary>
@@ -76,14 +86,22 @@ namespace WeYa.Utils
                             {
                                 var bytes = new byte[buffer.Length];
                                 dataReader.ReadBytes(bytes);
-                                uniqueId = BitConverter.ToString(bytes).Replace("-", string.Empty);
-                                return uniqueId;
+                                uniqueId = BitConverter.ToString(bytes)
+                                                    .Replace("-", string.Empty)
+                                                    .Replace("A", string.Empty)
+                                                    .Replace("B", string.Empty)
+                                                    .Replace("C", string.Empty)
+                                                    .Replace("D", string.Empty)
+                                                    .Replace("E", string.Empty)
+                                                    .Replace("F", string.Empty).ToString();
+
+                                return uniqueId.Substring(0,15);
                             }
                         }
                     }
                     throw new NotImplementedException("不支持HardwareIdentification.GetPackageSpecificToken()方法");
                 }
-                return uniqueId;
+                return uniqueId.Substring(0, 15); ;
             }
         }
 

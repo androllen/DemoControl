@@ -1,6 +1,6 @@
 ﻿/********************************************************************************
 ** 作者： androllen
-** 日期： 16/5/18 17:08:31
+** 日期： 16/5/19 11:25:26
 ** 微博： http://weibo.com/Androllen
 *********************************************************************************/
 using System;
@@ -11,9 +11,12 @@ using System.Threading.Tasks;
 
 namespace WeYa.Utils
 {
-    enum FeatureType
+    public enum HttpErrorStatus
     {
-        Hot,
-        New
+        Success,
+        JsonError,
+        UserCancelOperation,
+        NetworkError,
+        UnknownError
     }
 }
