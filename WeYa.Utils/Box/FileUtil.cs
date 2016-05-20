@@ -20,15 +20,15 @@ namespace WeYa.Utils
     {
         public static StorageFolder LocalFolder => ApplicationData.Current.LocalFolder;
 
-        public async static Task<StorageFile> MakeFile(string name)
+        public async static Task<StorageFile> CreateFileAsync(string name)
         {
             return await LocalFolder.CreateFileAsync(name, CreationCollisionOption.ReplaceExisting);
         }
-        public async static Task<StorageFolder> GetFolder(string name)
+        public async static Task<StorageFolder> GetFolderAsync(string name)
         {
             return await LocalFolder.GetFolderAsync(name);
         }
-        public async static Task<StorageFile> GetFile(string name)
+        public async static Task<StorageFile> GetFileAsync(string name)
         {
             return await LocalFolder.GetFileAsync(name);
         }
@@ -40,7 +40,7 @@ namespace WeYa.Utils
         public async static Task<bool> DeleteFile(string name)
         {
             bool ok = await IsFileExists(name);
-            StorageFile file = await FileUtil.MakeFile(name);
+            StorageFile file = await CreateFileAsync(name);
             if (file != null)
             {
                await file.DeleteAsync();
@@ -91,7 +91,7 @@ namespace WeYa.Utils
             try
             {
                 await FileIO.WriteTextAsync(file, text);
-                Debug.WriteLine("writeFile");
+                Debug.WriteLine("WriteText");
             }
             catch (Exception e)
             {
@@ -103,7 +103,7 @@ namespace WeYa.Utils
             try
             {
                 await FileIO.WriteBytesAsync(file, bytes);
-                Debug.WriteLine("writeFile");
+                Debug.WriteLine("WriteBytes");
             }
             catch (Exception e)
             {

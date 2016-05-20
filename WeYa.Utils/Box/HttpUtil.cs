@@ -28,7 +28,7 @@ namespace WeYa.Utils
                 {
                     var client = new HttpClient(new HttpClientHandler { AllowAutoRedirect = autoRedirect });
                     var bytes = await client.GetByteArrayAsync(url);
-                    StorageFile file = await FileUtil.MakeFile(fileName);
+                    StorageFile file = await FileUtil.CreateFileAsync(fileName);
                     await FileUtil.WriteBytes(file, bytes);
                 }
                 catch (HttpRequestException e)

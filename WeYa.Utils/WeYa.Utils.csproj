@@ -122,6 +122,7 @@
     <Compile Include="EnumType\DeviceFamily.cs" />
     <Compile Include="EnumType\FeatureType.cs" />
     <Compile Include="EnumType\HttpErrorStatus.cs" />
+    <Compile Include="EnumType\TopicsType.cs" />
     <Compile Include="Events\EventAsync.cs" />
     <Compile Include="Extensions\BitmapImageExtensions.cs" />
     <Compile Include="Extensions\ControlExtensions.cs" />
