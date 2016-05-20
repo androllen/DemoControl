@@ -22,8 +22,8 @@ namespace WeYa.Utils
         public const string DEVICE_TYPE = "wp";
         public const string DEVICE_MODEL = "DEVICE_MODEL";
         public const string Language = "zh-Hans";
-        public const int Version = 180;
-        public const string Channel = "oppo";
+        public const int Version = 300;
+        public const string Channel = "oppo";//bao360
 
         public static string client_id=> TimeUtil.GetUnixTimestamp().ToString();
 
