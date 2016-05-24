@@ -23,6 +23,7 @@ namespace WeYa.Utils
         public const string DEVICE_MODEL = "DEVICE_MODEL";
         public const string Language = "zh-Hans";
         public const int Version = 300;
+        public const int DEVICE_CLIENTID = 1089857302;
         public const string Channel = "oppo";//bao360
 
         public static string client_id=> TimeUtil.GetUnixTimestamp().ToString();
