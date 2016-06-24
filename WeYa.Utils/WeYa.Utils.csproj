@@ -117,6 +117,10 @@
     <Compile Include="Box\StringUtil.cs" />
     <Compile Include="Box\TimeUtil.cs" />
     <Compile Include="Const_def.cs" />
+    <Compile Include="Converter\ByteToStringConverter.cs" />
+    <Compile Include="Converter\Gender2StringConverter.cs" />
+    <Compile Include="Converter\Unix2DateTimeConverter.cs" />
+    <Compile Include="Converter\VisibilityToBooleanConverter.cs" />
     <Compile Include="EnumType\CacheType.cs" />
     <Compile Include="EnumType\DataResult.cs" />
     <Compile Include="EnumType\DeviceFamily.cs" />

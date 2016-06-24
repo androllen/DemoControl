@@ -90,7 +90,7 @@ namespace CCUWPToolkit.Controls
 
             this.LayoutUpdated += (sender, o) => AdaptLayout();
 
-            this.ItemContainerStyle.Setters.Add(new Setter(GridViewItem.HorizontalContentAlignmentProperty, HorizontalAlignment.Stretch));
+            this.ItemContainerStyle.Setters.Add(new Setter(HorizontalContentAlignmentProperty, HorizontalAlignment.Stretch));
 
             this.Loaded += (s, a) =>
             {
@@ -121,20 +121,30 @@ namespace CCUWPToolkit.Controls
                 if (MinItemWidth == 0)
                     throw new DivideByZeroException("You need to have a MinItemWidth greater than zero");
 
-                var availableWidth = availableSize.Width - (this.Padding.Right + this.Padding.Left);
+                //var availableWidth = availableSize.Width - (this.Padding.Right + this.Padding.Left);
 
-                var numColumns = Math.Floor(availableWidth / MinItemWidth);
+                //var numColumns = Math.Floor(availableWidth / MinItemWidth);
 
-                numColumns = numColumns == 0 ? 1 : (Convert.ToInt32(numColumns) > panel.MaximumRowsOrColumns ? panel.MaximumRowsOrColumns : numColumns);
+                //numColumns = (numColumns == 0 || numColumns == 1) ? 2 : (Convert.ToInt32(numColumns) > panel.MaximumRowsOrColumns ? panel.MaximumRowsOrColumns : numColumns);
 
-                var numRows = Math.Ceiling(this.Items.Count / numColumns);
+                //var numRows = Math.Ceiling(this.Items.Count / numColumns);
 
-                var itemWidth = availableWidth / numColumns;
-                var aspectRatio = MinItemHeight / MinItemWidth;
-                var itemHeight = itemWidth * aspectRatio;
+                //var itemWidth = availableWidth / numColumns;
+                //var aspectRatio = MinItemHeight / MinItemWidth;
+                //var itemHeight = itemWidth * aspectRatio;
 
-                panel.ItemWidth = itemWidth;
-                panel.ItemHeight = itemHeight;
+                //panel.ItemWidth = itemWidth;
+                //panel.ItemHeight = itemHeight;
+
+                double itemSize = 0.0;
+                if (availableSize.Width <= 600)
+                    itemSize = availableSize.Width / 2;
+                else if (availableSize.Width >= 600)
+                    itemSize = availableSize.Width / 3;
+
+                panel.ItemWidth = itemSize;
+                panel.ItemHeight = itemSize;
+
             }
 
             return base.MeasureOverride(availableSize);

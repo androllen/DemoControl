@@ -60,18 +60,20 @@ namespace WeYa.Utils
         public const string ImageCache = "ImageCache";
         public const string Category = "Category";
 
-        //http://newapi.meipai.com/output/channels_topics_timeline.json?id=1&count=20&page=2
+      
         public const string API_Category = "https://newapi.meipai.com/medias/topics_timeline.json?";
         public const string API_Common = "https://newapi.meipai.com/common/square_medias_categories.json?";
+        public const string API_square = "https://newapi.meipai.com/square/show_category.json?";
+        public const string API_show = "https://newapi.meipai.com/medias/show.json?";
+        public const string API_comments = "https://newapi.meipai.com/comments/show.json?";
+        public const string API_nearby = "https://newapi.meipai.com/nearby/medias_timeline.json?";
 
         public const string db_CacheDir = "cachedata\\favorite\\favorite.db";
         public const string db_CacheMainDir = "cachedata\\main\\favorite.tmp";
 
-        //GET https://newapi.meipai.com/hot/feed_timeline.json?page=1&language=zh-Hans&client_id=1089857302&device_id=865773028434070&version=300&channel=bao360&model=N918St 
-        //GET https://newapi.meipai.com/hot/feed_timeline.json?page=1&language=zh-Hans&client_id=1089857302&device_id=865773028434070&version=300&channel=bao360&model=N918St 
-        //GET https://newapi.meipai.com/hot/feed_timeline.json?page=2&language=zh-Hans&client_id=1089857302&device_id=865773028434070&version=300&channel=bao360&model=N918St HTTP/1.1
+        //热门 https://newapi.meipai.com/medias/topics_timeline.json?id=1&type=1&feature=new&page=1&language=zh-Hans&client_id=1089857302&device_id=865773028434070&version=180&channel=oppo"
         //GET 广场 https://newapi.meipai.com/common/square_medias_categories.json?section=3&topic=1&filter=0&language=zh-Hans&client_id=1089857302&device_id=865773028434070&version=300&channel=bao360&model=N918St HTTP/1.1
-        
+
         //GET 搞笑 头 https://newapi.meipai.com/square/show_category.json?id=13&language=zh-Hans&client_id=1089857302&device_id=865773028434070&version=300&channel=bao360&model=N918St HTTP/1.1
         //GET 搞笑 https://newapi.meipai.com/medias/topics_timeline.json?id=13&type=1&feature=new&page=1&language=zh-Hans&client_id=1089857302&device_id=865773028434070&version=300&channel=bao360&model=N918St HTTP/1.1
         //GET 明星 https://newapi.meipai.com/square/show_category.json?id=16&language=zh-Hans&client_id=1089857302&device_id=865773028434070&version=300&channel=bao360&model=N918St HTTP/1.1
