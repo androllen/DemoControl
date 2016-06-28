@@ -114,7 +114,7 @@
     <Compile Include="Controls\IBaseControl.cs" />
     <Compile Include="Controls\TextBox\WYTextBox.cs" />
     <Compile Include="Controls\View\WYFlipView.cs" />
-    <Compile Include="Controls\View\WYHeaderTitleBar.cs" />
+    <Compile Include="Controls\View\WYTitleBar.cs" />
     <Compile Include="Controls\View\WYGridView.cs" />
     <Compile Include="Controls\View\WYImage.cs" />
     <Compile Include="Controls\View\WYTabHeader.cs" />

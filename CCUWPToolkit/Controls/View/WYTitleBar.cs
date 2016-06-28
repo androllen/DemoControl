@@ -16,14 +16,14 @@ namespace CCUWPToolkit.Controls
 {
     [TemplatePart(Name = LeftBtnElementName, Type = typeof(WYBtnImage))]
     [TemplatePart(Name = RightBtnElementName, Type = typeof(WYBtnImage))]
-    public class WYHeaderTitleBar : BaseControl
+    public class WYTitleBar : BaseControl
     {
         private const string LeftBtnElementName = "PART_LeftBtnElementState";
         private const string RightBtnElementName = "PART_RightBtnElementState";
 
-        public WYHeaderTitleBar()
+        public WYTitleBar()
         {
-            DefaultStyleKey = typeof(WYHeaderTitleBar);
+            DefaultStyleKey = typeof(WYTitleBar);
         }
         public event RoutedEventHandler LeftClick;
         public event RoutedEventHandler RightClick;
@@ -70,7 +70,7 @@ namespace CCUWPToolkit.Controls
         public static readonly DependencyProperty TitleProperty = 
             DependencyProperty.Register("Title", 
                 typeof(object), 
-                typeof(WYHeaderTitleBar), 
+                typeof(WYTitleBar), 
                 new PropertyMetadata(string.Empty));
         #endregion
 
@@ -82,7 +82,7 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
                 "BtnLeftStyle",
                 typeof(Style),
-                typeof(WYHeaderTitleBar),
+                typeof(WYTitleBar),
                 new PropertyMetadata(null));
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace CCUWPToolkit.Controls
             DependencyProperty.Register(
                 "BtnRightStyle",
                 typeof(Style),
-                typeof(WYHeaderTitleBar),
+                typeof(WYTitleBar),
                 new PropertyMetadata(null));
 
         /// <summary>
