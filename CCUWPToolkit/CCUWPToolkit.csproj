@@ -118,10 +118,17 @@
     <Compile Include="Controls\View\WYGridView.cs" />
     <Compile Include="Controls\View\WYImage.cs" />
     <Compile Include="Controls\View\WYTabHeader.cs" />
+    <Compile Include="Controls\Xaml\WYGrid.xaml.cs">
+      <DependentUpon>WYGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Properties\CCUWPToolkit.rd.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\Xaml\WYGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

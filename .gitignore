@@ -210,3 +210,4 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/CCUWPToolkit/Controls/View/WYGrid.cs
